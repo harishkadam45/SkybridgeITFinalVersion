@@ -1,0 +1,8 @@
+---
+import PackagePage from '../components/PackagePage.astro';
+import { WORDPRESS_MAINTENANCE_PACKAGES } from '../data/packages';
+
+const data = WORDPRESS_MAINTENANCE_PACKAGES;
+---
+
+<PackagePage data={data} canonicalPath='/wordpress-maintenance-packages/' breadcrumbLabel={data.title} />

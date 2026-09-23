@@ -1,0 +1,8 @@
+---
+import PackagePage from '../components/PackagePage.astro';
+import { WORDPRESS_SEO_PACKAGES } from '../data/packages';
+
+const data = WORDPRESS_SEO_PACKAGES;
+---
+
+<PackagePage data={data} canonicalPath='/wordpress-seo-packages/' breadcrumbLabel={data.title} />

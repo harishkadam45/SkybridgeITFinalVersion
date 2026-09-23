@@ -1,0 +1,128 @@
+---
+import Layout from '../components/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Icon from '../components/Icon.astro';
+import CTASection from '../components/CTASection.astro';
+import TestimonialsSection from '../components/TestimonialsSection.astro';
+import { SITE } from '../data/site';
+import { SERVICE_LIST } from '../data/services';
+
+const serviceSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	provider: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+	serviceType: 'Web Development & IT Services',
+	description: 'Full-service web, mobile, software, WordPress, AI and automation development for agencies and businesses.',
+	areaServed: 'Worldwide',
+};
+
+const categories = [
+	{
+		title: 'Development & Engineering',
+		icon: 'code',
+		desc: 'Websites, web applications, mobile apps, and custom software built for performance and scale.',
+		services: [
+			{ label: 'Backend Technologies', href: '/backend-custom-programming-services/', desc: 'APIs, databases, microservices and cloud-native systems.' },
+			{ label: 'Front End Technologies', href: '/frontend-development-technologies/', desc: 'Modern, responsive, fast frontends with React, Vue and Astro.' },
+			{ label: 'Mobile App Development', href: '/mobile-app-development/', desc: 'iOS, Android and cross-platform apps with Flutter & React Native.' },
+			{ label: 'Custom Web Applications', href: '/custom-web-application-development/', desc: 'Portals, dashboards, SaaS platforms and booking systems.' },
+			{ label: 'Software Development', href: '/software-development/', desc: 'CRM, ERP, logistics and enterprise systems.' },
+			{ label: 'Shopify Development', href: '/shopify-development-services/', desc: 'High-converting Shopify stores, apps and optimization.' },
+		],
+	},
+	{
+		title: 'Marketing Technology & Automation',
+		icon: 'zap',
+		desc: 'Funnels, CRM automation and AI that turn traffic into revenue.',
+		services: [
+			{ label: 'GoHighLevel CRM & Automation', href: '/gohighlevel-crm-automation-services-for-small-medium-businesses/', desc: 'Setup, workflows, funnels and pipeline management.' },
+			{ label: 'AI Automation Services', href: '/ai-automation-ai/', desc: 'Chatbots, voice automation and business process automation.' },
+			{ label: 'Bulk WhatsApp Marketing', href: '/bulk-whatsapp-marketing-services-for-us-small-medium-businesses/', desc: 'Compliant bulk messaging and chat automation for SMBs.' },
+			{ label: 'AI UGC Video Production', href: '/ai-ugc-video-production-workflow/', desc: 'Realistic AI-generated UGC ad creative at scale.' },
+			{ label: 'AI UGC Content Packages', href: '/ai-ugc-content-packages-for-advertising-marketing-agencies/', desc: 'Monthly content packages built for agencies.' },
+			{ label: 'Sales Funnels & Landing Pages', href: '/services/', desc: 'High-converting funnels, membership portals and CTAs.' },
+		],
+	},
+	{
+		title: 'Creative & Specialized',
+		icon: 'palette',
+		desc: 'Design, games and dedicated teams that extend your agency.',
+		services: [
+			{ label: 'UI/UX & Product Design', href: '/frontend-development-technologies/', desc: 'Prototyping, SaaS dashboards and interface design.' },
+			{ label: 'Gaming App Development', href: '/gaming-app/', desc: 'Mobile, web games, gamification and simulations.' },
+			{ label: 'WordPress Development', href: '/wordpress-website-development-packages/', desc: 'Packages, maintenance, speed, SEO and WooCommerce.' },
+			{ label: 'WordPress AI Solutions', href: '/wordpress-development-ai-powered-solutions/', desc: 'Custom engineering and AI-powered WordPress.' },
+			{ label: 'Website Maintenance', href: '/website-maintenance/', desc: 'Proactive care, security, backups and support.' },
+			{ label: 'Dedicated White-Label Teams', href: '/member/', desc: 'Developers and designers working as an extension of your team.' },
+		],
+	},
+];
+---
+
+<Layout
+	title="Services | Web, Mobile, Software, WordPress & AI Development"
+	description="Full-service web development, mobile apps, custom software, WordPress packages, AI automation and GoHighLevel services for agencies and businesses."
+	canonicalPath="/services/"
+	jsonLd={serviceSchema}
+>
+	<PageHero
+		title="We provide high-quality services"
+		subtitle="Development, marketing technology, creative and specialized services — everything your agency needs to deliver exceptional work under your brand."
+		breadcrumb={[{ label: 'Services' }]}
+	/>
+
+	<section class="section">
+		<div class="container-x space-y-16">
+			{categories.map((cat) => (
+				<div>
+					<div class="flex items-start gap-4">
+						<span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-brand text-white">
+							<Icon name={cat.icon} class="h-6 w-6" />
+						</span>
+						<div>
+							<h2 class="text-2xl font-bold tracking-tight text-navy-950">{cat.title}</h2>
+							<p class="mt-1 text-slate-600">{cat.desc}</p>
+						</div>
+					</div>
+					<div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+						{cat.services.map((s) => (
+							<a href={s.href} class="card group p-6 transition-all hover:-translate-y-1 hover:border-brand-300 hover:shadow-lg">
+								<div class="flex items-center justify-between">
+									<h3 class="font-bold text-navy-950 group-hover:text-brand-700">{s.label}</h3>
+									<Icon name="arrowRight" class="h-5 w-5 text-brand-500 transition-transform group-hover:translate-x-1" />
+								</div>
+								<p class="mt-2 text-sm leading-relaxed text-slate-600">{s.desc}</p>
+							</a>
+						))}
+					</div>
+				</div>
+			))}
+		</div>
+	</section>
+
+	<section class="section bg-slate-50 border-y border-slate-200">
+		<div class="container-x mx-auto max-w-4xl text-center">
+			<SectionHeading
+				eyebrow="Full capability"
+				title="Also featured on the home page"
+				subtitle="Development, marketing technology and creative services powering agencies and businesses worldwide."
+				center
+			/>
+			<div class="mt-8 flex flex-wrap justify-center gap-2.5">
+				{SERVICE_LIST.map((s) => (
+					<a href={s.href} class="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:border-brand-400 hover:text-brand-700">
+						{s.title}
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<TestimonialsSection />
+
+	<CTASection
+		title="Not sure which service you need?"
+		subtitle="Describe your project and our team will guide you to the right solution — with a clear plan and transparent pricing."
+	/>
+</Layout>

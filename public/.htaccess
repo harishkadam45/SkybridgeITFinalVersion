@@ -1,0 +1,81 @@
+# ==========================================================
+# SkyBridge IT Consulting — Static site (Astro)
+# Hostinger / Apache configuration
+# ==========================================================
+
+# -- Basic security -----------------------------------------
+Options -Indexes
+ServerSignature Off
+
+# Block access to WordPress / admin leftovers (no WP here)
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+
+	# Old WordPress login/admin paths — deny
+	RewriteRule ^wp-login\.php - [F,L]
+	RewriteRule ^wp-admin - [F,L]
+	RewriteRule ^wp-includes - [F,L]
+	RewriteRule ^xmlrpc\.php - [F,L]
+</IfModule>
+
+# -- 301 redirects from the legacy WordPress site -----------
+# Preserve important page URLs where possible; these changed URLs
+# are permanently redirected so no SEO value is lost.
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteBase /
+
+	# Old GoHighLevel duplicate page
+	RewriteRule ^gohighlevel-crm-automation-services-for-small-medium-businesses-2/?$ /gohighlevel-crm-automation-services-for-small-medium-businesses/ [R=301,L]
+
+	# Legacy U-Design theme demo / author archives
+	RewriteRule ^portfolio/?$ /about-us/ [R=301,L]
+	RewriteRule ^portfolio/.+ /about-us/ [R=301,L]
+	RewriteRule ^portfolio_cat/.+ /about-us/ [R=301,L]
+	RewriteRule ^udesign_portfolio/.+ /services/ [R=301,L]
+	RewriteRule ^member_cat/.+ /member/ [R=301,L]
+	RewriteRule ^author/.+ / [R=301,L]
+
+	# Old team member detail pages
+	RewriteRule ^member/sue-harvey/?$ /member/ [R=301,L]
+	RewriteRule ^member/emily-haden/?$ /member/ [R=301,L]
+	RewriteRule ^member/mary-ann/?$ /member/ [R=301,L]
+
+	# Legacy content sections folded into the new site
+	RewriteRule ^faqs/?$ /about-us/ [R=301,L]
+	RewriteRule ^testimonials/?$ / [R=301,L]
+	RewriteRule ^coming-soon/?$ / [R=301,L]
+	RewriteRule ^your-request/?$ /contact-us/ [R=301,L]
+
+	# Old WooCommerce demo pages
+	RewriteRule ^shop/?$ /woocommerce-development-packages/ [R=301,L]
+	RewriteRule ^cart/?$ /woocommerce-development-packages/ [R=301,L]
+	RewriteRule ^checkout/?$ /woocommerce-development-packages/ [R=301,L]
+	RewriteRule ^my-account/?$ /contact-us/ [R=301,L]
+	RewriteRule ^compare/?$ /woocommerce-development-packages/ [R=301,L]
+
+	# Blog/category archives → services overview
+	RewriteRule ^blog/?$ /services/ [R=301,L]
+	RewriteRule ^category/.+ /services/ [R=301,L]
+	RewriteRule ^post/.+ /services/ [R=301,L]
+</IfModule>
+
+# -- Compression & caching -----------------------------------
+<IfModule mod_deflate.c>
+	AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+	ExpiresActive On
+	ExpiresByType text/html "access plus 0 seconds"
+	ExpiresByType text/css "access plus 1 month"
+	ExpiresByType application/javascript "access plus 1 month"
+	ExpiresByType image/webp "access plus 1 year"
+	ExpiresByType image/png "access plus 1 year"
+	ExpiresByType image/jpeg "access plus 1 year"
+	ExpiresByType image/svg+xml "access plus 1 year"
+	ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# -- Error pages ---------------------------------------------
+ErrorDocument 404 /404.html

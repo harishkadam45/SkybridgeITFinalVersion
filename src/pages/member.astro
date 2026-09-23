@@ -1,0 +1,99 @@
+---
+import Layout from '../components/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Icon from '../components/Icon.astro';
+import CTASection from '../components/CTASection.astro';
+import { TEAM } from '../data/content';
+import { SITE } from '../data/site';
+
+const teamSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'AboutPage',
+	name: 'SkyBridge IT Consulting Team',
+	url: `${SITE.url}/member/`,
+};
+
+const roles = [
+	'Solution Architects',
+	'Full-Stack Developers',
+	'Front-End Engineers',
+	'UI/UX Designers',
+	'QA & Testing Specialists',
+	'DevOps Engineers',
+	'AI & Automation Engineers',
+	'Project Managers',
+];
+---
+
+<Layout
+	title="Our Team | SkyBridge IT Consulting"
+	description="Meet the leadership and the dedicated white-label teams behind SkyBridge IT Consulting — engineers, designers and AI specialists building for agencies worldwide."
+	canonicalPath="/member/"
+	jsonLd={teamSchema}
+>
+	<PageHero
+		title="Company leadership & dedicated teams"
+		subtitle="Experienced solution architects, developers, UI/UX designers, automation specialists and AI engineers working as an extension of your organization."
+		breadcrumb={[{ label: 'Our Team' }]}
+	/>
+
+	<section class="section">
+		<div class="container-x">
+			<SectionHeading
+				eyebrow="Leadership"
+				title="Company leadership"
+				subtitle="The people who set the standard for our delivery model."
+				center
+			/>
+			<div class="mx-auto mt-12 grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
+				{TEAM.map((m) => (
+					<div class="card p-7 text-center">
+						<span class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-brand text-2xl font-bold text-white">
+							{m.name.split(' ').map((n) => n[0]).join('')}
+						</span>
+						<h2 class="mt-5 font-bold text-navy-950">{m.name}</h2>
+						<p class="text-sm font-semibold text-brand-600">{m.role}</p>
+						<p class="mt-3 text-sm leading-relaxed text-slate-600">{m.bio}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section bg-ice-blue/60">
+		<div class="container-x">
+			<SectionHeading
+				eyebrow="White-Label Teams"
+				title="Dedicated teams that work as your own"
+				subtitle="Long-term dedicated developers, designers and engineers working as an extension of your agency with full white-label support."
+				center
+			/>
+			<div class="mt-12 flex flex-wrap justify-center gap-3">
+				{roles.map((r) => (
+					<span class="inline-flex items-center gap-2 rounded-full border border-brand-100 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm">
+						<Icon name="check" class="h-4 w-4 text-brand-600" />
+						{r}
+					</span>
+				))}
+			</div>
+			<div class="mx-auto mt-12 max-w-3xl space-y-4">
+				{[
+					{ q: 'How white-label teams work', a: 'Teams are built around your pipeline — you define the disciplines and headcount, we staff, manage and deliver under your brand, tools and processes.' },
+					{ q: 'Who manages the team?', a: 'Every dedicated team gets a technical lead and a project manager from SkyBridge, with regular reports and check-ins you control.' },
+					{ q: 'Can we scale up or down?', a: 'Yes. Scale resources up for big launches and back down during quieter months — with transparent monthly billing.' },
+				].map((f) => (
+					<div class="rounded-[24px] border border-slate-100 bg-white p-6 custom-shadow">
+						<h3 class="font-bold text-navy-950">{f.q}</h3>
+						<p class="mt-2 text-sm leading-relaxed text-slate-500">{f.a}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<CTASection
+		title="Need a dedicated team under your brand?"
+		subtitle="Tell us the disciplines you need and get a staffing plan and monthly rate within days."
+	/>
+</Layout>

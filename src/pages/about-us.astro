@@ -1,0 +1,156 @@
+---
+import Layout from '../components/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import StatsBand from '../components/StatsBand.astro';
+import TestimonialsSection from '../components/TestimonialsSection.astro';
+import CTASection from '../components/CTASection.astro';
+import Icon from '../components/Icon.astro';
+import { SITE } from '../data/site';
+import { PORTFOLIO_ITEMS } from '../data/content';
+
+const aboutSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'AboutPage',
+	name: 'About SkyBridge IT Consulting',
+	url: `${SITE.url}/about-us/`,
+	description:
+		'SkyBridge IT Consulting is a trusted white-label technology partner for agencies, startups and enterprises since 2005.',
+};
+
+const values = [
+	{ icon: 'shield', title: 'Reliability', desc: 'Dependable delivery and support you can build your brand on.' },
+	{ icon: 'code', title: 'Engineering Quality', desc: 'Clean, scalable and maintainable code — never shortcuts.' },
+	{ icon: 'sparkles', title: 'Innovation', desc: 'Modern tools, AI and automation applied where they create real value.' },
+	{ icon: 'users', title: 'Partnership', desc: 'We grow when you grow. Your success is our long-term goal.' },
+];
+---
+
+<Layout
+	title="About Us | White-Label Development Partner Since 2005"
+	description="Since 2005, SkyBridge IT Consulting has been a trusted white-label technology partner for agencies and businesses across the USA, Canada, UK, Europe and Australia."
+	canonicalPath="/about-us/"
+	jsonLd={aboutSchema}
+>
+	<PageHero
+		title="About SkyBridge IT Consulting"
+		subtitle="We love to design, develop and engineer awesome digital products — quietly powering the brands our agency partners serve."
+		breadcrumb={[{ label: 'About us' }]}
+	/>
+
+	<section class="section">
+		<div class="container-x grid gap-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
+			<div class="space-y-5 text-base leading-relaxed text-slate-600">
+				<h2 class="text-3xl font-bold tracking-tight text-navy-950">
+					A trusted technology partner behind some of the web’s best brands
+				</h2>
+				<p>
+					Since <strong>{SITE.founded}</strong>, SkyBridge IT Consulting has been quietly working behind the
+					scenes as a trusted technology partner for agencies, startups, and established businesses across the
+					United States, Canada, the United Kingdom, Europe, and Australia. What started as a small team of
+					passionate developers and technology strategists has evolved into a full-scale digital engineering
+					and consulting company focused on delivering reliable, scalable, and future-ready solutions.
+				</p>
+				<p>
+					For over two decades, our philosophy has remained simple: <strong>build technology that works,
+					scales, and creates measurable business value.</strong> Many of our partnerships have been
+					white-label collaborations — supporting digital agencies, marketing companies, and enterprise teams
+					that needed a dependable backend technology partner.
+				</p>
+				<p>
+					Our team consists of experienced solution architects, developers, UI/UX designers, automation
+					specialists, and AI engineers who understand not only how to build software but also how to align
+					technology with business strategy.
+				</p>
+			</div>
+			<div class="relative">
+				<img
+					src="/images/about-us.jpg"
+					alt="The SkyBridge IT Consulting development team"
+					class="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg"
+					width={800}
+					height={600}
+					loading="lazy"
+				/>
+				<div class="absolute -bottom-5 left-6 rounded-xl bg-white px-5 py-3 shadow-lg">
+					<p class="text-xl font-bold text-brand-600">ISO 9001:2015</p>
+					<p class="text-xs font-medium text-slate-500">Certified Quality Management</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section bg-slate-50">
+		<div class="container-x">
+			<SectionHeading
+				eyebrow="Our Values"
+				title="What we stand for"
+				subtitle="The principles that guide every project we deliver."
+				center
+			/>
+			<div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+				{values.map((v) => (
+					<div class="card p-7 text-center">
+						<span class="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+							<Icon name={v.icon} class="h-6 w-6" />
+						</span>
+						<h3 class="mt-4 font-bold text-navy-950">{v.title}</h3>
+						<p class="mt-2 text-sm leading-relaxed text-slate-600">{v.desc}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container-x grid items-center gap-12 lg:grid-cols-2">
+			<div>
+				<SectionHeading
+					eyebrow="What we do"
+					title="Long-term vision and grow your business"
+					subtitle="From simple business websites to enterprise-grade platforms, our approach is always the same: clear architecture, clean code, long-term scalability, and measurable ROI."
+				/>
+				<p class="mt-5 text-slate-600">
+					Over the years, we have helped startups launch scalable platforms, agencies deliver complex client
+					projects, and enterprises automate critical business operations.
+				</p>
+				<ul class="mt-7 space-y-3">
+					{PORTFOLIO_ITEMS.slice(0, 4).map((p) => (
+						<li class="flex items-center gap-3 font-medium text-slate-700">
+							<span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-700">
+								<Icon name="check" class="h-4 w-4" />
+							</span>
+							{p.title}
+						</li>
+					))}
+				</ul>
+			</div>
+			<div class="space-y-4">
+				{PORTFOLIO_ITEMS.map((p) => (
+					<a href={p.href} class="card flex items-center gap-4 p-4 transition-shadow hover:shadow-md">
+						<img
+							src={p.img}
+							alt=""
+							class="h-16 w-16 rounded-xl object-cover"
+							width={80}
+							height={80}
+							loading="lazy"
+						/>
+						<div>
+							<span class="text-xs font-semibold uppercase tracking-wider text-brand-600">{p.category}</span>
+							<p class="font-semibold text-navy-950">{p.title}</p>
+						</div>
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<StatsBand />
+	<TestimonialsSection />
+
+	<CTASection
+		title="Let's grow your business together"
+		subtitle="Whether you need a single project or a long-term white-label development partner, we are ready when you are."
+	/>
+</Layout>

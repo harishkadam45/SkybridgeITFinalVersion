@@ -1,0 +1,8 @@
+---
+import ServiceLayout from '../components/ServiceLayout.astro';
+import { getService } from '../data/services';
+
+const service = getService('bulk-whatsapp-marketing-services-for-us-small-medium-businesses')!;
+---
+
+<ServiceLayout service={service} breadcrumbLabel={service.navLabel} />

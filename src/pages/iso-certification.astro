@@ -1,0 +1,115 @@
+---
+import Layout from '../components/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Icon from '../components/Icon.astro';
+import CTASection from '../components/CTASection.astro';
+import { SITE } from '../data/site';
+
+const isoSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'WebPage',
+	name: 'ISO 9001:2015 Certification — SkyBridge IT Consulting',
+	url: `${SITE.url}/iso-certification/`,
+};
+
+const principles = [
+	'Customer focus',
+	'Leadership & accountability',
+	'Engagement of people',
+	'Process-based approach',
+	'Continuous improvement',
+	'Evidence-based decision making',
+	'Relationship management',
+];
+
+const covered = [
+	'Project management & delivery',
+	'Code quality & review standards',
+	'Documentation & knowledge transfer',
+	'Security & data handling',
+	'Client communication & reporting',
+	'Resource planning & scalability',
+];
+---
+
+<Layout
+	title="ISO 9001:2015 Certification | SkyBridge IT Consulting"
+	description="SkyBridge IT Consulting is ISO 9001:2015 certified — a commitment to quality management in every project we deliver."
+	canonicalPath="/iso-certification/"
+	jsonLd={isoSchema}
+>
+	<PageHero
+		title="ISO 9001:2015 Certified"
+		subtitle="A formal commitment to quality management — in our processes, our people and every project we deliver."
+		breadcrumb={[{ label: 'ISO Certification' }]}
+	/>
+
+	<section class="section">
+		<div class="container-x grid items-center gap-12 lg:grid-cols-2">
+			<div class="space-y-5 text-slate-600">
+				<SectionHeading
+					eyebrow="Quality First"
+					title="Certified processes, dependable delivery"
+					subtitle="ISO 9001:2015 is the internationally recognized standard for quality management systems."
+				/>
+				<p>
+					As an ISO 9001:2015 certified organization, SkyBridge IT Consulting operates under a documented
+					quality management system covering every stage of delivery — from discovery and planning to
+					development, QA, launch and ongoing support.
+				</p>
+				<p>
+					For our agency and enterprise partners, this certification means predictable processes, consistent
+					quality, clear communication and a culture of continuous improvement. You know exactly what you
+					are getting — and what we will do if something needs to change.
+				</p>
+				<h3 class="pt-2 text-xl font-bold text-navy-950">What our certification covers</h3>
+				<ul class="grid gap-2.5 sm:grid-cols-2">
+					{covered.map((c) => (
+						<li class="flex items-start gap-2 text-sm font-medium text-slate-700">
+							<Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
+							{c}
+						</li>
+					))}
+				</ul>
+			</div>
+			<div class="flex justify-center">
+				<img
+					src="/images/iso-certificate.webp"
+					alt="ISO 9001:2015 quality management certification certificate"
+					class="w-full max-w-md rounded-2xl border border-slate-200 object-contain shadow-xl"
+					width={600}
+					height={750}
+					loading="lazy"
+				/>
+			</div>
+		</div>
+	</section>
+
+	<section class="section bg-slate-50">
+		<div class="container-x">
+			<SectionHeading
+				eyebrow="Our Standard"
+				title="Quality principles in practice"
+				center
+			/>
+			<div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+				{principles.map((p, i) => (
+					<div class="card p-6">
+						<span class="text-3xl font-bold text-brand-200">{String(i + 1).padStart(2, '0')}</span>
+						<h3 class="mt-2 font-bold text-navy-950">{p}</h3>
+						<p class="mt-2 text-sm text-slate-600">
+							Embedded in our daily operations and reviewed continuously through internal audits and
+							management reviews.
+						</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<CTASection
+		title="Work with an ISO-certified partner"
+		subtitle="Quality-managed development that de-risks your delivery and builds confidence with your own clients."
+	/>
+</Layout>

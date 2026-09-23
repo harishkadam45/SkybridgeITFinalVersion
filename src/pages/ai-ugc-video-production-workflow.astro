@@ -1,0 +1,8 @@
+---
+import ServiceLayout from '../components/ServiceLayout.astro';
+import { getService } from '../data/services';
+
+const service = getService('ai-ugc-video-production-workflow')!;
+---
+
+<ServiceLayout service={service} breadcrumbLabel={service.navLabel} />

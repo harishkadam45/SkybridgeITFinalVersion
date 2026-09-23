@@ -1,0 +1,117 @@
+---
+import Layout from '../components/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Icon from '../components/Icon.astro';
+import CTASection from '../components/CTASection.astro';
+
+const phases = [
+	{
+		num: '01',
+		title: 'Discovery & Strategy',
+		icon: 'users',
+		desc: 'We learn your business, goals, audience and brand before a line of code is written.',
+		items: ['Kickoff & stakeholder interviews', 'Goal & KPI definition', 'Site architecture & page mapping', 'Content & asset inventory', 'Scope, timeline & fixed quote'],
+	},
+	{
+		num: '02',
+		title: 'Design & Prototyping',
+		icon: 'palette',
+		desc: 'Wireframes and visual designs you approve before build begins.',
+		items: ['Wireframes & user flows', 'UI/UX design', 'Responsive design for all devices', 'Design review & sign-off', 'Content integration plan'],
+	},
+	{
+		num: '03',
+		title: 'Development & Build',
+		icon: 'code',
+		desc: 'Clean, modular WordPress engineering with modern standards and performance baked in.',
+		items: ['Custom theme & page templates', 'Plugin configuration or development', 'WooCommerce setup (eCommerce)', 'Third-party integrations', 'SEO foundation & schema'],
+	},
+	{
+		num: '04',
+		title: 'QA & Testing',
+		icon: 'shield',
+		desc: 'Every page, form and flow tested before launch.',
+		items: ['Cross-browser & device testing', 'Speed & Core Web Vitals testing', 'Security & vulnerability scan', 'Form & function testing', 'Pre-launch checklist sign-off'],
+	},
+	{
+		num: '05',
+		title: 'Launch & Migration',
+		icon: 'rocket',
+		desc: 'A smooth, zero-downtime go-live with 301 redirects and analytics verified.',
+		items: ['Domain & SSL configuration', 'Staging to production migration', '301 redirects preserved', 'Search console & analytics verification', 'Final performance benchmark'],
+	},
+	{
+		num: '06',
+		title: 'Support & Growth',
+		icon: 'trending',
+		desc: 'Your site stays fast, secure and relevant long after launch.',
+		items: ['Ongoing maintenance plans', 'Content updates & features', 'Performance monitoring', 'SEO & conversion optimization', 'Priority support & reporting'],
+	},
+];
+---
+
+<Layout
+	title="Complete WordPress Development Workflow"
+	description="Our complete WordPress development workflow — discovery, design, development, QA, SEO, launch and ongoing support. A proven process behind 20+ years of delivery."
+	canonicalPath="/complete-wordpress-development-workflow/"
+>
+	<PageHero
+		title="Complete WordPress Development Workflow"
+		subtitle="A proven, end-to-end process — from discovery and design to development, QA, launch and ongoing growth."
+		breadcrumb={[
+			{ label: 'WordPress', href: '/wordpress-website-development-packages/' },
+			{ label: 'Complete WordPress Workflow' },
+		]}
+	/>
+
+	<section class="section">
+		<div class="container-x">
+			<SectionHeading
+				eyebrow="How we work"
+				title="A transparent six-phase process"
+				subtitle="Every WordPress project follows the same battle-tested workflow so you always know what happens next — and when."
+				center
+			/>
+			<div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+				{phases.map((p) => (
+					<div class="card relative overflow-hidden p-7">
+						<span class="absolute right-5 top-4 text-5xl font-bold text-slate-100">{p.num}</span>
+						<span class="relative flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-brand text-white">
+							<Icon name={p.icon} class="h-6 w-6" />
+						</span>
+						<h3 class="mt-5 text-lg font-bold text-navy-950">{p.title}</h3>
+						<p class="mt-2 text-sm leading-relaxed text-slate-600">{p.desc}</p>
+						<ul class="mt-4 space-y-1.5">
+							{p.items.map((i) => (
+								<li class="flex items-start gap-2 text-sm text-slate-700">
+									<Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
+									{i}
+								</li>
+							))}
+						</ul>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section bg-ice-blue/60">
+		<div class="container-x mx-auto max-w-4xl text-center">
+			<SectionHeading
+				eyebrow="Levels of service"
+				title="Run the whole workflow with us — or plug in where you need it"
+				subtitle="Agencies can hand us entire projects end-to-end under their brand, or engage us for single phases such as development or speed optimization."
+			/>
+			<div class="mt-10 flex flex-wrap justify-center gap-4">
+				<a href="/wordpress-website-development-packages/" class="btn-primary">View WordPress packages</a>
+				<a href="/contact-us/" class="btn-outline">Start a project</a>
+			</div>
+		</div>
+	</section>
+
+	<CTASection
+		title="Follow our workflow on your next project"
+		subtitle="Let's map your WordPress project to a proven process — with clear milestones and no surprises."
+	/>
+</Layout>

@@ -1,0 +1,8 @@
+---
+import PackagePage from '../components/PackagePage.astro';
+import { WORDPRESS_WEBSITE_PACKAGES } from '../data/packages';
+
+const data = WORDPRESS_WEBSITE_PACKAGES;
+---
+
+<PackagePage data={data} canonicalPath='/wordpress-website-development-packages/' breadcrumbLabel='WordPress Website Packages' />

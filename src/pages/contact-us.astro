@@ -1,0 +1,180 @@
+---
+import Layout from '../components/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Icon from '../components/Icon.astro';
+import CTASection from '../components/CTASection.astro';
+import { SITE } from '../data/site';
+
+const contactSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'ContactPage',
+	name: 'Contact SkyBridge IT Consulting',
+	url: `${SITE.url}/contact-us/`,
+	mainEntity: {
+		'@type': 'Organization',
+		name: SITE.name,
+		email: SITE.email,
+		telephone: '12673889414',
+		address: [
+			{ '@type': 'PostalAddress', streetAddress: '85 Blackford Ave', addressLocality: 'Staten Island', addressRegion: 'NY', postalCode: '10302' },
+			{ '@type': 'PostalAddress', streetAddress: '1266 College Dr', addressLocality: 'Latrobe', addressRegion: 'PA', postalCode: '15650' },
+		],
+	},
+};
+
+const contactCards = [
+	{
+		icon: 'mapPin',
+		title: 'US Office Address',
+		lines: ['85 Blackford Ave, Staten Island, NY 10302', '1266 College Dr, Latrobe, PA 15650'],
+	},
+	{ icon: 'clock', title: 'Business hours', lines: ['24/7 Support', 'Global technical teams'] },
+	{ icon: 'phone', title: "Let's talk", lines: ['Phone: (267) 388-9414', 'Email: info@skybridgeit.com'] },
+];
+---
+
+<Layout
+	title="Contact Us | SkyBridge IT Consulting"
+	description="Contact SkyBridge IT Consulting. Get a free consultation, quote or schedule a meeting. 24/7 support for agencies and businesses worldwide."
+	canonicalPath="/contact-us/"
+	jsonLd={contactSchema}
+>
+	<PageHero
+		title="Contact Us"
+		subtitle="Tell us about your project — our team will respond with a clear plan, timeline and quote within 24 hours."
+		breadcrumb={[{ label: 'Contact us' }]}
+	/>
+
+	<section class="section">
+		<div class="container-x grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+			<div class="space-y-6">
+				<SectionHeading eyebrow="Get in touch" title="How we can help you?" />
+				<div class="space-y-4">
+					{contactCards.map((c) => (
+						<div class="card flex items-start gap-4 p-5">
+							<span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+								<Icon name={c.icon} class="h-6 w-6" />
+							</span>
+							<div>
+								<h2 class="font-bold text-navy-950">{c.title}</h2>
+								{c.lines.map((l) => (
+									<p class="mt-0.5 text-sm text-slate-600">{l}</p>
+								))}
+							</div>
+						</div>
+					))}
+				</div>
+				<div class="flex flex-wrap gap-3">
+					<a href={SITE.calendly} target="_blank" rel="noopener" class="btn-primary">Schedule a meeting</a>
+					<a href={SITE.whatsapp} target="_blank" rel="noopener" class="btn-outline">
+						<Icon name="whatsapp" class="h-4 w-4" />
+						WhatsApp
+					</a>
+				</div>
+				<a href="#site-header" class="inline-flex items-center gap-2 text-sm text-slate-500">
+					<Icon name="arrowRight" class="h-4 w-4 rotate-90 text-brand-500" />
+					Back to top
+				</a>
+			</div>
+
+			<div class="card p-6 sm:p-8">
+				<h2 class="text-2xl font-bold text-navy-950">Send us a message</h2>
+				<p class="mt-1 text-sm text-slate-500">
+					Prefer to use WhatsApp or email? Requests via those channels are answered fastest.
+				</p>
+				<form class="mt-7 space-y-5" data-contact-form>
+					<div class="grid gap-5 sm:grid-cols-2">
+						<label class="block">
+							<span class="mb-1.5 block text-sm font-medium text-slate-700">Your Name</span>
+							<input
+								type="text"
+								name="name"
+								required
+								class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+								placeholder="John Smith"
+							/>
+						</label>
+						<label class="block">
+							<span class="mb-1.5 block text-sm font-medium text-slate-700">Your Email Address</span>
+							<input
+								type="email"
+								name="email"
+								required
+								class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+								placeholder="you@company.com"
+							/>
+						</label>
+					</div>
+					<label class="block">
+						<span class="mb-1.5 block text-sm font-medium text-slate-700">Your Phone Number</span>
+						<input
+							type="tel"
+							name="phone"
+							class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+							placeholder="(555) 123-4567"
+						/>
+					</label>
+					<label class="block">
+						<span class="mb-1.5 block text-sm font-medium text-slate-700">Your Message</span>
+						<textarea
+							name="message"
+							rows="6"
+							required
+							class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+							placeholder="Tell us about your project, timeline and budget..."
+						></textarea>
+					</label>
+					<div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+						<button type="submit" class="btn-primary">
+							Send Message
+							<Icon name="arrowRight" class="h-4 w-4" />
+						</button>
+						<p class="text-xs text-slate-400">
+							By submitting, you agree to our privacy policy. No spam — ever.
+						</p>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+
+	<CTASection
+		title="Prefer a quick call?"
+		subtitle="Book a free 15-minute discovery call and we will map out the best approach for your project."
+	/>
+</Layout>
+
+<script>
+	const form = document.querySelector('[data-contact-form]') as HTMLFormElement | null;
+	if (form) {
+		form.addEventListener('submit', (e) => {
+			e.preventDefault();
+			const data = new FormData(form);
+			const name = String(data.get('name') ?? '').trim();
+			const email = String(data.get('email') ?? '').trim();
+			const phone = String(data.get('phone') ?? '').trim();
+			const message = String(data.get('message') ?? '').trim();
+
+			const subject = encodeURIComponent(`[SkyBridgeIT] Project inquiry from ${name}`);
+			const body = encodeURIComponent(
+				`Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`,
+			);
+
+			const choice = confirm(
+				'How would you like to send this inquiry?\n\nOK = via WhatsApp\nCancel = via email',
+			);
+
+			if (choice) {
+				window.open(
+					`https://api.whatsapp.com/send/?phone=%2B919966276640&text=${encodeURIComponent(body + '\n\n' + subject)}`,
+					'_blank',
+				);
+			} else {
+				window.location.href = `mailto:info@skybridgeit.com?subject=${subject}&body=${body}`;
+			}
+
+			form.reset();
+		});
+	}
+</script>

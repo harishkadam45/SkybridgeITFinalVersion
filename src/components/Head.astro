@@ -1,0 +1,65 @@
+---
+import { SITE } from '../data/site';
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description: string;
+	canonicalPath?: string;
+	ogImage?: string;
+	ogType?: string;
+	jsonLd?: object | object[];
+	noindex?: boolean;
+}
+
+const {
+	title,
+	description,
+	canonicalPath = '/',
+	ogImage = '/og/og-default.png',
+	ogType = 'website',
+	jsonLd,
+	noindex = false,
+} = Astro.props;
+
+const canonical = new URL(canonicalPath, SITE.url);
+const fullOgImage = new URL(ogImage, SITE.url);
+const pageTitle = `${title} | ${SITE.name}`;
+const jsonLdScripts = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content={Astro.generator} />
+<meta name="theme-color" content="#1b6af5" />
+<title>{pageTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+
+<meta property="og:type" content={ogType} />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={fullOgImage} />
+<meta property="og:locale" content="en_US" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={fullOgImage} />
+
+{
+	noindex && <meta name="robots" content="noindex, nofollow" />
+}
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" href="/favicon.ico" />
+{/* Preload hero-critical stylesheet is injected by the bundler; keep font self-hosted */}
+{
+	jsonLdScripts.map((script) => (
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify(script).replace(/</g, '\\u003c')}
+		/>
+	))
+}

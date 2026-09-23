@@ -1,0 +1,584 @@
+---
+import Layout from '../components/Layout.astro';
+import Icon from '../components/Icon.astro';
+import TestimonialsSection from '../components/TestimonialsSection.astro';
+import CTASection from '../components/CTASection.astro';
+import { SITE } from '../data/site';
+import { STATS, PORTFOLIO_ITEMS } from '../data/content';
+
+const heroSlides = [
+	{
+		eyebrow: 'About Our Company',
+		lines: ['Web Design, Software &', 'Digital Marketing For', 'Your Business'],
+		description:
+			'Since 2005, SkyBridge IT Consulting has been the dependable white-label technology partner for agencies, startups and enterprises across the USA, Canada, the UK, Europe and Australia.',
+	},
+	{
+		eyebrow: 'Digital Growth Partners',
+		lines: ['Custom Software &', 'Mobile App Development For', 'Scaling Brands'],
+		description:
+			'We craft high-performing enterprise applications and conversion-driven digital solutions engineered for market leaders — delivered entirely under your brand.',
+	},
+	{
+		eyebrow: 'Intelligent Automation',
+		lines: ['AI Solutions &', 'Workflow Automation For', 'Modern Enterprise'],
+		description:
+			'Automate operational workflows, integrate advanced LLM models, and accelerate business efficiency with custom AI engines built for you.',
+	},
+];
+
+const serviceCards = [
+	{
+		title: 'Web Development',
+		desc: 'Custom websites, portals, SaaS platforms, and web applications built for agencies serving corporate, startup, and enterprise clients.',
+		href: '/services/',
+		img: '/images/services/requirement-analysis.jpg',
+	},
+	{
+		title: 'Mobile App Development',
+		desc: 'Native iOS (Swift), Android (Kotlin/Flutter), and cross-platform mobile apps designed for performance and security.',
+		href: '/mobile-app-development/',
+		img: '/images/services/mobile-app.jpg',
+	},
+	{
+		title: 'Custom Software Development',
+		desc: 'Enterprise software, SaaS products, CRM systems, and custom business applications tailored to client needs.',
+		href: '/software-development/',
+		img: '/images/services/software-development.jpg',
+	},
+	{
+		title: 'CRM & GoHighLevel Automation',
+		desc: 'Complete CRM setup, workflow automation, lead nurturing systems, and sales pipeline management for marketing agencies.',
+		href: '/gohighlevel-crm-automation-services-for-small-medium-businesses/',
+		img: '/images/services/whatsapp-marketing.jpg',
+	},
+	{
+		title: 'AI & Business Automation',
+		desc: 'AI chatbots, LLM integration, workflow automation, and intelligent business tools designed to increase efficiency.',
+		href: '/ai-automation-ai/',
+		img: '/images/services/ai-automation.jpg',
+	},
+	{
+		title: 'UI/UX & Product Design',
+		desc: 'User-centric wireframing, prototyping, and high-fidelity interface design built for high conversion.',
+		href: '/frontend-development-technologies/',
+		img: '/images/services/uiux-design.jpg',
+	},
+	{
+		title: 'Cloud Migration & DevOps',
+		desc: 'AWS, GCP, and Azure infrastructure setup, CI/CD pipeline automation, and zero-downtime scaling.',
+		href: '/backend-custom-programming-services/',
+		img: '/images/services/cloud-devops.jpg',
+	},
+	{
+		title: 'Dedicated White-Label Teams',
+		desc: 'Long-term dedicated developers, designers, and engineers working as an invisible extension of your agency.',
+		href: '/about-us/',
+		img: '/images/services/dedicated-teams.jpg',
+	},
+	{
+		title: 'Cybersecurity & Compliance',
+		desc: 'SOC 2 compliance support, vulnerability audits, data encryption, and secure API integration.',
+		href: '/services/',
+		img: '/images/services/cybersecurity.jpg',
+	},
+];
+
+const whyPartner = [
+	{
+		title: 'Innovation',
+		icon: 'bulb',
+		desc: 'We combine technical excellence with strategic business insight to deliver platforms that accelerate growth and optimize operations.',
+	},
+	{
+		title: 'Quality-Focused',
+		icon: 'ribbon',
+		desc: 'Rigorous QA, code reviews, and security-first engineering ensure every release meets enterprise-grade standards.',
+	},
+	{
+		title: 'Value For Money',
+		icon: 'coins',
+		desc: 'Flexible white-label engagement models give you senior engineering capacity at predictable, agency-friendly pricing.',
+	},
+];
+
+const techRows = [
+	{
+		title: 'Backend Technologies',
+		dir: 'left',
+		items: [
+			{ src: '/images/tech/redis.png', alt: 'Redis' },
+			{ src: '/images/tech/graphql.png', alt: 'GraphQL' },
+			{ src: '/images/tech/docker.png', alt: 'Docker' },
+			{ src: '/images/tech/kubernetes.png', alt: 'Kubernetes' },
+			{ src: '/images/tech/aws.png', alt: 'AWS' },
+			{ src: '/images/tech/gcloud.png', alt: 'Google Cloud' },
+		],
+	},
+	{
+		title: 'Front End Technologies',
+		dir: 'right',
+		items: [
+			{ src: '/images/tech/figma.png', alt: 'Figma' },
+			{ src: '/images/tech/react.png', alt: 'React' },
+			{ src: '/images/tech/next.png', alt: 'Next.js' },
+			{ src: '/images/tech/vuejs.png', alt: 'Vue.js' },
+		],
+	},
+	{
+		title: 'Custom Web Applications',
+		dir: 'left',
+		items: [
+			{ src: '/images/tech/docker.png', alt: 'Docker' },
+			{ src: '/images/tech/aws.png', alt: 'AWS' },
+			{ src: '/images/tech/postgres.png', alt: 'PostgreSQL' },
+			{ src: '/images/tech/next.png', alt: 'Next.js' },
+		],
+	},
+	{
+		title: 'Mobile App Development',
+		dir: 'right',
+		items: [
+			{ src: '/images/tech/graphql.png', alt: 'GraphQL' },
+			{ src: '/images/tech/swift.png', alt: 'Swift' },
+			{ src: '/images/tech/kotlin.png', alt: 'Kotlin' },
+			{ src: '/images/tech/react.png', alt: 'React Native' },
+		],
+	},
+];
+
+const orgSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'ProfessionalService',
+	name: SITE.name,
+	url: SITE.url,
+	email: SITE.email,
+	telephone: '12673889414',
+	description: SITE.description,
+	sameAs: [SITE.linkedin, SITE.youtube],
+	address: [
+		{
+			'@type': 'PostalAddress',
+			streetAddress: SITE.addresses[0].line.split(',')[0],
+			addressLocality: 'Staten Island',
+			addressRegion: 'NY',
+			postalCode: '10302',
+			addressCountry: 'US',
+		},
+	],
+};
+
+const websiteSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'WebSite',
+	name: SITE.name,
+	url: SITE.url,
+};
+---
+
+<Layout
+	title="White-Label Web Development Partner for Agencies"
+	description="SkyBridge IT Consulting — white-label web development, WordPress, mobile apps, custom software, AI automation and GoHighLevel services for agencies since 2005. ISO 9001:2015 certified, 24/7 support."
+	canonicalPath="/"
+	jsonLd={[orgSchema, websiteSchema]}
+>
+	<!-- Hero -->
+	<section id="hero" class="relative flex min-h-[90vh] flex-col items-center justify-center overflow-hidden bg-white px-4 pb-20 pt-10 sm:px-8">
+		<!-- Concentric arc lines -->
+		<div class="pointer-events-none absolute inset-0 -z-10 flex items-end justify-center overflow-hidden" aria-hidden="true">
+			<svg class="h-[700px] w-[1400px] translate-y-36 opacity-35" viewBox="0 0 1000 500" fill="none">
+				<circle cx="500" cy="500" r="450" stroke="#0095FF" stroke-width="1" stroke-dasharray="2 4" />
+				<circle cx="500" cy="500" r="370" stroke="#38BDF8" stroke-width="1.2" />
+				<circle cx="500" cy="500" r="290" stroke="#0095FF" stroke-width="1" stroke-dasharray="3 3" />
+				<circle cx="500" cy="500" r="210" stroke="#93C5FD" stroke-width="1.5" />
+				<circle cx="500" cy="500" r="130" stroke="#0095FF" stroke-width="1" />
+			</svg>
+		</div>
+
+		<div class="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center text-center">
+			<!-- Hero carousel -->
+			<div class="w-full" data-hero-carousel aria-roledescription="carousel" aria-label="Skybridge highlights">
+				<div class="grid">
+					{heroSlides.map((slide, i) => (
+						<div
+							class={`hero-slide col-start-1 row-start-1 flex flex-col items-center text-center transition-opacity duration-700 ${
+								i === 0 ? 'opacity-100' : 'pointer-events-none opacity-0'
+							}`}
+							data-slide={i}
+							aria-hidden={i === 0 ? 'false' : 'true'}
+						>
+							<span class="mb-4 inline-block text-center text-sm font-bold tracking-wide text-brand-600 sm:text-base">
+								{slide.eyebrow}
+							</span>
+							<h1 class="mb-6 text-center text-4xl font-extrabold leading-[1.12] tracking-tight text-[#111827] sm:text-6xl md:text-7xl">
+								{slide.lines.map((line, li) => (
+									<span class={`block ${li === slide.lines.length - 1 ? 'mt-1 text-brand-600' : ''}`}>{line}</span>
+								))}
+							</h1>
+							<p class="mx-auto mb-6 max-w-3xl text-center text-sm font-normal leading-relaxed text-slate-400 sm:text-base">
+								{slide.description}
+							</p>
+						</div>
+					))}
+				</div>
+				<div class="hero-pagination mb-6 mt-6 flex items-center justify-center" data-hero-pagination></div>
+			</div>
+
+			<!-- CTA buttons -->
+			<div class="mb-16 flex flex-wrap items-center justify-center gap-4 sm:gap-5">
+				<a href="/contact-us/" class="btn-primary text-base">
+					<span>Free Consultation</span>
+					<Icon name="arrowRight" class="h-4 w-4" />
+				</a>
+				<a href="/contact-us/" class="btn-primary text-base">
+					<span>Start a Project</span>
+					<Icon name="arrowRight" class="h-4 w-4" />
+				</a>
+			</div>
+
+			<!-- Stats card -->
+			<div class="grid w-full max-w-5xl grid-cols-2 gap-4 rounded-3xl border border-slate-100 bg-white p-6 custom-shadow sm:p-8 md:grid-cols-4">
+				{STATS.map((s, i) => (
+					<div class={`flex flex-col items-center p-4 text-center ${i % 4 !== 3 ? 'md:border-r md:border-slate-100' : ''}`}>
+						<span class="mb-2 text-3xl font-extrabold tracking-tight text-[#111827] sm:text-4xl">
+							{s.value}{s.suffix}
+						</span>
+						<span class="text-center text-[11px] font-bold uppercase tracking-wider text-slate-400">{s.label}</span>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- About Company -->
+	<section id="about" class="relative bg-white px-4 py-20 sm:px-8 sm:py-28">
+		<div class="mx-auto max-w-7xl">
+			<div class="mb-12">
+				<span class="mb-3 block text-sm font-bold tracking-wide text-brand-600 sm:text-base">About Our Company</span>
+				<h2 class="max-w-2xl text-balance text-4xl font-extrabold leading-[1.15] tracking-tight text-[#111827] sm:text-6xl">
+					Websites that tell your brand&rsquo;s story
+				</h2>
+			</div>
+
+			<div class="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
+				<div class="relative z-10 lg:col-span-6">
+					<div class="group relative overflow-hidden rounded-[36px] bg-slate-100 shadow-sm">
+						<img
+							src="/images/team-collab.jpg"
+							alt="Skybridge Team Collaboration"
+							class="h-[460px] w-full object-cover transition-transform duration-700 group-hover:scale-105 sm:h-[540px]"
+							width="1000"
+							height="600"
+							loading="lazy"
+						/>
+					</div>
+					<div class="absolute top-1/2 -right-6 z-30 flex h-32 w-32 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white sm:-right-10 sm:h-40 sm:w-40">
+						<img
+							src="/images/about-badge.png"
+							alt="Free Consultation 360 Rotating Badge"
+							class="animate-spin-12 h-full w-full object-contain"
+							loading="lazy"
+						/>
+					</div>
+				</div>
+
+				<div class="flex flex-col items-start pl-0 pt-2 lg:col-span-6 lg:pl-6">
+					<div class="mb-8 space-y-4 text-sm font-normal leading-relaxed text-slate-500 sm:text-base">
+						<p>At SkyBridge IT Consulting, we combine technical excellence with strategic business insight to deliver software platforms that accelerate growth and optimize operations.</p>
+						<p>Our multi-disciplinary team of software architects, cloud engineers, and UI/UX designers collaborate closely with clients to build secure, scalable digital products.</p>
+						<p>From initial strategy and modern frontend design to robust backend APIs and automated cloud deployments, we ensure your technology stack remains future-proof.</p>
+					</div>
+
+					<div class="mb-10 grid w-full grid-cols-1 gap-y-3.5 gap-x-6 sm:grid-cols-2">
+						{['Requirement Analysis', 'Custom Software Development', 'Cloud Migration & DevOps', 'Dedicated Development Teams', '24/7 Technical Support', 'Quality Assurance'].map((point) => (
+							<div class="flex items-center space-x-3">
+								<span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-600 text-white">
+									<Icon name="check" class="h-3 w-3" />
+								</span>
+								<span class="text-sm font-bold text-[#111827] sm:text-base">{point}</span>
+							</div>
+						))}
+					</div>
+
+					<a href="/contact-us/" class="btn-primary">
+						<span>Free Consultation</span>
+						<Icon name="arrowRight" class="h-4 w-4" />
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Services -->
+	<section id="services" class="relative bg-white px-4 py-20 sm:px-8 sm:py-28">
+		<div class="mx-auto max-w-7xl">
+			<div class="mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+				<div>
+					<span class="mb-3 block text-sm font-bold tracking-wide text-brand-600 sm:text-base">Our Services</span>
+					<h2 class="text-balance text-4xl font-extrabold leading-[1.12] tracking-tight text-[#111827] sm:text-6xl">
+						What we can offer <br class="hidden sm:block" />today
+					</h2>
+				</div>
+				<a href="/services/" class="btn-primary self-start md:self-auto">
+					<span>View All Services</span>
+					<Icon name="arrowUpRight" class="h-4 w-4" />
+				</a>
+			</div>
+
+			<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+				{serviceCards.map((s) => (
+					<a
+						href={s.href}
+						class="group flex flex-col justify-between rounded-[32px] border border-slate-100/80 bg-white p-7 transition-all duration-300 custom-shadow hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-600/10 sm:p-8"
+					>
+						<div>
+							<div class="mb-3 flex items-start justify-between gap-4">
+								<h3 class="text-xl font-bold leading-snug text-[#111827] transition-colors group-hover:text-brand-600 sm:text-2xl">
+									{s.title}
+								</h3>
+								<span
+									class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-600 text-white shadow-md shadow-brand-600/30 transition-transform duration-300 group-hover:rotate-45"
+									aria-hidden="true"
+								>
+									<Icon name="arrowUpRight" class="h-6 w-6" />
+								</span>
+							</div>
+							<p class="mb-6 text-sm font-normal leading-relaxed text-slate-400">{s.desc}</p>
+						</div>
+						<div class="relative h-48 w-full overflow-hidden rounded-[24px] bg-slate-100 sm:h-52">
+							<img
+								src={s.img}
+								alt={s.title}
+								class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+								width="600"
+								height="450"
+								loading="lazy"
+							/>
+						</div>
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Why Partner With Us -->
+	<section id="why-partner" class="relative overflow-hidden bg-white px-4 py-20 sm:px-8 sm:py-28">
+		<div class="mx-auto max-w-7xl">
+			<div class="mb-14 max-w-3xl">
+				<span class="mb-3 block text-sm font-bold tracking-wide text-brand-600 sm:text-base">Our Differences</span>
+				<h2 class="text-balance text-4xl font-extrabold leading-[1.12] tracking-tight text-[#111827] sm:text-6xl">
+					Why partner with us?
+				</h2>
+			</div>
+
+			<div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+				{whyPartner.map((w) => (
+					<div class="group rounded-[32px] border border-slate-100 bg-white p-8 transition-all duration-300 custom-shadow hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-600/10 sm:p-10">
+<div class="mb-8 flex h-12 w-12 items-center justify-center rounded-xl bg-ice-blue text-brand-600">
+						<Icon name={w.icon} class="h-6 w-6" />
+					</div>
+						<h3 class="mb-3 text-2xl font-bold text-[#111827] transition-colors group-hover:text-brand-600">{w.title}</h3>
+						<p class="text-sm font-normal leading-relaxed text-slate-400">{w.desc}</p>
+					</div>
+				))}
+			</div>
+
+			<!-- CTA banner -->
+			<div class="mt-10 rounded-[36px] border border-slate-100 bg-white p-8 custom-shadow sm:p-14">
+				<div class="flex flex-col items-center gap-8 lg:flex-row lg:gap-12">
+					<span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-ice-border bg-ice-blue text-brand-600">
+						<Icon name="globe" class="h-6 w-6" />
+					</span>
+					<div class="flex-1 text-center lg:text-left">
+						<h3 class="text-2xl font-bold leading-snug text-[#111827] sm:text-3xl">
+							Do you want to explore our outstanding work?
+						</h3>
+						<p class="mt-3 text-sm font-normal leading-relaxed text-slate-400 sm:text-base">
+							From conversion-focused marketing sites to enterprise SaaS platforms, we deliver work our partners proudly
+							present as their own. Explore case studies, demos, and client success stories.
+						</p>
+					</div>
+					<div class="flex shrink-0 flex-wrap items-center justify-center gap-3">
+						<a
+							href={SITE.youtube}
+							target="_blank"
+							rel="noopener"
+							class="inline-flex items-center gap-2 rounded-full bg-slate-100 px-6 py-3 text-sm font-bold text-slate-800 transition-colors hover:bg-brand-600 hover:text-white"
+						>
+							<Icon name="youtube" class="h-4 w-4" />
+							Youtube
+							<Icon name="arrowUpRight" class="h-4 w-4" />
+						</a>
+						<a
+							href={SITE.linkedin}
+							target="_blank"
+							rel="noopener"
+							class="inline-flex items-center gap-2 rounded-full bg-slate-100 px-6 py-3 text-sm font-bold text-slate-800 transition-colors hover:bg-brand-600 hover:text-white"
+						>
+							<Icon name="linkedin" class="h-4 w-4" />
+							Linkedin
+							<Icon name="arrowUpRight" class="h-4 w-4" />
+						</a>
+						<a
+							href="/contact-us/"
+							class="inline-flex items-center gap-2 rounded-full bg-slate-100 px-6 py-3 text-sm font-bold text-slate-800 transition-colors hover:bg-brand-600 hover:text-white"
+						>
+							Contact Us
+							<Icon name="arrowUpRight" class="h-4 w-4" />
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Technologies -->
+	<section id="technologies" class="bg-white px-4 py-20 sm:px-8 sm:py-28">
+		<div class="mx-auto max-w-7xl">
+			<div class="mb-16 max-w-3xl">
+				<span class="mb-3 block text-sm font-bold tracking-wide text-brand-600 sm:text-base">
+					A production-grade stack across every discipline
+				</span>
+				<h2 class="text-balance text-4xl font-extrabold leading-[1.12] tracking-tight text-[#0B132A] sm:text-6xl">
+					The tools we build with
+				</h2>
+			</div>
+
+			{techRows.map((row) => (
+				<div class="group mb-14">
+					<div class="relative">
+						<div class="border-t border-slate-200/80"></div>
+<h3 class="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap bg-white px-4 text-xl font-extrabold tracking-tight text-[#0B132A] sm:px-8 sm:text-3xl lg:text-5xl">
+						{row.title}
+					</h3>
+					</div>
+					<div class="mt-8 overflow-hidden">
+						<div class={`${row.dir === 'left' ? 'animate-marquee-left' : 'animate-marquee-right'} items-center space-x-5 py-3 sm:space-x-6`}>
+							{[...row.items, ...row.items].map((item) => (
+								<div
+									class="flex h-16 min-w-[160px] shrink-0 items-center justify-center rounded-[20px] border border-slate-100 bg-white px-6 py-3.5 shadow-sm transition-all hover:border-brand-600/40 hover:shadow-md sm:h-20"
+								>
+									<img src={item.src} alt={item.alt} class="h-8 w-auto sm:h-10" loading="lazy" />
+								</div>
+							))}
+						</div>
+					</div>
+				</div>
+			))}
+		</div>
+	</section>
+
+	<!-- Our Work -->
+	<section id="work" class="bg-white px-4 py-20 sm:px-8 sm:py-28">
+		<div class="mx-auto max-w-7xl">
+			<div class="mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+				<div>
+					<span class="mb-3 block text-sm font-bold tracking-wide text-brand-600 sm:text-base">Our Work</span>
+					<h2 class="text-balance text-4xl font-extrabold leading-[1.12] tracking-tight text-[#111827] sm:text-6xl">
+						High-quality digital products, <br class="hidden sm:block" />delivered.
+					</h2>
+				</div>
+				<a href="/services/" class="btn-primary self-start md:self-auto">
+					<span>View All Services</span>
+					<Icon name="arrowUpRight" class="h-4 w-4" />
+				</a>
+			</div>
+
+			<div class="grid grid-cols-1 gap-8 md:grid-cols-3 sm:gap-10">
+				{PORTFOLIO_ITEMS.map((p) => (
+					<a
+						href={p.href}
+						class="group rounded-[36px] border border-slate-100 bg-white p-5 pb-8 shadow-[0_15px_45px_rgba(0,0,0,0.05)] custom-shadow transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-brand-600/10 sm:p-6"
+					>
+						<div class="mb-6 h-56 w-full overflow-hidden rounded-[24px] sm:h-60">
+							<img
+								src={p.img}
+								alt={`${p.title} — SkyBridge IT Consulting`}
+								class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+								width="800"
+								height="450"
+								loading="lazy"
+							/>
+						</div>
+						<span class="mb-3 block text-xs font-normal text-slate-400 sm:text-sm">{p.category}</span>
+						<h3 class="text-lg font-bold leading-snug text-[#111827] transition-colors group-hover:text-brand-600 sm:text-xl">
+							{p.title}
+						</h3>
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<TestimonialsSection />
+
+	<CTASection />
+</Layout>
+
+<script>
+	// Hero crossfade carousel (reference: fade effect, 5.5s autoplay, clickable bullets)
+	const heroCarousel = document.querySelector<HTMLElement>('[data-hero-carousel]');
+	if (heroCarousel) {
+		const slides = Array.from<HTMLElement>(heroCarousel.querySelectorAll('[data-slide]'));
+		const pagination = heroCarousel.querySelector<HTMLElement>('[data-hero-pagination]');
+		let current = 0;
+
+		slides.forEach((_, i) => {
+			const bullet = document.createElement('button');
+			bullet.type = 'button';
+			bullet.classList.add('hero-bullet');
+			if (i === 0) bullet.classList.add('active');
+			bullet.setAttribute('aria-label', `Go to slide ${i + 1}`);
+			bullet.addEventListener('click', () => {
+				current = i;
+				show();
+				restart();
+			});
+			pagination?.appendChild(bullet);
+		});
+
+		function show() {
+			slides.forEach((slide, i) => {
+				const active = i === current;
+				slide.classList.toggle('opacity-100', active);
+				slide.classList.toggle('pointer-events-none', !active);
+				slide.classList.toggle('opacity-0', !active);
+				slide.setAttribute('aria-hidden', String(!active));
+			});
+			pagination?.querySelectorAll<HTMLButtonElement>('button').forEach((b, i) => {
+				b.classList.toggle('active', i === current);
+			});
+		}
+
+		let interval: number | undefined;
+		function restart() {
+			window.clearInterval(interval);
+			interval = window.setInterval(() => {
+				current = (current + 1) % slides.length;
+				show();
+			}, 5500);
+		}
+		heroCarousel.addEventListener('mouseenter', () => window.clearInterval(interval));
+		heroCarousel.addEventListener('mouseleave', restart);
+
+		show();
+		restart();
+	}
+</script>
+
+<style>
+	.hero-bullet {
+		width: 8px;
+		height: 8px;
+		border-radius: 9999px;
+		background-color: #7dd3fc;
+		margin: 0 4px;
+		cursor: pointer;
+		transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+	.hero-bullet.active {
+		background-color: #0b132a;
+		width: 24px;
+		height: 8px;
+	}
+</style>

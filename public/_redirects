@@ -1,0 +1,17 @@
+# Netlify-style redirects (for staging / CDN previews)
+/gohighlevel-crm-automation-services-for-small-medium-businesses-2/*  /gohighlevel-crm-automation-services-for-small-medium-businesses/  301
+/portfolio/*       /about-us/      301
+/portfolio_cat/*   /about-us/      301
+/faqs/             /about-us/      301
+/testimonials/     /               301
+/coming-soon/      /               301
+/your-request/     /contact-us/    301
+/shop/             /woocommerce-development-packages/  301
+/cart/             /woocommerce-development-packages/  301
+/checkout/         /woocommerce-development-packages/  301
+/my-account/       /contact-us/    301
+/compare/          /woocommerce-development-packages/  301
+/blog/*            /services/      301
+/category/*        /services/      301
+/post/*             /services/      301
+/author/*       /               301

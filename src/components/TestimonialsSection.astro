@@ -1,0 +1,161 @@
+---
+import { TESTIMONIALS } from '../data/content';
+import SectionHeading from './SectionHeading.astro';
+import Icon from './Icon.astro';
+
+interface Props {
+	subtitle?: string;
+	limit?: number;
+}
+const { subtitle, limit = 6 } = Astro.props;
+const items = TESTIMONIALS.slice(0, limit);
+---
+
+<section class="bg-white py-20 sm:py-28">
+	<div class="container-x">
+		<SectionHeading
+			eyebrow="Client Testimonials"
+			title="Our customers love us."
+			subtitle={
+				subtitle ??
+				'Trusted by marketing agencies, startups and enterprises as their silent white-label development partner.'
+			}
+			center
+		/>
+
+		<div class="testimonial-carousel relative mt-12" data-reveal="up">
+			<div class="overflow-hidden">
+				<div class="testimonial-track flex gap-6" data-track>
+					{items.map((t) => (
+						<figure
+							class="testimonial-slide flex h-full shrink-0 flex-col justify-between rounded-[36px] border border-slate-100 bg-white p-8 custom-shadow transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-brand-600/10 sm:p-10"
+							data-slide
+						>
+							<div>
+								<div class="mb-6 flex items-center space-x-1.5 text-[#FF6A00]">
+									{Array.from({ length: 5 }).map(() => (
+										<Icon name="star" class="h-5 w-5" />
+									))}
+								</div>
+								<blockquote class="text-[15px] leading-relaxed text-slate-700">“{t.quote}”</blockquote>
+							</div>
+							<figcaption class="mt-8 flex items-center gap-4 border-t border-slate-100 pt-6">
+								<span class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-brand font-bold text-white">
+									{t.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
+								</span>
+								<span>
+									<span class="block text-base font-bold text-navy-950">{t.name}</span>
+									<span class="block text-sm text-slate-500">{t.role}</span>
+								</span>
+							</figcaption>
+						</figure>
+					))}
+				</div>
+			</div>
+			<div class="testimonial-pagination mt-10 flex items-center justify-center gap-1.5" data-pagination></div>
+		</div>
+	</div>
+</section>
+
+<script>
+	const trackEl = document.querySelector<HTMLElement>('[data-track]');
+	if (!trackEl) throw new Error('missing track');
+	const track: HTMLElement = trackEl;
+
+	const slides = Array.from<HTMLElement>(track.querySelectorAll('[data-slide]'));
+	const pagination = document.querySelector<HTMLElement>('[data-pagination]');
+	const GAP = 24;
+
+	const mqLg = window.matchMedia('(min-width: 1024px)');
+	const mqMd = window.matchMedia('(min-width: 640px)');
+
+	let index = 0;
+	let perView = getPerView();
+	let max = slides.length - perView;
+
+	function getPerView() {
+		if (mqLg.matches) return 3;
+		if (mqMd.matches) return 2;
+		return 1;
+	}
+
+	function recompute() {
+		perView = getPerView();
+		max = slides.length - perView;
+		index = Math.min(index, Math.max(max, 0));
+		applyWidths();
+		buildPagination();
+		show();
+	}
+
+	function applyWidths() {
+		const width = (track.parentElement?.clientWidth ?? 0) / perView;
+		slides.forEach((s) => {
+			s.style.width = `${width - (GAP * (perView - 1)) / perView}px`;
+		});
+	}
+
+	function show() {
+		const w = (slides[0]?.offsetWidth ?? 0) + GAP;
+		track.style.transform = `translateX(-${index * w}px)`;
+		track.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+		pagination?.querySelectorAll<HTMLButtonElement>('button').forEach((b, i) => {
+			b.classList.toggle('active', i === index);
+		});
+	}
+
+	function buildPagination() {
+		if (!pagination) return;
+		pagination.innerHTML = '';
+		for (let i = 0; i <= max; i++) {
+			const btn = document.createElement('button');
+			btn.type = 'button';
+			btn.setAttribute('aria-label', `Go to slide ${i + 1}`);
+			btn.classList.add('testimonial-bullet');
+			btn.addEventListener('click', () => {
+				index = i;
+				show();
+				restart();
+			});
+			pagination.appendChild(btn);
+		}
+	}
+
+	function next() {
+		index = index >= max ? 0 : index + 1;
+		show();
+	}
+
+	let interval: number | undefined;
+	function restart() {
+		window.clearInterval(interval);
+		interval = window.setInterval(next, 4500);
+	}
+
+	const carousel = track.closest('.testimonial-carousel');
+	carousel?.addEventListener('mouseenter', () => window.clearInterval(interval));
+	carousel?.addEventListener('mouseleave', restart);
+
+	mqLg.addEventListener('change', recompute);
+	mqMd.addEventListener('change', recompute);
+	window.addEventListener('resize', recompute);
+
+	recompute();
+	restart();
+</script>
+
+<style>
+	.testimonial-bullet {
+		width: 8px;
+		height: 8px;
+		border-radius: 9999px;
+		background-color: #cbd5e1;
+		transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+		cursor: pointer;
+	}
+	.testimonial-bullet.active {
+		background-color: #0095ff;
+		width: 24px;
+		height: 8px;
+	}
+</style>

@@ -1,0 +1,61 @@
+---
+import { FAQS } from '../data/content';
+import SectionHeading from './SectionHeading.astro';
+import Icon from './Icon.astro';
+
+const faqSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: FAQS.map((f) => ({
+		'@type': 'Question',
+		name: f.q,
+		acceptedAnswer: { '@type': 'Answer', text: f.a },
+	})),
+};
+---
+
+<section class="section">
+	<div class="container-x grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+		<div>
+			<SectionHeading
+				eyebrow="FAQs"
+				title="Frequently asked questions"
+				subtitle="Answers to the questions agencies and businesses ask us most before starting a partnership."
+			/>
+		</div>
+		<div class="space-y-3">
+			{FAQS.map((f, i) => (
+				<div class="card overflow-hidden">
+					<button
+						type="button"
+						class="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+						data-faq-toggle
+						aria-expanded={i === 0 ? 'true' : 'false'}
+					>
+						<span class="font-semibold text-navy-950">{f.q}</span>
+						<Icon name="chevronDown" class={`h-5 w-5 shrink-0 text-brand-600 ${i === 0 ? '' : 'rotate-180'}`} data-faq-chevron />
+					</button>
+					<div class={`border-t border-slate-100 px-5 py-4 ${i === 0 ? '' : 'hidden'}`} data-faq-panel>
+						<p class="text-sm leading-relaxed text-slate-600">{f.a}</p>
+					</div>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+
+<script>
+	// Accordion behavior (default open first item)
+	document.querySelectorAll('[data-faq-toggle]').forEach((btn) => {
+		btn.addEventListener('click', () => {
+			const panel = btn.nextElementSibling as HTMLElement | null;
+			const chevron = btn.querySelector('[data-faq-chevron]');
+			const expanded = btn.getAttribute('aria-expanded') === 'true';
+			btn.setAttribute('aria-expanded', String(!expanded));
+			panel?.classList.toggle('hidden', expanded);
+			chevron?.classList.toggle('rotate-180', !expanded);
+		});
+	});
+</script>

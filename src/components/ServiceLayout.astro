@@ -1,0 +1,202 @@
+---
+import Layout from './Layout.astro';
+import PageHero from './PageHero.astro';
+import SectionHeading from './SectionHeading.astro';
+import Icon from './Icon.astro';
+import CTASection from './CTASection.astro';
+import StatsBand from './StatsBand.astro';
+import { SITE } from '../data/site';
+
+export interface ServiceDetail {
+	slug: string;
+	title: string;
+	navLabel: string;
+	metaTitle: string;
+	metaDescription: string;
+	heroTitle: string;
+	heroSubtitle: string;
+	intro: string[];
+	stats?: { value: string; suffix?: string; label: string }[];
+	offerings: { title: string; icon: string; iconColor?: string; description: string; items: string[] }[];
+	features?: string[];
+	tech?: string[];
+	industries?: string[];
+	whyUs?: string[];
+	cta?: { title: string; subtitle: string };
+}
+
+const { service, breadcrumbLabel } = Astro.props as {
+	service: ServiceDetail;
+	breadcrumbLabel?: string;
+};
+
+const serviceSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: service.title,
+	serviceType: service.title,
+	provider: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+	url: `${SITE.url}/${service.slug}/`,
+	description: service.metaDescription,
+	areaServed: 'Worldwide',
+};
+---
+
+<Layout
+	title={service.metaTitle}
+	description={service.metaDescription}
+	canonicalPath={`/${service.slug}/`}
+	jsonLd={serviceSchema}
+>
+	<PageHero
+		title={service.heroTitle}
+		subtitle={service.heroSubtitle}
+		breadcrumb={[
+			{ label: 'Services', href: '/services/' },
+			{ label: breadcrumbLabel ?? service.navLabel },
+		]}
+	/>
+
+	<!-- Intro -->
+	<section class="section">
+		<div class="container-x grid gap-10 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
+			<div class="space-y-4 text-base leading-relaxed text-slate-600">
+				{service.intro.map((p) => (
+					<p>{p}</p>
+				))}
+				{service.features && (
+					<div class="pt-4">
+						<h2 class="text-xl font-bold text-navy-950">What you get</h2>
+						<ul class="mt-4 grid gap-2.5 sm:grid-cols-2">
+							{service.features.map((f) => (
+								<li class="flex items-start gap-2.5">
+									<span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+										<Icon name="check" class="h-3.5 w-3.5" />
+									</span>
+									<span class="text-sm font-medium text-slate-700">{f}</span>
+								</li>
+							))}
+						</ul>
+					</div>
+				)}
+			</div>
+
+			<aside class="lg:sticky lg:top-32 lg:self-start">
+				{service.stats ? (
+					<div class="card divide-y divide-slate-100">
+						{service.stats.map((s) => (
+							<div class="flex items-baseline justify-between px-6 py-4">
+								<span class="text-3xl font-bold text-brand-600">
+									{s.value}
+									<span class="text-brand-400">{s.suffix ?? ''}</span>
+								</span>
+								<span class="text-sm font-medium text-slate-600">{s.label}</span>
+							</div>
+						))}
+					</div>
+				) : null}
+				<div class="card mt-6 border-brand-100 bg-gradient-to-br from-brand-50 to-white p-6">
+					<h3 class="font-bold text-navy-950">Need a tailored solution?</h3>
+					<p class="mt-2 text-sm text-slate-600">
+						Tell us about your project and get a clear scope, timeline and quote within 24 hours.
+					</p>
+					<a href="/contact-us/" class="btn-primary mt-5 w-full">
+						Get a free consultation
+						<Icon name="arrowRight" class="h-4 w-4" />
+					</a>
+					<a href={SITE.calendly} target="_blank" rel="noopener" class="btn-outline mt-2 w-full">
+						Schedule a call
+					</a>
+				</div>
+			</aside>
+		</div>
+	</section>
+
+	<!-- Offerings -->
+	<section class="section bg-slate-50">
+		<div class="container-x">
+			<SectionHeading
+				eyebrow="What we deliver"
+				title={service.offerings.length > 1 ? 'Our services' : 'What we deliver'}
+				center
+			/>
+			<div class="mt-12 grid gap-6 md:grid-cols-2">
+				{service.offerings.map((o) => (
+					<div class="card relative overflow-hidden p-7">
+						<div class="mb-4 flex items-center gap-3">
+							<span class={`flex h-12 w-12 items-center justify-center rounded-xl text-white ${o.iconColor ?? 'bg-brand-600'}`}>
+								<Icon name={o.icon} class="h-6 w-6" />
+							</span>
+							<h3 class="text-lg font-bold text-navy-950">{o.title}</h3>
+						</div>
+						<p class="text-sm leading-relaxed text-slate-600">{o.description}</p>
+						<ul class="mt-4 grid gap-2">
+							{o.items.map((item) => (
+								<li class="flex items-start gap-2 text-sm text-slate-700">
+									<Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
+									{item}
+								</li>
+							))}
+						</ul>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	{service.tech && (
+		<section class="section border-b border-slate-100">
+			<div class="container-x">
+				<SectionHeading eyebrow="Technologies" title="Technologies we work with" center />
+				<div class="mt-10 flex flex-wrap justify-center gap-3">
+					{service.tech.map((t) => (
+						<span class="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-700">
+							{t}
+						</span>
+					))}
+				</div>
+			</div>
+		</section>
+	)}
+
+	{service.industries && (
+		<section class="section relative overflow-hidden bg-ice-blue/60">
+			<div class="container-x">
+				<SectionHeading eyebrow="Industries" title="Industries we serve" center />
+				<div class="mt-10 flex flex-wrap justify-center gap-3">
+					{service.industries.map((t) => (
+						<span class="rounded-full border border-brand-100 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm">
+							{t}
+						</span>
+					))}
+				</div>
+			</div>
+		</section>
+	)}
+
+	{service.whyUs && (
+		<section class="section">
+			<div class="container-x">
+				<SectionHeading
+					eyebrow="Why us"
+					title="Why choose SkyBridge IT Consulting"
+					center
+				/>
+				<div class="mx-auto mt-12 grid max-w-4xl gap-3 sm:grid-cols-2">
+					{service.whyUs.map((w) => (
+						<div class="flex items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 px-5 py-4">
+							<span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-700">
+								<Icon name="check" class="h-4 w-4" />
+							</span>
+							<span class="text-sm font-semibold text-slate-800">{w}</span>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+	)}
+
+	{service.stats?.length ? <StatsBand /> : null}
+
+	<CTASection title={service.cta?.title} subtitle={service.cta?.subtitle} />
+</Layout>

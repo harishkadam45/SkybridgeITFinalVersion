@@ -1,0 +1,8 @@
+---
+import PackagePage from '../components/PackagePage.astro';
+import { WORDPRESS_SPEED_PACKAGES } from '../data/packages';
+
+const data = WORDPRESS_SPEED_PACKAGES;
+---
+
+<PackagePage data={data} canonicalPath='/wordpress-speed-optimization-packages/' breadcrumbLabel={data.title} />
