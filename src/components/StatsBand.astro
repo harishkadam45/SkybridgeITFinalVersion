@@ -2,20 +2,17 @@
 import { STATS } from '../data/content';
 ---
 
-<section class="px-4 sm:px-8">
-	<div class="mx-auto max-w-7xl">
-		<div class="grid grid-cols-2 rounded-[32px] border border-slate-100 bg-white px-6 py-2 custom-shadow md:grid-cols-4 sm:p-8">
+<section aria-label="Company at a glance">
+	<div class="container-x">
+		<dl class="grid grid-cols-2 gap-y-2 rounded-[28px] border border-slate-100 bg-white p-4 custom-shadow sm:p-8 md:grid-cols-4">
 			{STATS.map((s, i) => (
-				<div
-					class={`flex flex-col items-center p-4 text-center ${i % 4 !== 3 ? 'md:border-r md:border-slate-100' : ''}`}
-				>
-					<span class="mb-2 text-3xl font-extrabold tracking-tight text-navy-950 sm:text-4xl">
-						{s.value}
-						<span class="text-brand-600">{s.suffix}</span>
-					</span>
-					<span class="text-center text-[11px] font-bold uppercase tracking-wider text-slate-400">{s.label}</span>
+				<div class:list={['flex flex-col-reverse items-center p-4 text-center', i % 4 !== 3 && 'md:border-r md:border-slate-100']}>
+					<dt class="text-xs font-bold uppercase tracking-wider text-slate-500">{s.label}</dt>
+					<dd class="mb-2 text-3xl font-extrabold tracking-tight text-navy-950 sm:text-4xl">
+						{s.value}<span class="text-brand-600">{s.suffix}</span>
+					</dd>
 				</div>
 			))}
-		</div>
+		</dl>
 	</div>
 </section>

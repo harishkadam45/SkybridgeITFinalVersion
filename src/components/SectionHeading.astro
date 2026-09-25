@@ -5,26 +5,20 @@ interface Props {
 	subtitle?: string;
 	center?: boolean;
 	light?: boolean;
+	/** Heading level; section titles are h2 by default */
+	as?: 'h1' | 'h2';
+	/** id for the heading, so the parent section can use aria-labelledby */
+	id?: string;
 	class?: string;
 }
-const { eyebrow, title, subtitle, center = false, light = false, class: className } = Astro.props;
+const { eyebrow, title, subtitle, center = false, light = false, as: Tag = 'h2', id, class: className } = Astro.props;
 ---
 
-<div class={`${center ? 'mx-auto max-w-3xl text-center' : 'max-w-3xl'} ${className ?? ''}`}>
-	{eyebrow && (
-		<span class={`mb-3 block text-sm font-bold tracking-wide sm:text-base ${light ? 'text-brand-300' : 'text-brand-600'}`}>
-			{eyebrow}
-		</span>
-	)}
-	<h2
-		class={`text-balance text-4xl font-extrabold leading-[1.12] tracking-tight sm:text-5xl ${
-			light ? 'text-white' : 'text-navy-950'
-		}`}
-	>
-		{title}
-	</h2>
+<div class:list={[center ? 'mx-auto max-w-3xl text-center' : 'max-w-3xl', className]}>
+	{eyebrow && <span class:list={['eyebrow', light && 'text-brand-300']}>{eyebrow}</span>}
+	<Tag id={id} class:list={[Tag === 'h1' ? 'heading-1' : 'heading-2', light && 'text-white']}>{title}</Tag>
 	{subtitle && (
-		<p class={`mt-4 max-w-2xl text-base leading-relaxed ${light ? 'text-slate-300' : 'text-slate-500'}`}>
+		<p class:list={['lead mt-4 max-w-2xl', center && 'mx-auto', light && 'text-slate-300']}>
 			{subtitle}
 		</p>
 	)}

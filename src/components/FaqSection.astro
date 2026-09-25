@@ -33,7 +33,7 @@ const faqSchema = {
 						aria-expanded={i === 0 ? 'true' : 'false'}
 					>
 						<span class="font-semibold text-navy-950">{f.q}</span>
-						<Icon name="chevronDown" class={`h-5 w-5 shrink-0 text-brand-600 ${i === 0 ? '' : 'rotate-180'}`} data-faq-chevron />
+						<Icon name="chevronDown" class={`h-5 w-5 shrink-0 text-brand-700 transition-transform ${i === 0 ? 'rotate-180' : ''}`} data-faq-chevron />
 					</button>
 					<div class={`border-t border-slate-100 px-5 py-4 ${i === 0 ? '' : 'hidden'}`} data-faq-panel>
 						<p class="text-sm leading-relaxed text-slate-600">{f.a}</p>

@@ -25,3 +25,5 @@ pnpm-debug.log*
 
 # editor settings
 .vscode/
+
+# Claude Code config.claude/

@@ -11,7 +11,7 @@ interface Props {
 const { title, subtitle, breadcrumb } = Astro.props;
 ---
 
-<section class="relative overflow-hidden border-b border-slate-100 bg-white px-4 py-16 sm:px-8 sm:py-24">
+<section class="relative overflow-hidden border-b border-slate-100 bg-gradient-to-b from-ice-blue to-white py-14 sm:py-20 lg:py-24">
 	{/* Decorative arcs */}
 	<div class="pointer-events-none absolute inset-0 flex items-start justify-end overflow-hidden" aria-hidden="true">
 		<svg class="h-[420px] w-[420px] -translate-y-24 translate-x-24 opacity-20" viewBox="0 0 1000 500" fill="none">
@@ -22,28 +22,27 @@ const { title, subtitle, breadcrumb } = Astro.props;
 		</svg>
 	</div>
 
-	<div class="relative mx-auto max-w-[1400px]">
+	<div class="container-x relative">
 		<nav aria-label="Breadcrumb" class="mb-5">
-			<ol class="flex flex-wrap items-center gap-2 text-xs font-semibold text-slate-500">
-				<li><a href="/" class="hover:text-brand-600">Home</a></li>
-				{breadcrumb.map((c, i) => (
+			<ol class="flex flex-wrap items-center gap-2 text-sm font-medium text-slate-500">
+				<li><a href="/" class="transition-colors hover:text-brand-700">Home</a></li>
+				{breadcrumb.map((c) => (
 					<li class="flex items-center gap-2">
-						<Icon name="chevronRight" class="h-3 w-3 text-slate-300" />
+						<Icon name="chevronRight" class="h-3.5 w-3.5 text-slate-400" />
 						{c.href ? (
-							<a href={c.href} class="hover:text-brand-600">{c.label}</a>
+							<a href={c.href} class="transition-colors hover:text-brand-700">{c.label}</a>
 						) : (
-							<span class="text-brand-600" aria-current="page">{c.label}</span>
+							<span class="font-semibold text-brand-700" aria-current="page">{c.label}</span>
 						)}
-						{i === breadcrumb.length - 1 && <span class="sr-only">(current)</span>}
 					</li>
 				))}
 			</ol>
 		</nav>
-		<h1 class="max-w-3xl text-balance text-4xl font-extrabold leading-[1.12] tracking-tight text-navy-950 sm:text-5xl">
+		<h1 class="heading-1 max-w-3xl">
 			{title}
 		</h1>
-		{subtitle && <p class="mt-5 max-w-2xl text-base leading-relaxed text-slate-500">{subtitle}</p>}
-		<div class="mt-8 flex flex-wrap items-center gap-4">
+		{subtitle && <p class="lead mt-5 max-w-2xl">{subtitle}</p>}
+		<div class="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
 			<a href="/contact-us/" class="btn-primary">
 				Contact Us
 				<Icon name="arrowRight" class="h-4 w-4" />

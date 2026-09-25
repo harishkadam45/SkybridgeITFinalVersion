@@ -5,7 +5,11 @@
 	--font-sans: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', ui-sans-serif,
 		system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
-	/* Reference palette: primary #0095FF / primary-hover #0080E5 */
+	/*
+	 * Brand scale. #0095FF (600) is the signature hue — use it for icons, borders,
+	 * decorative fills and large display text (passes WCAG 3:1 for large text/graphics).
+	 * Small text and filled buttons use 700+ (#0071CC ≥ 4.69:1 on white and the tinted section backgrounds, WCAG AA).
+	 */
 	--color-brand-50: #f4f9ff;
 	--color-brand-100: #e0f0ff;
 	--color-brand-200: #b9e0ff;
@@ -13,7 +17,7 @@
 	--color-brand-400: #4fadff;
 	--color-brand-500: #1e9cff;
 	--color-brand-600: #0095ff;
-	--color-brand-700: #0080e5;
+	--color-brand-700: #0071cc;
 	--color-brand-800: #0066bb;
 	--color-brand-900: #004f8f;
 	--color-brand-950: #003157;
@@ -34,97 +38,171 @@
 	--color-navy-800: #27375e;
 	--color-navy-900: #17233f;
 	--color-navy-950: #0b132a;
+
+	/* Height of the sticky header, used for anchor-jump offsets */
+	--header-h: 4.5rem;
 }
 
 @layer base {
+	:root {
+		@media (width >= 64rem) {
+			--header-h: 5rem;
+		}
+	}
 	html {
 		scroll-behavior: smooth;
+		scroll-padding-top: calc(var(--header-h) + 1rem);
 	}
 	body {
-		@apply bg-white font-sans text-slate-700 antialiased;
+		@apply bg-white font-sans text-slate-600 antialiased;
 		text-rendering: optimizeLegibility;
 	}
+	h1,
+	h2,
+	h3,
+	h4 {
+		@apply text-navy-950;
+		text-wrap: balance;
+	}
+	p {
+		text-wrap: pretty;
+	}
 	::selection {
-		@apply bg-brand-600 text-white;
+		@apply bg-brand-700 text-white;
 	}
-	@keyframes marquee-left {
-		0% {
-			transform: translateX(0);
-		}
-		100% {
-			transform: translateX(-50%);
-		}
+	:focus-visible {
+		outline: 2px solid var(--color-brand-700);
+		outline-offset: 3px;
+		border-radius: 6px;
 	}
-	@keyframes marquee-right {
-		0% {
-			transform: translateX(-50%);
+	@keyframes marquee {
+		from {
+			transform: translate3d(0, 0, 0);
 		}
-		100% {
-			transform: translateX(0);
-		}
-	}
-	@keyframes spin-12 {
 		to {
-			transform: rotate(360deg);
+			transform: translate3d(-50%, 0, 0);
 		}
-	}
-	.animate-spin-12 {
-		animation: spin-12 12s linear infinite;
 	}
 	@media (prefers-reduced-motion: reduce) {
-		.animate-marquee-left,
-		.animate-marquee-right,
-		.animate-spin-12 {
-			animation: none !important;
+		html {
+			scroll-behavior: auto;
+		}
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
 		}
 	}
 }
 
 @layer components {
+	/* ---------- Layout ---------- */
 	.container-x {
 		@apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
 	}
+	/* One vertical rhythm for every section: 64 / 80 / 96px */
+	.section {
+		@apply py-16 sm:py-20 lg:py-24;
+	}
+	/* Gap between a section heading block and the content below it */
+	.section-head {
+		@apply mb-10 sm:mb-12 lg:mb-14;
+	}
+
+	/* ---------- Typography scale (fluid, clamp-based) ---------- */
+	.eyebrow {
+		@apply mb-3 block text-sm font-bold tracking-wide text-brand-700;
+	}
+	/* Homepage hero H1: 36px → 64px */
+	.heading-display {
+		@apply font-extrabold text-navy-950;
+		font-size: clamp(2.25rem, 1.35rem + 3.6vw, 4rem);
+		line-height: 1.08;
+		letter-spacing: -0.035em;
+	}
+	/* Inner-page H1: 32px → 52px */
+	.heading-1 {
+		@apply font-extrabold text-navy-950;
+		font-size: clamp(2rem, 1.45rem + 2.2vw, 3.25rem);
+		line-height: 1.1;
+		letter-spacing: -0.03em;
+	}
+	/* Section H2: 30px → 46px */
+	.heading-2 {
+		@apply font-extrabold text-navy-950;
+		font-size: clamp(1.875rem, 1.45rem + 1.7vw, 2.875rem);
+		line-height: 1.15;
+		letter-spacing: -0.025em;
+	}
+	/* Card / sub-section H3: 20px → 22px */
+	.heading-3 {
+		@apply text-xl font-bold leading-snug tracking-tight text-navy-950 sm:text-[1.375rem];
+	}
+	.lead {
+		@apply text-base leading-relaxed text-slate-600 sm:text-lg;
+	}
+	.body-sm {
+		@apply text-sm leading-relaxed text-slate-600 sm:text-[0.9375rem];
+	}
+
+	/* ---------- Buttons ---------- */
 	.btn {
-		@apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold transition-all duration-200;
+		@apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-bold transition-all duration-200;
 	}
 	.btn-primary {
-		@apply inline-flex items-center justify-center gap-2 rounded-full border border-brand-600 bg-brand-600 px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-brand-600/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-xl hover:shadow-brand-700/30;
+		@apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-brand-700 bg-brand-700 px-7 py-3 text-sm font-bold text-white shadow-lg shadow-brand-700/20 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-800 hover:bg-brand-800 hover:shadow-xl hover:shadow-brand-800/25;
 	}
 	.btn-outline {
-		@apply inline-flex items-center justify-center gap-2 rounded-full border border-brand-600 bg-white px-7 py-3.5 text-sm font-bold text-brand-600 transition-all duration-200 hover:bg-brand-600 hover:text-white hover:shadow-lg hover:shadow-brand-600/25;
+		@apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-brand-700 bg-white px-7 py-3 text-sm font-bold text-brand-700 transition-all duration-200 hover:bg-brand-700 hover:text-white hover:shadow-lg hover:shadow-brand-700/20;
 	}
 	.btn-white {
-		@apply inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-brand-700 shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-50 hover:shadow-xl;
+		@apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-bold text-brand-800 shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-50 hover:shadow-xl;
 	}
 	.btn-ghost {
-		@apply inline-flex items-center justify-center gap-2 rounded-full border border-white/50 px-7 py-3.5 text-sm font-bold text-white transition-all duration-200 hover:border-white hover:bg-white/10;
+		@apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/50 px-7 py-3 text-sm font-bold text-white transition-all duration-200 hover:border-white hover:bg-white/10;
 	}
-	.section {
-		@apply py-20 sm:py-28;
-	}
+
+	/* ---------- Surfaces ---------- */
 	.card {
-		@apply rounded-[32px] border border-slate-100 bg-white custom-shadow;
-	}
-	.eyebrow {
-		@apply mb-3 block text-sm font-bold tracking-wide text-brand-600 sm:text-base;
+		@apply rounded-[28px] border border-slate-100 bg-white custom-shadow;
 	}
 	.link-underline {
 		@apply underline-offset-4 hover:underline;
+	}
+
+	/* ---------- Carousel dots (shared by hero + testimonials) ---------- */
+	.carousel-dot {
+		@apply relative grid h-6 w-6 cursor-pointer place-items-center;
+	}
+	.carousel-dot::before {
+		content: '';
+		@apply block h-2 w-2 rounded-full bg-slate-300 transition-all duration-300;
+	}
+	.carousel-dot:hover::before {
+		@apply bg-slate-400;
+	}
+	.carousel-dot[aria-current='true'] {
+		@apply w-9;
+	}
+	.carousel-dot[aria-current='true']::before {
+		@apply w-6 bg-brand-700;
 	}
 }
 
 @utility custom-shadow {
 	box-shadow:
-		0 10px 40px -10px rgba(0, 149, 255, 0.08),
-		0 4px 20px -2px rgba(11, 19, 42, 0.04);
+		0 10px 40px -10px rgba(0, 149, 255, 0.1),
+		0 4px 20px -2px rgba(11, 19, 42, 0.05);
 }
 @utility custom-shadow-hover {
 	box-shadow:
-		0 20px 50px -10px rgba(0, 149, 255, 0.15),
+		0 20px 50px -10px rgba(0, 149, 255, 0.16),
 		0 8px 25px -4px rgba(11, 19, 42, 0.08);
 }
 @utility bg-gradient-brand {
-	background-image: linear-gradient(135deg, #0095ff 0%, #4fadff 100%);
+	background-image: linear-gradient(135deg, #0066bb 0%, #0080e5 100%);
 }
 @utility bg-grid {
 	background-image: linear-gradient(rgb(0 149 255 / 6%) 1px, transparent 1px),
@@ -134,20 +212,36 @@
 @utility text-balance {
 	text-wrap: balance;
 }
+/* Soft fade on both edges of a horizontally scrolling strip */
+@utility mask-fade-x {
+	-webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+	mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
 
 @layer utilities {
-	.animate-marquee-left {
-		width: max-content;
-		animation: marquee-left 30s linear infinite;
+	.animate-marquee {
 		display: flex;
-	}
-	.animate-marquee-right {
 		width: max-content;
-		animation: marquee-right 30s linear infinite;
-		display: flex;
+		animation: marquee var(--marquee-duration, 40s) linear infinite;
+		will-change: transform;
 	}
-	.group:hover .animate-marquee-left,
-	.group:hover .animate-marquee-right {
+	.animate-marquee[data-reverse] {
+		animation-direction: reverse;
+	}
+	.marquee:hover .animate-marquee,
+	.marquee:focus-within .animate-marquee {
 		animation-play-state: paused;
+	}
+	/* Reduced motion: stop scrolling, show each logo once in a wrapped row */
+	@media (prefers-reduced-motion: reduce) {
+		.animate-marquee {
+			width: auto;
+			flex-wrap: wrap;
+			justify-content: center;
+			animation: none;
+		}
+		.animate-marquee [data-clone] {
+			display: none;
+		}
 	}
 }

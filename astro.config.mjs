@@ -8,6 +8,8 @@ export default defineConfig({
 	site: 'https://skybridgeit.com',
 	output: 'static',
 	compressHTML: true,
+	// Prefetch internal pages on hover/focus so navigation feels instant
+	prefetch: { prefetchAll: true, defaultStrategy: 'hover' },
 	vite: {
 		plugins: [tailwindcss()],
 	},

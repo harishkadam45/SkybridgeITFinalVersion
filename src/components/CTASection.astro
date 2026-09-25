@@ -14,7 +14,7 @@ const {
 const trustBadges = ['SOC 2 Compliant', 'NDA on Request', '24/7 Availability', 'Free Discovery Call'];
 ---
 
-<section class="relative overflow-hidden bg-white px-4 py-20 sm:px-8 sm:py-28">
+<section class="section relative overflow-hidden bg-white">
 	{/* Background wave lines */}
 	<div class="pointer-events-none absolute inset-0 opacity-50" aria-hidden="true">
 		<svg class="h-full w-full" preserveAspectRatio="none" viewBox="0 0 1440 320" fill="none">
@@ -24,13 +24,13 @@ const trustBadges = ['SOC 2 Compliant', 'NDA on Request', '24/7 Availability', '
 		</svg>
 	</div>
 
-	<div class="relative z-10 mx-auto max-w-4xl text-center">
-		<span class="mb-3 block text-sm font-bold uppercase tracking-wider text-brand-600">Get Started</span>
-		<h2 class="text-balance text-4xl font-extrabold leading-[1.12] tracking-tight text-[#0B132A] sm:text-5xl">
+	<div class="container-x relative z-10 max-w-4xl text-center">
+		<span class="eyebrow">Get Started</span>
+		<h2 class="heading-2">
 			{title}
 		</h2>
-		<p class="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-500">{subtitle}</p>
-		<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+		<p class="lead mx-auto mt-4 max-w-2xl">{subtitle}</p>
+		<div class="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
 			<a href={`mailto:${SITE.email}`} class="btn-primary">
 				Book a Discovery Call
 				<Icon name="arrowRight" class="h-4 w-4" />
@@ -40,16 +40,16 @@ const trustBadges = ['SOC 2 Compliant', 'NDA on Request', '24/7 Availability', '
 				href={SITE.whatsapp}
 				target="_blank"
 				rel="noopener"
-				class="inline-flex items-center gap-2 rounded-full border border-emerald-300 bg-emerald-50 px-7 py-3.5 text-sm font-bold text-emerald-600 transition-colors hover:bg-emerald-500 hover:text-white"
+				class="inline-flex min-h-12 items-center gap-2 rounded-full border border-emerald-300 bg-emerald-50 px-7 py-3 text-sm font-bold text-emerald-800 transition-colors hover:border-emerald-700 hover:bg-emerald-700 hover:text-white"
 			>
 				<Icon name="whatsapp" class="h-4 w-4" />
 				WhatsApp Us
 			</a>
 		</div>
-		<div class="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs text-slate-500 sm:text-sm">
+		<div class="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-slate-600">
 			{trustBadges.map((b) => (
 				<span class="flex items-center gap-2">
-					<Icon name="checkCircle" class="h-5 w-5 rounded-full border border-brand-600/40 text-brand-600" />
+					<Icon name="checkCircle" class="h-5 w-5 text-brand-600" />
 					{b}
 				</span>
 			))}

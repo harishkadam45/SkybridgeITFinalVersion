@@ -59,14 +59,14 @@ const serviceSchema = {
 
 	<!-- Intro -->
 	<section class="section">
-		<div class="container-x grid gap-10 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
+		<div class="container-x grid gap-10 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:gap-16">
 			<div class="space-y-4 text-base leading-relaxed text-slate-600">
 				{service.intro.map((p) => (
 					<p>{p}</p>
 				))}
 				{service.features && (
 					<div class="pt-4">
-						<h2 class="text-xl font-bold text-navy-950">What you get</h2>
+						<h2 class="heading-3">What you get</h2>
 						<ul class="mt-4 grid gap-2.5 sm:grid-cols-2">
 							{service.features.map((f) => (
 								<li class="flex items-start gap-2.5">
@@ -81,14 +81,14 @@ const serviceSchema = {
 				)}
 			</div>
 
-			<aside class="lg:sticky lg:top-32 lg:self-start">
+			<aside class="lg:sticky lg:top-28 lg:self-start">
 				{service.stats ? (
 					<div class="card divide-y divide-slate-100">
 						{service.stats.map((s) => (
 							<div class="flex items-baseline justify-between px-6 py-4">
 								<span class="text-3xl font-bold text-brand-600">
 									{s.value}
-									<span class="text-brand-400">{s.suffix ?? ''}</span>
+									<span class="text-brand-600">{s.suffix ?? ''}</span>
 								</span>
 								<span class="text-sm font-medium text-slate-600">{s.label}</span>
 							</div>
@@ -119,8 +119,9 @@ const serviceSchema = {
 				eyebrow="What we deliver"
 				title={service.offerings.length > 1 ? 'Our services' : 'What we deliver'}
 				center
+				class="section-head"
 			/>
-			<div class="mt-12 grid gap-6 md:grid-cols-2">
+			<div class="grid gap-6 md:grid-cols-2">
 				{service.offerings.map((o) => (
 					<div class="card relative overflow-hidden p-7">
 						<div class="mb-4 flex items-center gap-3">
@@ -147,8 +148,9 @@ const serviceSchema = {
 	{service.tech && (
 		<section class="section border-b border-slate-100">
 			<div class="container-x">
-				<SectionHeading eyebrow="Technologies" title="Technologies we work with" center />
-				<div class="mt-10 flex flex-wrap justify-center gap-3">
+				<SectionHeading eyebrow="Technologies" title="Technologies we work with" center
+				class="section-head" />
+				<div class="flex flex-wrap justify-center gap-3">
 					{service.tech.map((t) => (
 						<span class="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-700">
 							{t}
@@ -162,8 +164,9 @@ const serviceSchema = {
 	{service.industries && (
 		<section class="section relative overflow-hidden bg-ice-blue/60">
 			<div class="container-x">
-				<SectionHeading eyebrow="Industries" title="Industries we serve" center />
-				<div class="mt-10 flex flex-wrap justify-center gap-3">
+				<SectionHeading eyebrow="Industries" title="Industries we serve" center
+				class="section-head" />
+				<div class="flex flex-wrap justify-center gap-3">
 					{service.industries.map((t) => (
 						<span class="rounded-full border border-brand-100 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm">
 							{t}
@@ -181,8 +184,9 @@ const serviceSchema = {
 					eyebrow="Why us"
 					title="Why choose SkyBridge IT Consulting"
 					center
+				class="section-head"
 				/>
-				<div class="mx-auto mt-12 grid max-w-4xl gap-3 sm:grid-cols-2">
+				<div class="mx-auto grid max-w-4xl gap-3 sm:grid-cols-2">
 					{service.whyUs.map((w) => (
 						<div class="flex items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 px-5 py-4">
 							<span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-700">

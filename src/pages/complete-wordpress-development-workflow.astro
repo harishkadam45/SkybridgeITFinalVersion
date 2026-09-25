@@ -72,11 +72,12 @@ const phases = [
 				title="A transparent six-phase process"
 				subtitle="Every WordPress project follows the same battle-tested workflow so you always know what happens next — and when."
 				center
+				class="section-head"
 			/>
-			<div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 				{phases.map((p) => (
 					<div class="card relative overflow-hidden p-7">
-						<span class="absolute right-5 top-4 text-5xl font-bold text-slate-100">{p.num}</span>
+						<span class="absolute right-5 top-4 text-5xl font-bold text-slate-100" aria-hidden="true">{p.num}</span>
 						<span class="relative flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-brand text-white">
 							<Icon name={p.icon} class="h-6 w-6" />
 						</span>

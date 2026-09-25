@@ -1,0 +1,21 @@
+# Netlify / Cloudflare Pages header rules
+
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Cross-Origin-Opener-Policy: same-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Content-hashed build output never changes → cache for a year
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Static images/fonts: cache a month, revalidate afterwards
+/images/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+/og/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+/favicon.*
+  Cache-Control: public, max-age=2592000

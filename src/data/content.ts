@@ -223,37 +223,37 @@ export const PORTFOLIO_ITEMS = [
 	{
 		title: 'Industries We Serve',
 		category: 'Web Design',
-		img: '/images/portfolio/p1.jpg',
+		img: '/images/portfolio/p1.webp',
 		href: '/about-us/',
 	},
 	{
 		title: 'Technology Stack We Use',
 		category: 'Digital Experience',
-		img: '/images/portfolio/p2.jpg',
+		img: '/images/portfolio/p2.webp',
 		href: '/services/',
 	},
 	{
 		title: 'Our Global Delivery Model',
 		category: 'Branding',
-		img: '/images/portfolio/p3.jpg',
+		img: '/images/portfolio/p3.webp',
 		href: '/about-us/',
 	},
 	{
 		title: 'Why Choose SkyBridge IT Consulting',
 		category: 'Web Design',
-		img: '/images/portfolio/p4.jpg',
+		img: '/images/portfolio/p4.webp',
 		href: '/about-us/',
 	},
 	{
 		title: 'Our Process for Building Scalable Digital Products',
 		category: 'Digital Experience',
-		img: '/images/portfolio/p5.jpg',
+		img: '/images/portfolio/p5.webp',
 		href: '/services/',
 	},
 	{
 		title: 'Technology Solutions We Build',
 		category: 'Web Design',
-		img: '/images/portfolio/p6.jpg',
+		img: '/images/portfolio/p6.webp',
 		href: '/services/',
 	},
 ];

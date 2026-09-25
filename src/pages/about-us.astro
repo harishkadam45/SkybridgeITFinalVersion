@@ -39,9 +39,9 @@ const values = [
 	/>
 
 	<section class="section">
-		<div class="container-x grid gap-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
+		<div class="container-x grid items-center gap-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:gap-16">
 			<div class="space-y-5 text-base leading-relaxed text-slate-600">
-				<h2 class="text-3xl font-bold tracking-tight text-navy-950">
+				<h2 class="heading-2">
 					A trusted technology partner behind some of the web’s best brands
 				</h2>
 				<p>
@@ -65,15 +65,16 @@ const values = [
 			</div>
 			<div class="relative">
 				<img
-					src="/images/about-us.jpg"
+					src="/images/about-us.webp"
 					alt="The SkyBridge IT Consulting development team"
-					class="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg"
-					width={800}
-					height={600}
+					class="aspect-[4/3] w-full rounded-[28px] object-cover shadow-lg"
+					width={600}
+					height={590}
+					decoding="async"
 					loading="lazy"
 				/>
 				<div class="absolute -bottom-5 left-6 rounded-xl bg-white px-5 py-3 shadow-lg">
-					<p class="text-xl font-bold text-brand-600">ISO 9001:2015</p>
+					<p class="text-xl font-bold text-brand-700">ISO 9001:2015</p>
 					<p class="text-xs font-medium text-slate-500">Certified Quality Management</p>
 				</div>
 			</div>
@@ -87,14 +88,15 @@ const values = [
 				title="What we stand for"
 				subtitle="The principles that guide every project we deliver."
 				center
+			class="section-head"
 			/>
-			<div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+			<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
 				{values.map((v) => (
 					<div class="card p-7 text-center">
 						<span class="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
 							<Icon name={v.icon} class="h-6 w-6" />
 						</span>
-						<h3 class="mt-4 font-bold text-navy-950">{v.title}</h3>
+						<h3 class="mt-4 text-lg font-bold">{v.title}</h3>
 						<p class="mt-2 text-sm leading-relaxed text-slate-600">{v.desc}</p>
 					</div>
 				))}
@@ -110,7 +112,7 @@ const values = [
 					title="Long-term vision and grow your business"
 					subtitle="From simple business websites to enterprise-grade platforms, our approach is always the same: clear architecture, clean code, long-term scalability, and measurable ROI."
 				/>
-				<p class="mt-5 text-slate-600">
+				<p class="mt-5 leading-relaxed text-slate-600">
 					Over the years, we have helped startups launch scalable platforms, agencies deliver complex client
 					projects, and enterprises automate critical business operations.
 				</p>
@@ -137,7 +139,7 @@ const values = [
 							loading="lazy"
 						/>
 						<div>
-							<span class="text-xs font-semibold uppercase tracking-wider text-brand-600">{p.category}</span>
+							<span class="text-xs font-semibold uppercase tracking-wider text-brand-700">{p.category}</span>
 							<p class="font-semibold text-navy-950">{p.title}</p>
 						</div>
 					</a>

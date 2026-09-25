@@ -3,6 +3,7 @@ import Layout from '../components/Layout.astro';
 import Icon from '../components/Icon.astro';
 import TestimonialsSection from '../components/TestimonialsSection.astro';
 import CTASection from '../components/CTASection.astro';
+import SectionHeading from '../components/SectionHeading.astro';
 import { SITE } from '../data/site';
 import { STATS, PORTFOLIO_ITEMS } from '../data/content';
 
@@ -32,55 +33,55 @@ const serviceCards = [
 		title: 'Web Development',
 		desc: 'Custom websites, portals, SaaS platforms, and web applications built for agencies serving corporate, startup, and enterprise clients.',
 		href: '/services/',
-		img: '/images/services/requirement-analysis.jpg',
+		img: '/images/services/requirement-analysis.webp',
 	},
 	{
 		title: 'Mobile App Development',
 		desc: 'Native iOS (Swift), Android (Kotlin/Flutter), and cross-platform mobile apps designed for performance and security.',
 		href: '/mobile-app-development/',
-		img: '/images/services/mobile-app.jpg',
+		img: '/images/services/mobile-app.webp',
 	},
 	{
 		title: 'Custom Software Development',
 		desc: 'Enterprise software, SaaS products, CRM systems, and custom business applications tailored to client needs.',
 		href: '/software-development/',
-		img: '/images/services/software-development.jpg',
+		img: '/images/services/software-development.webp',
 	},
 	{
 		title: 'CRM & GoHighLevel Automation',
 		desc: 'Complete CRM setup, workflow automation, lead nurturing systems, and sales pipeline management for marketing agencies.',
 		href: '/gohighlevel-crm-automation-services-for-small-medium-businesses/',
-		img: '/images/services/whatsapp-marketing.jpg',
+		img: '/images/services/whatsapp-marketing.webp',
 	},
 	{
 		title: 'AI & Business Automation',
 		desc: 'AI chatbots, LLM integration, workflow automation, and intelligent business tools designed to increase efficiency.',
 		href: '/ai-automation-ai/',
-		img: '/images/services/ai-automation.jpg',
+		img: '/images/services/ai-automation.webp',
 	},
 	{
 		title: 'UI/UX & Product Design',
 		desc: 'User-centric wireframing, prototyping, and high-fidelity interface design built for high conversion.',
 		href: '/frontend-development-technologies/',
-		img: '/images/services/uiux-design.jpg',
+		img: '/images/services/uiux-design.webp',
 	},
 	{
 		title: 'Cloud Migration & DevOps',
 		desc: 'AWS, GCP, and Azure infrastructure setup, CI/CD pipeline automation, and zero-downtime scaling.',
 		href: '/backend-custom-programming-services/',
-		img: '/images/services/cloud-devops.jpg',
+		img: '/images/services/cloud-devops.webp',
 	},
 	{
 		title: 'Dedicated White-Label Teams',
 		desc: 'Long-term dedicated developers, designers, and engineers working as an invisible extension of your agency.',
 		href: '/about-us/',
-		img: '/images/services/dedicated-teams.jpg',
+		img: '/images/services/dedicated-teams.webp',
 	},
 	{
 		title: 'Cybersecurity & Compliance',
 		desc: 'SOC 2 compliance support, vulnerability audits, data encryption, and secure API integration.',
 		href: '/services/',
-		img: '/images/services/cybersecurity.jpg',
+		img: '/images/services/cybersecurity.webp',
 	},
 ];
 
@@ -102,47 +103,45 @@ const whyPartner = [
 	},
 ];
 
-const techRows = [
+/*
+ * Logo sizes are normalised by visible area (not height), so a wide wordmark
+ * and a compact icon read with the same visual weight inside identical tiles.
+ * Source files are pre-trimmed to their visible bounds (public/images/tech/*.webp).
+ */
+type Tech = { name: string; src: string; w: number; h: number; tag: string };
+const tech = (name: string, file: string, w: number, h: number, tag: string): Tech => ({
+	name,
+	src: `/images/tech/${file}.webp`,
+	w,
+	h,
+	tag,
+});
+
+const techRows: { label: string; reverse?: boolean; duration: string; items: Tech[] }[] = [
 	{
-		title: 'Backend Technologies',
-		dir: 'left',
+		label: 'Backend, cloud & DevOps',
+		duration: '46s',
 		items: [
-			{ src: '/images/tech/redis.png', alt: 'Redis' },
-			{ src: '/images/tech/graphql.png', alt: 'GraphQL' },
-			{ src: '/images/tech/docker.png', alt: 'Docker' },
-			{ src: '/images/tech/kubernetes.png', alt: 'Kubernetes' },
-			{ src: '/images/tech/aws.png', alt: 'AWS' },
-			{ src: '/images/tech/gcloud.png', alt: 'Google Cloud' },
+			tech('Redis', 'redis', 100, 34, 'Backend'),
+			tech('GraphQL', 'graphql', 113, 30, 'Backend'),
+			tech('PostgreSQL', 'postgres', 142, 23, 'Database'),
+			tech('Docker', 'docker', 122, 28, 'DevOps'),
+			tech('AWS', 'aws', 67, 40, 'Cloud'),
+			tech('Google Cloud', 'gcloud', 139, 22, 'Cloud'),
+			tech('Kubernetes', 'kubernetes', 132, 23, 'DevOps'),
 		],
 	},
 	{
-		title: 'Front End Technologies',
-		dir: 'right',
+		label: 'Frontend, design & mobile',
+		reverse: true,
+		duration: '40s',
 		items: [
-			{ src: '/images/tech/figma.png', alt: 'Figma' },
-			{ src: '/images/tech/react.png', alt: 'React' },
-			{ src: '/images/tech/next.png', alt: 'Next.js' },
-			{ src: '/images/tech/vuejs.png', alt: 'Vue.js' },
-		],
-	},
-	{
-		title: 'Custom Web Applications',
-		dir: 'left',
-		items: [
-			{ src: '/images/tech/docker.png', alt: 'Docker' },
-			{ src: '/images/tech/aws.png', alt: 'AWS' },
-			{ src: '/images/tech/postgres.png', alt: 'PostgreSQL' },
-			{ src: '/images/tech/next.png', alt: 'Next.js' },
-		],
-	},
-	{
-		title: 'Mobile App Development',
-		dir: 'right',
-		items: [
-			{ src: '/images/tech/graphql.png', alt: 'GraphQL' },
-			{ src: '/images/tech/swift.png', alt: 'Swift' },
-			{ src: '/images/tech/kotlin.png', alt: 'Kotlin' },
-			{ src: '/images/tech/react.png', alt: 'React Native' },
+			tech('React & React Native', 'react', 109, 38, 'Web & Mobile'),
+			tech('Next.js', 'next', 118, 22, 'Frontend'),
+			tech('Vue.js', 'vuejs', 98, 35, 'Frontend'),
+			tech('Figma', 'figma', 84, 40, 'Design'),
+			tech('Swift', 'swift', 93, 28, 'iOS'),
+			tech('Kotlin', 'kotlin', 106, 23, 'Android'),
 		],
 	},
 ];
@@ -183,10 +182,10 @@ const websiteSchema = {
 	jsonLd={[orgSchema, websiteSchema]}
 >
 	<!-- Hero -->
-	<section id="hero" class="relative flex min-h-[90vh] flex-col items-center justify-center overflow-hidden bg-white px-4 pb-20 pt-10 sm:px-8">
+	<section id="hero" class="relative isolate overflow-hidden bg-white pb-16 pt-12 sm:pb-20 sm:pt-16 lg:pb-24 lg:pt-20">
 		<!-- Concentric arc lines -->
 		<div class="pointer-events-none absolute inset-0 -z-10 flex items-end justify-center overflow-hidden" aria-hidden="true">
-			<svg class="h-[700px] w-[1400px] translate-y-36 opacity-35" viewBox="0 0 1000 500" fill="none">
+			<svg class="h-[700px] w-[1400px] max-w-none translate-y-40 opacity-30" viewBox="0 0 1000 500" fill="none">
 				<circle cx="500" cy="500" r="450" stroke="#0095FF" stroke-width="1" stroke-dasharray="2 4" />
 				<circle cx="500" cy="500" r="370" stroke="#38BDF8" stroke-width="1.2" />
 				<circle cx="500" cy="500" r="290" stroke="#0095FF" stroke-width="1" stroke-dasharray="3 3" />
@@ -195,164 +194,151 @@ const websiteSchema = {
 			</svg>
 		</div>
 
-		<div class="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center text-center">
+		<div class="container-x flex flex-col items-center text-center">
 			<!-- Hero carousel -->
-			<div class="w-full" data-hero-carousel aria-roledescription="carousel" aria-label="Skybridge highlights">
+			<div class="w-full max-w-4xl" data-hero-carousel aria-roledescription="carousel" aria-label="SkyBridge highlights">
 				<div class="grid">
-					{heroSlides.map((slide, i) => (
-						<div
-							class={`hero-slide col-start-1 row-start-1 flex flex-col items-center text-center transition-opacity duration-700 ${
-								i === 0 ? 'opacity-100' : 'pointer-events-none opacity-0'
-							}`}
-							data-slide={i}
-							aria-hidden={i === 0 ? 'false' : 'true'}
-						>
-							<span class="mb-4 inline-block text-center text-sm font-bold tracking-wide text-brand-600 sm:text-base">
-								{slide.eyebrow}
-							</span>
-							<h1 class="mb-6 text-center text-4xl font-extrabold leading-[1.12] tracking-tight text-[#111827] sm:text-6xl md:text-7xl">
-								{slide.lines.map((line, li) => (
-									<span class={`block ${li === slide.lines.length - 1 ? 'mt-1 text-brand-600' : ''}`}>{line}</span>
-								))}
-							</h1>
-							<p class="mx-auto mb-6 max-w-3xl text-center text-sm font-normal leading-relaxed text-slate-400 sm:text-base">
-								{slide.description}
-							</p>
-						</div>
-					))}
+					{heroSlides.map((slide, i) => {
+						// Only the first slide is the page's H1; the rotating alternates are paragraphs
+						const Title = i === 0 ? 'h1' : 'p';
+						return (
+							<div
+								class:list={[
+									'col-start-1 row-start-1 flex flex-col items-center transition-opacity duration-700',
+									i === 0 ? 'opacity-100' : 'pointer-events-none opacity-0',
+								]}
+								data-slide={i}
+								aria-hidden={i === 0 ? 'false' : 'true'}
+							>
+								<span class="eyebrow mb-4">{slide.eyebrow}</span>
+								<Title class="heading-display">
+									{slide.lines.map((line, li) => (
+										<span class:list={['sm:block', li === slide.lines.length - 1 && 'text-brand-600']}>
+											{line}{' '}
+										</span>
+									))}
+								</Title>
+								<p class="lead mx-auto mt-6 max-w-2xl">{slide.description}</p>
+							</div>
+						);
+					})}
 				</div>
-				<div class="hero-pagination mb-6 mt-6 flex items-center justify-center" data-hero-pagination></div>
+				<div class="mt-6 flex items-center justify-center" data-hero-pagination></div>
 			</div>
 
 			<!-- CTA buttons -->
-			<div class="mb-16 flex flex-wrap items-center justify-center gap-4 sm:gap-5">
-				<a href="/contact-us/" class="btn-primary text-base">
+			<div class="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+				<a href="/contact-us/" class="btn-primary px-8 text-base">
 					<span>Free Consultation</span>
 					<Icon name="arrowRight" class="h-4 w-4" />
 				</a>
-				<a href="/contact-us/" class="btn-primary text-base">
+				<a href="/contact-us/" class="btn-outline px-8 text-base">
 					<span>Start a Project</span>
 					<Icon name="arrowRight" class="h-4 w-4" />
 				</a>
 			</div>
 
 			<!-- Stats card -->
-			<div class="grid w-full max-w-5xl grid-cols-2 gap-4 rounded-3xl border border-slate-100 bg-white p-6 custom-shadow sm:p-8 md:grid-cols-4">
+			<dl class="mt-14 grid w-full max-w-5xl grid-cols-2 gap-y-2 rounded-[28px] border border-slate-100 bg-white p-4 custom-shadow sm:mt-16 sm:p-8 md:grid-cols-4">
 				{STATS.map((s, i) => (
-					<div class={`flex flex-col items-center p-4 text-center ${i % 4 !== 3 ? 'md:border-r md:border-slate-100' : ''}`}>
-						<span class="mb-2 text-3xl font-extrabold tracking-tight text-[#111827] sm:text-4xl">
-							{s.value}{s.suffix}
-						</span>
-						<span class="text-center text-[11px] font-bold uppercase tracking-wider text-slate-400">{s.label}</span>
+					<div class:list={['flex flex-col-reverse items-center p-4 text-center', i % 4 !== 3 && 'md:border-r md:border-slate-100']}>
+						<dt class="text-xs font-bold uppercase tracking-wider text-slate-500">{s.label}</dt>
+						<dd class="mb-2 text-3xl font-extrabold tracking-tight text-navy-950 sm:text-4xl">
+							{s.value}<span class="text-brand-600">{s.suffix}</span>
+						</dd>
 					</div>
 				))}
-			</div>
+			</dl>
 		</div>
 	</section>
 
 	<!-- About Company -->
-	<section id="about" class="relative bg-white px-4 py-20 sm:px-8 sm:py-28">
-		<div class="mx-auto max-w-7xl">
-			<div class="mb-12">
-				<span class="mb-3 block text-sm font-bold tracking-wide text-brand-600 sm:text-base">About Our Company</span>
-				<h2 class="max-w-2xl text-balance text-4xl font-extrabold leading-[1.15] tracking-tight text-[#111827] sm:text-6xl">
-					Websites that tell your brand&rsquo;s story
-				</h2>
+	<section id="about" class="section bg-white" aria-labelledby="about-title">
+		<div class="container-x grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+			<div class="group relative overflow-hidden rounded-[28px] bg-slate-100 shadow-sm">
+				<img
+					src="/images/team-collab.webp"
+					alt="SkyBridge engineers collaborating on a client project"
+					class="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105 lg:aspect-[5/4]"
+					width="1000"
+					height="667"
+					loading="lazy"
+					decoding="async"
+				/>
 			</div>
 
-			<div class="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
-				<div class="relative z-10 lg:col-span-6">
-					<div class="group relative overflow-hidden rounded-[36px] bg-slate-100 shadow-sm">
-						<img
-							src="/images/team-collab.jpg"
-							alt="Skybridge Team Collaboration"
-							class="h-[460px] w-full object-cover transition-transform duration-700 group-hover:scale-105 sm:h-[540px]"
-							width="1000"
-							height="600"
-							loading="lazy"
-						/>
-					</div>
-					<div class="absolute top-1/2 -right-6 z-30 flex h-32 w-32 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white sm:-right-10 sm:h-40 sm:w-40">
-						<img
-							src="/images/about-badge.png"
-							alt="Free Consultation 360 Rotating Badge"
-							class="animate-spin-12 h-full w-full object-contain"
-							loading="lazy"
-						/>
-					</div>
+			<div>
+				<SectionHeading
+					id="about-title"
+					eyebrow="About Our Company"
+					title="Websites that tell your brand’s story"
+				/>
+				<div class="mt-6 space-y-4 text-base leading-relaxed text-slate-600">
+					<p>At SkyBridge IT Consulting, we combine technical excellence with strategic business insight to deliver software platforms that accelerate growth and optimize operations.</p>
+					<p>Our multi-disciplinary team of software architects, cloud engineers, and UI/UX designers collaborate closely with clients to build secure, scalable digital products.</p>
+					<p>From initial strategy and modern frontend design to robust backend APIs and automated cloud deployments, we ensure your technology stack remains future-proof.</p>
 				</div>
 
-				<div class="flex flex-col items-start pl-0 pt-2 lg:col-span-6 lg:pl-6">
-					<div class="mb-8 space-y-4 text-sm font-normal leading-relaxed text-slate-500 sm:text-base">
-						<p>At SkyBridge IT Consulting, we combine technical excellence with strategic business insight to deliver software platforms that accelerate growth and optimize operations.</p>
-						<p>Our multi-disciplinary team of software architects, cloud engineers, and UI/UX designers collaborate closely with clients to build secure, scalable digital products.</p>
-						<p>From initial strategy and modern frontend design to robust backend APIs and automated cloud deployments, we ensure your technology stack remains future-proof.</p>
-					</div>
+				<ul class="mt-8 grid grid-cols-1 gap-x-6 gap-y-3.5 sm:grid-cols-2">
+					{['Requirement Analysis', 'Custom Software Development', 'Cloud Migration & DevOps', 'Dedicated Development Teams', '24/7 Technical Support', 'Quality Assurance'].map((point) => (
+						<li class="flex items-center gap-3">
+							<span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-700 ring-1 ring-brand-100">
+								<Icon name="check" class="h-3.5 w-3.5" />
+							</span>
+							<span class="text-[15px] font-semibold text-navy-950">{point}</span>
+						</li>
+					))}
+				</ul>
 
-					<div class="mb-10 grid w-full grid-cols-1 gap-y-3.5 gap-x-6 sm:grid-cols-2">
-						{['Requirement Analysis', 'Custom Software Development', 'Cloud Migration & DevOps', 'Dedicated Development Teams', '24/7 Technical Support', 'Quality Assurance'].map((point) => (
-							<div class="flex items-center space-x-3">
-								<span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-600 text-white">
-									<Icon name="check" class="h-3 w-3" />
-								</span>
-								<span class="text-sm font-bold text-[#111827] sm:text-base">{point}</span>
-							</div>
-						))}
-					</div>
-
-					<a href="/contact-us/" class="btn-primary">
-						<span>Free Consultation</span>
-						<Icon name="arrowRight" class="h-4 w-4" />
-					</a>
-				</div>
+				<a href="/contact-us/" class="btn-primary mt-10">
+					<span>Free Consultation</span>
+					<Icon name="arrowRight" class="h-4 w-4" />
+				</a>
 			</div>
 		</div>
 	</section>
 
 	<!-- Services -->
-	<section id="services" class="relative bg-white px-4 py-20 sm:px-8 sm:py-28">
-		<div class="mx-auto max-w-7xl">
-			<div class="mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-				<div>
-					<span class="mb-3 block text-sm font-bold tracking-wide text-brand-600 sm:text-base">Our Services</span>
-					<h2 class="text-balance text-4xl font-extrabold leading-[1.12] tracking-tight text-[#111827] sm:text-6xl">
-						What we can offer <br class="hidden sm:block" />today
-					</h2>
-				</div>
-				<a href="/services/" class="btn-primary self-start md:self-auto">
+	<section id="services" class="section bg-slate-50" aria-labelledby="services-title">
+		<div class="container-x">
+			<div class="section-head flex flex-col justify-between gap-6 md:flex-row md:items-end">
+				<SectionHeading
+					id="services-title"
+					eyebrow="Our Services"
+					title="What we can offer today"
+					subtitle="End-to-end engineering, automation and design — delivered under your brand."
+				/>
+				<a href="/services/" class="btn-primary shrink-0 self-start md:self-auto">
 					<span>View All Services</span>
 					<Icon name="arrowUpRight" class="h-4 w-4" />
 				</a>
 			</div>
 
-			<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+			<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
 				{serviceCards.map((s) => (
 					<a
 						href={s.href}
-						class="group flex flex-col justify-between rounded-[32px] border border-slate-100/80 bg-white p-7 transition-all duration-300 custom-shadow hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-600/10 sm:p-8"
+						class="group flex flex-col rounded-[28px] border border-slate-100 bg-white p-6 custom-shadow transition-[translate,box-shadow] duration-300 hover:-translate-y-1.5 hover:custom-shadow-hover sm:p-7"
 					>
-						<div>
-							<div class="mb-3 flex items-start justify-between gap-4">
-								<h3 class="text-xl font-bold leading-snug text-[#111827] transition-colors group-hover:text-brand-600 sm:text-2xl">
-									{s.title}
-								</h3>
-								<span
-									class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-600 text-white shadow-md shadow-brand-600/30 transition-transform duration-300 group-hover:rotate-45"
-									aria-hidden="true"
-								>
-									<Icon name="arrowUpRight" class="h-6 w-6" />
-								</span>
-							</div>
-							<p class="mb-6 text-sm font-normal leading-relaxed text-slate-400">{s.desc}</p>
+						<div class="mb-3 flex items-start justify-between gap-4">
+							<h3 class="heading-3 transition-colors group-hover:text-brand-700">{s.title}</h3>
+							<span
+								class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-700 text-white shadow-md shadow-brand-700/25 transition-transform duration-300 group-hover:rotate-45"
+								aria-hidden="true"
+							>
+								<Icon name="arrowUpRight" class="h-5 w-5" />
+							</span>
 						</div>
-						<div class="relative h-48 w-full overflow-hidden rounded-[24px] bg-slate-100 sm:h-52">
+						<p class="body-sm mb-6 flex-1">{s.desc}</p>
+						<div class="overflow-hidden rounded-[20px] bg-slate-100">
 							<img
 								src={s.img}
-								alt={s.title}
-								class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+								alt=""
+								class="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105"
 								width="600"
-								height="450"
+								height="375"
 								loading="lazy"
+								decoding="async"
 							/>
 						</div>
 					</a>
@@ -362,70 +348,54 @@ const websiteSchema = {
 	</section>
 
 	<!-- Why Partner With Us -->
-	<section id="why-partner" class="relative overflow-hidden bg-white px-4 py-20 sm:px-8 sm:py-28">
-		<div class="mx-auto max-w-7xl">
-			<div class="mb-14 max-w-3xl">
-				<span class="mb-3 block text-sm font-bold tracking-wide text-brand-600 sm:text-base">Our Differences</span>
-				<h2 class="text-balance text-4xl font-extrabold leading-[1.12] tracking-tight text-[#111827] sm:text-6xl">
-					Why partner with us?
-				</h2>
-			</div>
+	<section id="why-partner" class="section bg-white" aria-labelledby="why-title">
+		<div class="container-x">
+			<SectionHeading id="why-title" eyebrow="Our Differences" title="Why partner with us?" class="section-head" />
 
-			<div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+			<div class="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
 				{whyPartner.map((w) => (
-					<div class="group rounded-[32px] border border-slate-100 bg-white p-8 transition-all duration-300 custom-shadow hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-600/10 sm:p-10">
-<div class="mb-8 flex h-12 w-12 items-center justify-center rounded-xl bg-ice-blue text-brand-600">
-						<Icon name={w.icon} class="h-6 w-6" />
-					</div>
-						<h3 class="mb-3 text-2xl font-bold text-[#111827] transition-colors group-hover:text-brand-600">{w.title}</h3>
-						<p class="text-sm font-normal leading-relaxed text-slate-400">{w.desc}</p>
+					<div class="group rounded-[28px] border border-slate-100 bg-white p-7 custom-shadow transition-[translate,box-shadow] duration-300 hover:-translate-y-1.5 hover:custom-shadow-hover sm:p-8">
+						<div class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-ice-blue text-brand-600 ring-1 ring-brand-100">
+							<Icon name={w.icon} class="h-6 w-6" />
+						</div>
+						<h3 class="heading-3 mb-3 transition-colors group-hover:text-brand-700">{w.title}</h3>
+						<p class="body-sm">{w.desc}</p>
 					</div>
 				))}
 			</div>
 
 			<!-- CTA banner -->
-			<div class="mt-10 rounded-[36px] border border-slate-100 bg-white p-8 custom-shadow sm:p-14">
-				<div class="flex flex-col items-center gap-8 lg:flex-row lg:gap-12">
-					<span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-ice-border bg-ice-blue text-brand-600">
-						<Icon name="globe" class="h-6 w-6" />
+			<div class="mt-6 rounded-[28px] border border-brand-100 bg-gradient-to-br from-ice-blue to-white p-7 sm:p-10 lg:mt-8 lg:p-12">
+				<div class="flex flex-col items-center gap-6 text-center lg:flex-row lg:gap-10 lg:text-left">
+					<span class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white text-brand-600 shadow-sm ring-1 ring-brand-100">
+						<Icon name="globe" class="h-7 w-7" />
 					</span>
-					<div class="flex-1 text-center lg:text-left">
-						<h3 class="text-2xl font-bold leading-snug text-[#111827] sm:text-3xl">
+					<div class="flex-1">
+						<h3 class="text-2xl font-bold leading-snug tracking-tight sm:text-[1.75rem]">
 							Do you want to explore our outstanding work?
 						</h3>
-						<p class="mt-3 text-sm font-normal leading-relaxed text-slate-400 sm:text-base">
+						<p class="body-sm mt-3 max-w-2xl">
 							From conversion-focused marketing sites to enterprise SaaS platforms, we deliver work our partners proudly
 							present as their own. Explore case studies, demos, and client success stories.
 						</p>
 					</div>
 					<div class="flex shrink-0 flex-wrap items-center justify-center gap-3">
-						<a
-							href={SITE.youtube}
-							target="_blank"
-							rel="noopener"
-							class="inline-flex items-center gap-2 rounded-full bg-slate-100 px-6 py-3 text-sm font-bold text-slate-800 transition-colors hover:bg-brand-600 hover:text-white"
-						>
-							<Icon name="youtube" class="h-4 w-4" />
-							Youtube
-							<Icon name="arrowUpRight" class="h-4 w-4" />
-						</a>
-						<a
-							href={SITE.linkedin}
-							target="_blank"
-							rel="noopener"
-							class="inline-flex items-center gap-2 rounded-full bg-slate-100 px-6 py-3 text-sm font-bold text-slate-800 transition-colors hover:bg-brand-600 hover:text-white"
-						>
-							<Icon name="linkedin" class="h-4 w-4" />
-							Linkedin
-							<Icon name="arrowUpRight" class="h-4 w-4" />
-						</a>
-						<a
-							href="/contact-us/"
-							class="inline-flex items-center gap-2 rounded-full bg-slate-100 px-6 py-3 text-sm font-bold text-slate-800 transition-colors hover:bg-brand-600 hover:text-white"
-						>
-							Contact Us
-							<Icon name="arrowUpRight" class="h-4 w-4" />
-						</a>
+						{[
+							{ href: SITE.youtube, label: 'YouTube', icon: 'youtube', external: true },
+							{ href: SITE.linkedin, label: 'LinkedIn', icon: 'linkedin', external: true },
+							{ href: '/contact-us/', label: 'Contact Us', icon: null, external: false },
+						].map((l) => (
+							<a
+								href={l.href}
+								target={l.external ? '_blank' : undefined}
+								rel={l.external ? 'noopener' : undefined}
+								class="inline-flex min-h-11 items-center gap-2 rounded-full border border-slate-200 bg-white px-5 text-sm font-bold text-slate-800 transition-colors hover:border-brand-700 hover:text-brand-700"
+							>
+								{l.icon && <Icon name={l.icon} class="h-4 w-4" />}
+								{l.label}
+								<Icon name="arrowUpRight" class="h-4 w-4" />
+							</a>
+						))}
 					</div>
 				</div>
 			</div>
@@ -433,152 +403,153 @@ const websiteSchema = {
 	</section>
 
 	<!-- Technologies -->
-	<section id="technologies" class="bg-white px-4 py-20 sm:px-8 sm:py-28">
-		<div class="mx-auto max-w-7xl">
-			<div class="mb-16 max-w-3xl">
-				<span class="mb-3 block text-sm font-bold tracking-wide text-brand-600 sm:text-base">
-					A production-grade stack across every discipline
-				</span>
-				<h2 class="text-balance text-4xl font-extrabold leading-[1.12] tracking-tight text-[#0B132A] sm:text-6xl">
-					The tools we build with
-				</h2>
-			</div>
+	<section id="technologies" class="section overflow-hidden bg-slate-50" aria-labelledby="tech-title">
+		<div class="container-x">
+			<SectionHeading
+				id="tech-title"
+				eyebrow="Technologies"
+				title="The tools we build with"
+				subtitle="A production-grade stack across every discipline — from APIs and cloud to polished interfaces and native mobile."
+				center
+				class="section-head"
+			/>
+		</div>
 
+		<div class="mx-auto max-w-[1440px] space-y-4 sm:space-y-5">
 			{techRows.map((row) => (
-				<div class="group mb-14">
-					<div class="relative">
-						<div class="border-t border-slate-200/80"></div>
-<h3 class="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap bg-white px-4 text-xl font-extrabold tracking-tight text-[#0B132A] sm:px-8 sm:text-3xl lg:text-5xl">
-						{row.title}
-					</h3>
-					</div>
-					<div class="mt-8 overflow-hidden">
-						<div class={`${row.dir === 'left' ? 'animate-marquee-left' : 'animate-marquee-right'} items-center space-x-5 py-3 sm:space-x-6`}>
-							{[...row.items, ...row.items].map((item) => (
-								<div
-									class="flex h-16 min-w-[160px] shrink-0 items-center justify-center rounded-[20px] border border-slate-100 bg-white px-6 py-3.5 shadow-sm transition-all hover:border-brand-600/40 hover:shadow-md sm:h-20"
+				<div class="marquee mask-fade-x overflow-hidden py-2" role="group" aria-label={row.label}>
+					<ul class="animate-marquee" data-reverse={row.reverse ? '' : undefined} style={`--marquee-duration:${row.duration}`}>
+						{/* 4 copies: two per half, so the -50% loop is seamless on ultra-wide screens */}
+						{[0, 1, 2, 3].map((copy) =>
+							row.items.map((t) => (
+								<li
+									class="mr-4 flex h-24 w-44 shrink-0 flex-col items-center justify-center gap-2 rounded-2xl border border-slate-200/70 bg-white px-4 shadow-[0_1px_2px_rgba(11,19,42,0.04)] transition-[border-color,box-shadow] duration-200 hover:border-brand-200 hover:shadow-md sm:mr-5 sm:w-48"
+									data-clone={copy > 0 ? '' : undefined}
+									aria-hidden={copy > 0 ? 'true' : undefined}
 								>
-									<img src={item.src} alt={item.alt} class="h-8 w-auto sm:h-10" loading="lazy" />
-								</div>
-							))}
-						</div>
-					</div>
+									<span class="flex h-10 items-center justify-center">
+										<img
+											src={t.src}
+											alt={copy > 0 ? '' : t.name}
+											width={t.w}
+											height={t.h}
+											style={`width:${t.w}px;height:${t.h}px`}
+											class="object-contain"
+											loading="lazy"
+											decoding="async"
+										/>
+									</span>
+									<span class="text-[11px] font-semibold uppercase tracking-wider text-slate-500">{t.tag}</span>
+								</li>
+							)),
+						)}
+					</ul>
 				</div>
 			))}
 		</div>
 	</section>
 
 	<!-- Our Work -->
-	<section id="work" class="bg-white px-4 py-20 sm:px-8 sm:py-28">
-		<div class="mx-auto max-w-7xl">
-			<div class="mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-				<div>
-					<span class="mb-3 block text-sm font-bold tracking-wide text-brand-600 sm:text-base">Our Work</span>
-					<h2 class="text-balance text-4xl font-extrabold leading-[1.12] tracking-tight text-[#111827] sm:text-6xl">
-						High-quality digital products, <br class="hidden sm:block" />delivered.
-					</h2>
-				</div>
-				<a href="/services/" class="btn-primary self-start md:self-auto">
-					<span>View All Services</span>
+	<section id="work" class="section bg-white" aria-labelledby="work-title">
+		<div class="container-x">
+			<div class="section-head flex flex-col justify-between gap-6 md:flex-row md:items-end">
+				<SectionHeading
+					id="work-title"
+					eyebrow="Our Work"
+					title="High-quality digital products, delivered."
+				/>
+				<a href="/about-us/" class="btn-outline shrink-0 self-start md:self-auto">
+					<span>Explore Our Work</span>
 					<Icon name="arrowUpRight" class="h-4 w-4" />
 				</a>
 			</div>
 
-			<div class="grid grid-cols-1 gap-8 md:grid-cols-3 sm:gap-10">
+			<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
 				{PORTFOLIO_ITEMS.map((p) => (
 					<a
 						href={p.href}
-						class="group rounded-[36px] border border-slate-100 bg-white p-5 pb-8 shadow-[0_15px_45px_rgba(0,0,0,0.05)] custom-shadow transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-brand-600/10 sm:p-6"
+						class="group flex flex-col rounded-[28px] border border-slate-100 bg-white p-4 custom-shadow transition-[translate,box-shadow] duration-300 hover:-translate-y-1.5 hover:custom-shadow-hover sm:p-5"
 					>
-						<div class="mb-6 h-56 w-full overflow-hidden rounded-[24px] sm:h-60">
+						<div class="overflow-hidden rounded-[20px] bg-slate-100">
 							<img
 								src={p.img}
-								alt={`${p.title} — SkyBridge IT Consulting`}
-								class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-								width="800"
-								height="450"
+								alt=""
+								class="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+								width="390"
+								height="293"
 								loading="lazy"
+								decoding="async"
 							/>
 						</div>
-						<span class="mb-3 block text-xs font-normal text-slate-400 sm:text-sm">{p.category}</span>
-						<h3 class="text-lg font-bold leading-snug text-[#111827] transition-colors group-hover:text-brand-600 sm:text-xl">
-							{p.title}
-						</h3>
+						<div class="px-2 pb-2 pt-5">
+							<span class="mb-2 block text-sm font-medium text-slate-500">{p.category}</span>
+							<h3 class="text-lg font-bold leading-snug transition-colors group-hover:text-brand-700 sm:text-xl">
+								{p.title}
+							</h3>
+						</div>
 					</a>
 				))}
 			</div>
 		</div>
 	</section>
 
-	<TestimonialsSection />
+	<TestimonialsSection tone="muted" />
 
 	<CTASection />
 </Layout>
 
 <script>
-	// Hero crossfade carousel (reference: fade effect, 5.5s autoplay, clickable bullets)
+	// Hero crossfade carousel: 5.5s autoplay, clickable dots, paused on hover/focus, off for reduced motion
 	const heroCarousel = document.querySelector<HTMLElement>('[data-hero-carousel]');
 	if (heroCarousel) {
-		const slides = Array.from<HTMLElement>(heroCarousel.querySelectorAll('[data-slide]'));
+		const slides = Array.from(heroCarousel.querySelectorAll<HTMLElement>('[data-slide]'));
 		const pagination = heroCarousel.querySelector<HTMLElement>('[data-hero-pagination]');
+		const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 		let current = 0;
+		let interval: number | undefined;
 
-		slides.forEach((_, i) => {
-			const bullet = document.createElement('button');
-			bullet.type = 'button';
-			bullet.classList.add('hero-bullet');
-			if (i === 0) bullet.classList.add('active');
-			bullet.setAttribute('aria-label', `Go to slide ${i + 1}`);
-			bullet.addEventListener('click', () => {
+		const dots = slides.map((_, i) => {
+			const dot = document.createElement('button');
+			dot.type = 'button';
+			dot.className = 'carousel-dot';
+			dot.setAttribute('aria-label', `Show highlight ${i + 1}`);
+			dot.addEventListener('click', () => {
 				current = i;
 				show();
 				restart();
 			});
-			pagination?.appendChild(bullet);
+			pagination?.appendChild(dot);
+			return dot;
 		});
 
 		function show() {
 			slides.forEach((slide, i) => {
 				const active = i === current;
 				slide.classList.toggle('opacity-100', active);
-				slide.classList.toggle('pointer-events-none', !active);
 				slide.classList.toggle('opacity-0', !active);
+				slide.classList.toggle('pointer-events-none', !active);
 				slide.setAttribute('aria-hidden', String(!active));
 			});
-			pagination?.querySelectorAll<HTMLButtonElement>('button').forEach((b, i) => {
-				b.classList.toggle('active', i === current);
-			});
+			dots.forEach((d, i) => d.setAttribute('aria-current', String(i === current)));
 		}
 
-		let interval: number | undefined;
-		function restart() {
+		function stop() {
 			window.clearInterval(interval);
+		}
+		function restart() {
+			stop();
+			if (reduceMotion) return;
 			interval = window.setInterval(() => {
 				current = (current + 1) % slides.length;
 				show();
 			}, 5500);
 		}
-		heroCarousel.addEventListener('mouseenter', () => window.clearInterval(interval));
+		heroCarousel.addEventListener('mouseenter', stop);
 		heroCarousel.addEventListener('mouseleave', restart);
+		heroCarousel.addEventListener('focusin', stop);
+		heroCarousel.addEventListener('focusout', restart);
 
 		show();
 		restart();
 	}
 </script>
-
-<style>
-	.hero-bullet {
-		width: 8px;
-		height: 8px;
-		border-radius: 9999px;
-		background-color: #7dd3fc;
-		margin: 0 4px;
-		cursor: pointer;
-		transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-	}
-	.hero-bullet.active {
-		background-color: #0b132a;
-		width: 24px;
-		height: 8px;
-	}
-</style>

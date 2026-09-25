@@ -27,257 +27,230 @@ const desktopNav: NavItem[] = [
 ];
 ---
 
-<header class="relative z-50 w-full transition-all duration-300" id="site-header">
-	{/* Top information bar */}
-	<div class="hidden border-b border-slate-200/80 bg-[#F1F5F9] px-4 py-2.5 text-xs text-slate-700 md:block sm:px-8">
-		<div class="mx-auto flex max-w-[1400px] items-center justify-between">
-			<div class="flex items-center space-x-6">
-				<a href={`mailto:${SITE.email}`} class="flex items-center space-x-2 font-medium hover:text-brand-600">
-					<span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-sm bg-brand-600 text-white">
-						<Icon name="mail" class="h-3 w-3" />
-					</span>
-					<span>{SITE.email}</span>
-				</a>
-				<a href={SITE.phoneHref} class="flex items-center space-x-2 font-medium hover:text-brand-600">
-					<Icon name="phone" class="h-4 w-4 text-brand-600" />
-					<span>{SITE.phone}</span>
-				</a>
-				<a
-					href={SITE.isoPath}
-					class="flex items-center space-x-2 border-l border-slate-300/60 pl-6 font-medium hover:text-brand-600"
-				>
-					<Icon name="shield" class="h-4 w-4 text-brand-600" />
-					<span>{SITE.isoLabel}</span>
-				</a>
-			</div>
-			<div class="flex items-center space-x-5">
-				<a href="/contact-us/" class="font-bold text-slate-700 hover:text-brand-600">Contact Us</a>
-				<a
-					href={SITE.calendly}
-					target="_blank"
-					rel="noopener"
-					class="rounded-full bg-brand-600 px-5 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-brand-700"
-				>
-					Schedule a Meeting
-				</a>
-				<div class="flex items-center space-x-2.5 pl-2">
+{/* Top information bar — scrolls away; only the main nav below stays pinned */}
+<div class="hidden border-b border-slate-200/80 bg-slate-50 text-xs text-slate-700 md:block">
+	<div class="container-x flex h-11 items-center justify-between">
+		<div class="flex items-center gap-6">
+			<a href={`mailto:${SITE.email}`} class="flex items-center gap-2 font-medium transition-colors hover:text-brand-700">
+				<span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-sm bg-brand-700 text-white">
+					<Icon name="mail" class="h-3 w-3" />
+				</span>
+				<span>{SITE.email}</span>
+			</a>
+			<a href={SITE.phoneHref} class="flex items-center gap-2 font-medium transition-colors hover:text-brand-700">
+				<Icon name="phone" class="h-4 w-4 text-brand-700" />
+				<span>{SITE.phone}</span>
+			</a>
+			<a
+				href={SITE.isoPath}
+				class="hidden items-center gap-2 border-l border-slate-300/60 pl-6 font-medium transition-colors hover:text-brand-700 lg:flex"
+			>
+				<Icon name="shield" class="h-4 w-4 text-brand-700" />
+				<span>{SITE.isoLabel}</span>
+			</a>
+		</div>
+		<div class="flex items-center gap-5">
+			<a href="/contact-us/" class="font-bold text-slate-700 transition-colors hover:text-brand-700">Contact Us</a>
+			<a
+				href={SITE.calendly}
+				target="_blank"
+				rel="noopener"
+				class="rounded-full bg-brand-700 px-4 py-1.5 text-xs font-bold text-white shadow-sm transition-colors hover:bg-brand-800"
+			>
+				Schedule a Meeting
+			</a>
+			<div class="flex items-center gap-2 pl-1">
+				{[
+					{ href: SITE.linkedin, label: 'LinkedIn', icon: 'linkedin' },
+					{ href: SITE.youtube, label: 'YouTube', icon: 'youtube' },
+					{ href: SITE.whatsapp, label: 'WhatsApp', icon: 'whatsapp' },
+				].map((s) => (
 					<a
-						href={SITE.linkedin}
+						href={s.href}
 						target="_blank"
 						rel="noopener"
-						aria-label="LinkedIn"
-						class="flex h-7 w-7 items-center justify-center rounded-sm bg-slate-800 text-white transition-colors hover:bg-brand-600"
+						aria-label={s.label}
+						class="flex h-7 w-7 items-center justify-center rounded-md bg-slate-800 text-white transition-colors hover:bg-brand-700"
 					>
-						<Icon name="linkedin" class="h-3.5 w-3.5" />
+						<Icon name={s.icon} class="h-3.5 w-3.5" />
 					</a>
-					<a
-						href={SITE.youtube}
-						target="_blank"
-						rel="noopener"
-						aria-label="YouTube"
-						class="flex h-7 w-7 items-center justify-center rounded-sm bg-slate-800 text-white transition-colors hover:bg-brand-600"
-					>
-						<Icon name="youtube" class="h-3.5 w-3.5" />
-					</a>
-					<a
-						href={SITE.whatsapp}
-						target="_blank"
-						rel="noopener"
-						aria-label="WhatsApp"
-						class="flex h-7 w-7 items-center justify-center rounded-sm bg-slate-800 text-white transition-colors hover:bg-brand-600"
-					>
-						<Icon name="whatsapp" class="h-3.5 w-3.5" />
-					</a>
-				</div>
+				))}
 			</div>
 		</div>
 	</div>
+</div>
 
-	{/* Main navigation bar */}
-	<nav
-		data-main-nav
-		class="w-full border-b border-slate-100 bg-white py-4 transition-all duration-300"
-		aria-label="Primary"
-	>
-		<div class="mx-auto flex max-w-[1400px] items-center justify-between px-4 sm:px-8">
-			<a href="/" class="group flex shrink-0 items-center" aria-label={SITE.name}>
-				<img
-					src="/images/Logo.png"
-					alt="Skybridge IT Consulting Logo"
-					class="h-14 w-auto object-contain sm:h-[76px]"
-					width="280"
-					height="152"
-					loading="eager"
-				/>
-			</a>
+<header
+	id="site-header"
+	data-header
+	class="sticky top-0 z-50 w-full border-b border-slate-100 bg-white/90 backdrop-blur-md transition-shadow duration-300 data-scrolled:shadow-[0_8px_24px_-12px_rgba(11,19,42,0.18)]"
+>
+	<nav aria-label="Primary" class="container-x flex h-(--header-h) items-center justify-between gap-4 2xl:gap-6">
+		<a href="/" class="flex shrink-0 items-center" aria-label={`${SITE.name} — home`}>
+			<img
+				src="/images/logo-mark.webp"
+				alt="SkyBridge IT Consulting"
+				class="h-11 w-auto 2xl:h-12"
+				width="301"
+				height="109"
+				loading="eager"
+				decoding="async"
+			/>
+		</a>
 
-			{/* Desktop nav links */}
-			<div class="hidden items-center space-x-6 text-sm font-semibold text-slate-800 xl:flex">
-				{desktopNav.map((item) =>
-					item.children ? (
-						<div class="group relative">
-							<button
-								type="button"
-								class={`flex items-center space-x-1 py-1 transition-colors hover:text-brand-600 ${isActive(item.href) ? 'text-brand-600' : ''}`}
-							>
-								<span>{item.label}</span>
-								<Icon name="chevronDown" class="h-3.5 w-3.5 text-slate-500 transition-transform duration-200 group-hover:rotate-180" />
-							</button>
-							<div class="invisible absolute left-0 top-full z-50 translate-y-2 py-3 opacity-0 transition-all duration-150 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-								<ul class={`w-64 rounded-2xl border border-slate-100 bg-white py-3 shadow-xl ${item.label === 'WordPress' ? 'w-72' : ''}`}>
-									{item.children.map((child) => (
-										<li>
-											<a
-												href={child.href}
-												class={`block px-5 py-2 text-xs font-semibold transition-colors hover:bg-ice-blue hover:text-brand-600 ${isActive(child.href) ? 'text-brand-600' : ''}`}
-											>
-												{child.label}
-											</a>
-										</li>
-									))}
-								</ul>
-							</div>
-						</div>
-					) : (
-						<a
-							href={item.href}
-							class={`py-1 transition-colors hover:text-brand-600 ${isActive(item.href) ? 'text-brand-600' : ''}`}
+		{/* Desktop nav links */}
+		<div class="hidden min-w-0 items-center gap-x-3 text-sm font-semibold text-slate-800 xl:flex 2xl:gap-x-6">
+			{desktopNav.map((item) =>
+				item.children ? (
+					<div class="group relative shrink-0">
+						<button
+							type="button"
+							aria-haspopup="true"
+							class={`flex items-center gap-1 whitespace-nowrap py-2 transition-colors hover:text-brand-700 ${isActive(item.href) ? 'text-brand-700' : ''}`}
 						>
-							{item.label}
-						</a>
-					),
-				)}
-			</div>
+							<span>{item.label}</span>
+							<Icon name="chevronDown" class="h-3.5 w-3.5 text-slate-500 transition-transform duration-200 group-hover:rotate-180" />
+						</button>
+						<div class="invisible absolute left-0 top-full z-50 translate-y-2 pt-3 opacity-0 transition-all duration-150 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+							<ul class={`rounded-2xl border border-slate-100 bg-white py-3 shadow-xl ${item.label === 'WordPress' ? 'w-72' : 'w-64'}`}>
+								{item.children.map((child) => (
+									<li>
+										<a
+											href={child.href}
+											class={`block px-5 py-2 text-[13px] font-semibold transition-colors hover:bg-ice-blue hover:text-brand-700 ${isActive(child.href) ? 'text-brand-700' : ''}`}
+										>
+											{child.label}
+										</a>
+									</li>
+								))}
+							</ul>
+						</div>
+					</div>
+				) : (
+					<a
+						href={item.href}
+						aria-current={isActive(item.href) ? 'page' : undefined}
+						class={`shrink-0 whitespace-nowrap py-2 transition-colors hover:text-brand-700 ${isActive(item.href) ? 'text-brand-700' : ''}`}
+					>
+						{item.label}
+					</a>
+				),
+			)}
+		</div>
 
-			{/* Desktop right CTA */}
-			<div class="hidden shrink-0 items-center xl:flex">
-				<a
-					href="/contact-us/"
-					class="inline-flex items-center justify-center rounded-full bg-brand-600 px-6 py-2.5 text-sm font-bold text-white shadow-md shadow-brand-600/30 transition-all hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-lg hover:shadow-brand-700/40"
-				>
+		{/* Desktop right CTA */}
+		<a href="/contact-us/" class="btn-primary hidden min-h-11 shrink-0 whitespace-nowrap px-5 py-2.5 xl:ml-3 xl:inline-flex 2xl:px-6">
+			<span>Start a Project</span>
+			<Icon name="arrowRight" class="hidden h-4 w-4 2xl:block" />
+		</a>
+
+		{/* Mobile hamburger */}
+		<button
+			type="button"
+			class="flex h-11 w-11 items-center justify-center rounded-xl text-navy-950 transition-colors hover:bg-slate-100 xl:hidden"
+			data-menu-toggle
+			aria-label="Toggle navigation"
+			aria-controls="mobile-menu"
+			aria-expanded="false"
+		>
+			<Icon name="menu" class="h-6 w-6" data-menu-open-icon />
+			<Icon name="close" class="hidden h-6 w-6" data-menu-close-icon />
+		</button>
+	</nav>
+
+	{/* Mobile drawer */}
+	<div id="mobile-menu" class="xl:hidden" data-mobile-menu hidden>
+		<div class="max-h-[calc(100dvh-var(--header-h))] overflow-y-auto border-t border-slate-100 bg-white px-4 pb-6 pt-3 shadow-xl sm:px-6">
+			<ul class="divide-y divide-slate-100">
+				{desktopNav.map((item) => (
+					<li>
+						{item.children ? (
+							<div>
+								<button
+									type="button"
+									class="flex w-full items-center justify-between py-3 font-semibold text-navy-950 hover:text-brand-700"
+									data-accordion
+									aria-expanded="false"
+								>
+									<span>{item.label}</span>
+									<Icon name="chevronDown" class="h-4 w-4 transition-transform" data-chevron />
+								</button>
+								<div class="hidden pb-3 pl-3" data-panel>
+									{item.children.map((child) => (
+										<a
+											href={child.href}
+											class="block rounded-lg px-3 py-2 text-sm font-medium text-slate-600 hover:bg-ice-blue hover:text-brand-700"
+										>
+											{child.label}
+										</a>
+									))}
+								</div>
+							</div>
+						) : (
+							<a href={item.href} class="block py-3 font-semibold text-navy-950 hover:text-brand-700">
+								{item.label}
+							</a>
+						)}
+					</li>
+				))}
+			</ul>
+			<div class="grid gap-3 pt-4 sm:grid-cols-2">
+				<a href="/contact-us/" class="btn-primary w-full">
 					<span>Start a Project</span>
-					<Icon name="arrowRight" class="ml-2 h-4 w-4" />
+					<Icon name="arrowRight" class="h-4 w-4" />
+				</a>
+				<a href={SITE.calendly} target="_blank" rel="noopener" class="btn-outline w-full">
+					Schedule a Meeting
 				</a>
 			</div>
-
-			{/* Mobile hamburger */}
-			<div class="flex items-center xl:hidden">
-				<button
-					type="button"
-					class="rounded-xl p-2 text-navy transition-colors hover:bg-slate-100"
-					data-menu-toggle
-					aria-label="Toggle navigation"
-					aria-expanded="false"
-				>
-					<Icon name="menu" class="h-6 w-6" data-menu-open-icon />
-					<Icon name="close" class="hidden h-6 w-6" data-menu-close-icon />
-				</button>
-			</div>
 		</div>
-
-		{/* Mobile drawer */}
-		<div class="xl:hidden" data-mobile-menu hidden>
-			<nav aria-label="Mobile" class="max-h-[70vh] overflow-y-auto border-b border-slate-100 bg-white px-6 py-6 shadow-xl">
-				<ul class="space-y-3">
-					{desktopNav.map((item) => (
-						<li>
-							{item.children ? (
-								<div>
-									<button
-										type="button"
-										class="flex w-full items-center justify-between py-2 font-semibold text-navy hover:text-brand-600"
-										data-accordion
-										aria-expanded="false"
-									>
-										<span>{item.label}</span>
-										<Icon name="chevronDown" class="h-4 w-4" data-chevron />
-									</button>
-									<div class="hidden border-b border-slate-50 pb-2 pl-3" data-panel>
-										{item.children.map((child) => (
-											<a
-												href={child.href}
-												class="block rounded-lg px-3 py-2 text-sm font-medium text-slate-600 hover:bg-ice-blue hover:text-brand-600"
-											>
-												{child.label}
-											</a>
-										))}
-									</div>
-								</div>
-							) : (
-								<a
-									href={item.href}
-									class="block border-b border-slate-50 py-2 font-semibold text-navy hover:text-brand-600"
-								>
-									{item.label}
-								</a>
-							)}
-						</li>
-					))}
-				</ul>
-				<div class="space-y-3 pt-3">
-					<a href="/contact-us/" class="inline-flex w-full items-center justify-center rounded-full bg-brand-600 px-6 py-3 text-sm font-bold text-white shadow-md shadow-brand-600/25" data-mobile-close>
-						<span>Start a Project</span>
-						<Icon name="arrowRight" class="ml-2 h-4 w-4" />
-					</a>
-					<a
-						href={SITE.calendly}
-						target="_blank"
-						rel="noopener"
-						class="inline-flex w-full items-center justify-center rounded-full border border-brand-600 px-6 py-3 text-sm font-bold text-brand-600 transition-colors hover:bg-brand-600 hover:text-white"
-						data-mobile-close
-					>
-						Schedule a Meeting
-					</a>
-				</div>
-			</nav>
-		</div>
-	</nav>
+	</div>
 </header>
 
 <script>
-	const toggle = document.querySelector('[data-menu-toggle]');
+	const header = document.querySelector<HTMLElement>('[data-header]');
+	const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
 	const menu = document.querySelector<HTMLElement>('[data-mobile-menu]');
 	const openIcon = document.querySelector('[data-menu-open-icon]');
 	const closeIcon = document.querySelector('[data-menu-close-icon]');
-	const nav = document.querySelector<HTMLElement>('[data-main-nav]');
 
 	function setOpen(open: boolean) {
-		if (!menu || !toggle || !openIcon || !closeIcon) return;
+		if (!menu || !toggle) return;
 		menu.hidden = !open;
-		openIcon.classList.toggle('hidden', open);
-		closeIcon.classList.toggle('hidden', !open);
+		openIcon?.classList.toggle('hidden', open);
+		closeIcon?.classList.toggle('hidden', !open);
 		toggle.setAttribute('aria-expanded', String(open));
 	}
 
-	toggle?.addEventListener('click', () => setOpen(menu ? !menu.hidden : false));
+	toggle?.addEventListener('click', () => setOpen(Boolean(menu?.hidden)));
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape' && menu && !menu.hidden) {
+			setOpen(false);
+			toggle?.focus();
+		}
+	});
+	window.matchMedia('(min-width: 1280px)').addEventListener('change', (e) => e.matches && setOpen(false));
 
 	document.querySelectorAll<HTMLButtonElement>('[data-accordion]').forEach((btn) => {
 		btn.addEventListener('click', () => {
 			const panel = btn.nextElementSibling as HTMLElement | null;
-			const chevron = btn.querySelector('[data-chevron]');
 			const expanded = btn.getAttribute('aria-expanded') === 'true';
 			btn.setAttribute('aria-expanded', String(!expanded));
 			panel?.classList.toggle('hidden', expanded);
-			chevron?.classList.toggle('rotate-180', !expanded);
+			btn.querySelector('[data-chevron]')?.classList.toggle('rotate-180', !expanded);
 		});
 	});
 
-	document.querySelectorAll<HTMLAnchorElement>('[data-mobile-menu] a').forEach((a) => {
-		a.addEventListener('click', () => setOpen(false));
-	});
+	menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
 
-	// Sticky nav per reference (isSticky = scrollY > 20)
-	const onScroll = () => {
-		if (!nav) return;
-		const sticky = window.pageYOffset > 20;
-		nav.classList.toggle('sticky', sticky);
-		nav.classList.toggle('top-0', sticky);
-		nav.classList.toggle('py-3', sticky);
-		nav.classList.toggle('py-4', !sticky);
-		nav.classList.toggle('bg-white/95', sticky);
-		nav.classList.toggle('shadow-md', sticky);
-		nav.classList.toggle('backdrop-blur-md', sticky);
-	};
-	window.addEventListener('scroll', onScroll, { passive: true });
-	onScroll();
+	// Elevation cue once the page scrolls under the sticky header (no size change → no layout shift)
+	if (header) {
+		const sentinel = document.createElement('div');
+		sentinel.setAttribute('aria-hidden', 'true');
+		sentinel.style.cssText = 'position:absolute;top:0;height:1px;width:1px;pointer-events:none';
+		document.body.prepend(sentinel);
+		new IntersectionObserver(([entry]) => header.toggleAttribute('data-scrolled', !entry.isIntersecting), {
+			rootMargin: '40px 0px 0px 0px',
+		}).observe(sentinel);
+	}
 </script>
