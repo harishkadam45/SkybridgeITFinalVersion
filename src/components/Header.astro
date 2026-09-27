@@ -132,12 +132,9 @@ const desktopNav: NavItem[] = [
 									<li>
 									<a
 										href={child.href}
-										class="group relative block px-5 py-2 text-[13px] font-semibold transition-colors hover:bg-ice-blue hover:text-brand-700"
+										class={`nav-underline block px-5 py-2 text-[13px] font-semibold transition-colors hover:bg-ice-blue hover:text-brand-700 ${isActive(child.href) ? 'text-brand-700' : ''}`}
 									>
 										{child.label}
-										<span
-											class="absolute inset-x-5 bottom-1 mx-auto h-0.5 w-0 rounded-full bg-brand-600 transition-all duration-300 ease-out group-hover:w-[calc(100%-2.5rem)]"
-										></span>
 									</a>
 									</li>
 								))}
@@ -148,12 +145,9 @@ const desktopNav: NavItem[] = [
 					<a
 					href={item.href}
 					aria-current={isActive(item.href) ? 'page' : undefined}
-					class="group relative shrink-0 whitespace-nowrap py-2 transition-colors hover:text-brand-700"
+					class={`shrink-0 whitespace-nowrap py-2 transition-colors hover:text-brand-700 ${isActive(item.href) ? 'text-brand-700' : ''}`}
 				>
 					{item.label}
-					<span
-						class="absolute inset-x-0 -bottom-px mx-auto h-0.5 w-0 rounded-full bg-brand-600 transition-all duration-300 ease-out group-hover:w-full"
-					></span>
 				</a>
 				),
 			)}
@@ -208,11 +202,8 @@ const desktopNav: NavItem[] = [
 								</div>
 							</div>
 						) : (
-							<a href={item.href} class="group relative block py-3 font-semibold text-navy-950 hover:text-brand-700">
+							<a href={item.href} class="block py-3 font-semibold text-navy-950 hover:text-brand-700">
 								{item.label}
-								<span
-									class="absolute inset-x-0 bottom-0 mx-auto h-0.5 w-0 rounded-full bg-brand-600 transition-all duration-300 ease-out group-hover:w-full"
-								></span>
 							</a>
 						)}
 					</li>
