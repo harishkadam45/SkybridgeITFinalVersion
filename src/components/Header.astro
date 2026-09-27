@@ -78,7 +78,16 @@ const desktopNav: NavItem[] = [
 						aria-label={s.label}
 						class="group flex h-8 w-8 items-center justify-center rounded-full bg-brand-50 text-brand-700 ring-1 ring-brand-100 transition-colors hover:bg-brand-700 hover:text-white"
 					>
-						<Icon name={s.icon} class={s.icon === 'whatsapp' ? 'h-4 w-4 text-[#25D366] group-hover:text-white' : 'h-4 w-4'} />
+						<Icon
+							name={s.icon}
+							class={
+								s.icon === 'whatsapp'
+									? 'h-4 w-4 text-[#25D366] group-hover:text-white'
+									: s.icon === 'youtube'
+										? 'h-4 w-4 text-[#FF0000] group-hover:text-white'
+										: 'h-4 w-4'
+							}
+						/>
 					</a>
 				))}
 			</div>
