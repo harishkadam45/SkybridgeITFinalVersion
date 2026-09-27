@@ -30,7 +30,11 @@ const contactCards = [
 		lines: ['85 Blackford Ave, Staten Island, NY 10302', '1266 College Dr, Latrobe, PA 15650'],
 	},
 	{ icon: 'clock', title: 'Business hours', lines: ['24/7 Support', 'Global technical teams'] },
-	{ icon: 'phone', title: "Let's talk", lines: ['Phone: (267) 388-9414', 'Email: info@skybridgeit.com'] },
+	{
+		icon: 'phone',
+		title: "Let's talk",
+		lines: ['Phone: (267) 388-9414', { text: `Email: ${SITE.email}`, href: `https://mail.google.com/mail/?view=cm&fs=1&to=${SITE.email}` }],
+	},
 ];
 ---
 
@@ -58,9 +62,21 @@ const contactCards = [
 							</span>
 							<div>
 								<h2 class="font-bold text-navy-950">{c.title}</h2>
-								{c.lines.map((l) => (
-									<p class="mt-0.5 text-sm text-slate-600">{l}</p>
-								))}
+								{c.lines.map((l) => {
+									const line = typeof l === 'string' ? { text: l } : l;
+									return line.href ? (
+										<a
+											href={line.href}
+											target="_blank"
+											rel="noopener"
+											class="mt-0.5 block text-sm text-slate-600 transition-colors hover:text-brand-700 hover:underline"
+										>
+											{line.text}
+										</a>
+									) : (
+										<p class="mt-0.5 text-sm text-slate-600">{line.text}</p>
+									);
+								})}
 							</div>
 						</div>
 					))}
