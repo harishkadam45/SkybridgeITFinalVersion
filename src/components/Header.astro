@@ -130,12 +130,15 @@ const desktopNav: NavItem[] = [
 							<ul class={`rounded-2xl border border-slate-100 bg-white py-3 shadow-xl ${item.label === 'WordPress' ? 'w-72' : 'w-64'}`}>
 								{item.children.map((child) => (
 									<li>
-										<a
-											href={child.href}
-											class={`block px-5 py-2 text-[13px] font-semibold transition-colors hover:bg-ice-blue hover:text-brand-700 ${isActive(child.href) ? 'text-brand-700' : ''}`}
-										>
-											{child.label}
-										</a>
+									<a
+										href={child.href}
+										class="group relative block px-5 py-2 text-[13px] font-semibold transition-colors hover:bg-ice-blue hover:text-brand-700"
+									>
+										{child.label}
+										<span
+											class="absolute inset-x-5 bottom-1 mx-auto h-0.5 w-0 rounded-full bg-brand-600 transition-all duration-300 ease-out group-hover:w-[calc(100%-2.5rem)]"
+										></span>
+									</a>
 									</li>
 								))}
 							</ul>
@@ -205,8 +208,11 @@ const desktopNav: NavItem[] = [
 								</div>
 							</div>
 						) : (
-							<a href={item.href} class="block py-3 font-semibold text-navy-950 hover:text-brand-700">
+							<a href={item.href} class="group relative block py-3 font-semibold text-navy-950 hover:text-brand-700">
 								{item.label}
+								<span
+									class="absolute inset-x-0 bottom-0 mx-auto h-0.5 w-0 rounded-full bg-brand-600 transition-all duration-300 ease-out group-hover:w-full"
+								></span>
 							</a>
 						)}
 					</li>
