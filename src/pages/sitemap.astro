@@ -28,7 +28,7 @@ const extraLinks = [
 			<SectionHeading eyebrow="Pages" title="Browse the website" center class="section-head" />
 			<div class="grid gap-6 sm:grid-cols-2">
 				{extraLinks.map((l) => (
-					<a href={l.href} class="card group flex items-center justify-between gap-3 p-5">
+					<a href={l.href} class="card group flex items-center justify-between gap-3 p-5 transition-[translate,box-shadow] duration-300 hover:-translate-y-1.5 hover:custom-shadow-hover">
 						<span class="font-semibold text-navy-950">{l.label}</span>
 						<Icon name="arrowUpRight" class="h-5 w-5 text-brand-500 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
 					</a>
@@ -51,7 +51,7 @@ const extraLinks = [
 							</ul>
 						</div>
 					) : (
-						<a href={n.href} class="card group flex items-center justify-between gap-3 p-5">
+						<a href={n.href} class="card group flex items-center justify-between gap-3 p-5 transition-[translate,box-shadow] duration-300 hover:-translate-y-1.5 hover:custom-shadow-hover">
 							<span class="font-semibold text-navy-950">{n.label}</span>
 							<Icon name="arrowUpRight" class="h-5 w-5 text-brand-500 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
 						</a>
