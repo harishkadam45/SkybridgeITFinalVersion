@@ -196,6 +196,11 @@
 		0 10px 40px -10px rgba(0, 149, 255, 0.1),
 		0 4px 20px -2px rgba(11, 19, 42, 0.05);
 }
+@utility custom-shadow-soft {
+	box-shadow:
+		0 6px 24px -8px rgba(0, 149, 255, 0.08),
+		0 3px 14px -2px rgba(11, 19, 42, 0.04);
+}
 @utility custom-shadow-hover {
 	box-shadow:
 		0 20px 50px -10px rgba(0, 149, 255, 0.16),
