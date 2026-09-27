@@ -32,7 +32,12 @@ const desktopNav: NavItem[] = [
 <div class="hidden border-b border-slate-200/80 bg-slate-50 text-xs text-slate-700 md:block">
 	<div class="container-x flex h-11 items-center justify-between">
 		<div class="flex items-center gap-6">
-			<a href={`mailto:${SITE.email}`} class="flex items-center gap-2 font-medium transition-colors hover:text-brand-700">
+			<a
+				href={`https://mail.google.com/mail/?view=cm&fs=1&to=${SITE.email}`}
+				target="_blank"
+				rel="noopener"
+				class="flex items-center gap-2 font-medium transition-colors hover:text-brand-700"
+			>
 				<span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-sm bg-brand-700 text-white">
 					<Icon name="mail" class="h-3 w-3" />
 				</span>
