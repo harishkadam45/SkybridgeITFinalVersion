@@ -4,7 +4,7 @@ Official marketing website for [SkyBridge IT Consulting](https://skybridgeit.com
 
 ## Features
 
-- **28 static pages** — home, services, service detail pages, WordPress packages, about, team (white-label/member), ISO certification, contact, and a custom 404 page.
+- **30 static pages** — home, services, service detail pages, WordPress packages, about, team, our-team, ISO certification, sitemap, contact, and a custom 404 page.
 - **SEO built in** — per-page canonical URLs, Open Graph default image (`/og/og-default.png`), meta descriptions, structured data (Organization + WebSite JSON-LD), and `robots.txt`.
 - **Sitemap** — auto-generated `sitemap-index.xml` via `@astrojs/sitemap`.
 - **Responsive design** — mobile-first, with a sticky header, mobile drawer navigation, and testimonials/carousel components.
@@ -54,7 +54,7 @@ npx astro check      # type-check the project (recommended pre-commit)
 │   ├── components/       # Layout, Header, Footer, card/section components
 │   ├── data/             # site config + content (services, nav, stats, testimonials)
 │   ├── layouts/          # base page layouts
-│   ├── pages/            # one .astro file per route (27 pages + 404)
+│   ├── pages/            # one .astro file per route (29 pages + 404)
 │   └── styles/           # global.css (Tailwind v4 theme + design system)
 ├── astro.config.mjs      # site URL, static output, sitemap config
 ├── tsconfig.json
