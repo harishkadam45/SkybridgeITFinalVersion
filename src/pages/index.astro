@@ -391,7 +391,18 @@ const websiteSchema = {
 								rel={l.external ? 'noopener' : undefined}
 								class="inline-flex min-h-11 items-center gap-2 rounded-full border border-slate-200 bg-white px-5 text-sm font-bold text-slate-800 transition-colors hover:border-brand-700 hover:text-brand-700"
 							>
-								{l.icon && <Icon name={l.icon} class="h-4 w-4" />}
+								{l.icon && (
+									<Icon
+										name={l.icon}
+										class={
+											l.icon === 'whatsapp'
+												? 'h-4 w-4 text-[#25D366]'
+												: l.icon === 'youtube'
+													? 'h-4 w-4 text-[#FF0000]'
+													: 'h-4 w-4 text-brand-700'
+										}
+									/>
+								)}
 								{l.label}
 								<Icon name="arrowUpRight" class="h-4 w-4" />
 							</a>
