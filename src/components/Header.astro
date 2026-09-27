@@ -65,7 +65,7 @@ const desktopNav: NavItem[] = [
 			>
 				Schedule a Meeting
 			</a>
-			<div class="flex items-center gap-2 pl-1">
+			<div class="flex items-center gap-2">
 				{[
 					{ href: SITE.linkedin, label: 'LinkedIn', icon: 'linkedin' },
 					{ href: SITE.youtube, label: 'YouTube', icon: 'youtube' },
@@ -76,9 +76,9 @@ const desktopNav: NavItem[] = [
 						target="_blank"
 						rel="noopener"
 						aria-label={s.label}
-						class="flex h-7 w-7 items-center justify-center rounded-md bg-slate-800 text-white transition-colors hover:bg-brand-700"
+						class="group flex h-8 w-8 items-center justify-center rounded-full bg-brand-50 text-brand-700 ring-1 ring-brand-100 transition-colors hover:bg-brand-700 hover:text-white"
 					>
-						<Icon name={s.icon} class="h-3.5 w-3.5" />
+						<Icon name={s.icon} class={s.icon === 'whatsapp' ? 'h-4 w-4 text-[#25D366] group-hover:text-white' : 'h-4 w-4'} />
 					</a>
 				))}
 			</div>
