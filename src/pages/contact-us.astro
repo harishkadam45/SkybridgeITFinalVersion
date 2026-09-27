@@ -25,13 +25,13 @@ const contactSchema = {
 
 const contactCards = [
 	{
-		icon: 'mapPin',
+		icon: 'mapPinFilled',
 		title: 'US Office Address',
 		lines: ['85 Blackford Ave, Staten Island, NY 10302', '1266 College Dr, Latrobe, PA 15650'],
 	},
-	{ icon: 'clock', title: 'Business hours', lines: ['24/7 Support', 'Global technical teams'] },
+	{ icon: 'clockFilled', title: 'Business hours', lines: ['24/7 Support', 'Global technical teams'] },
 	{
-		icon: 'phone',
+		icon: 'whatsapp',
 		title: "Let's talk",
 		lines: ['Phone: (267) 388-9414', { text: `Email: ${SITE.email}`, href: `https://mail.google.com/mail/?view=cm&fs=1&to=${SITE.email}` }],
 	},
@@ -58,7 +58,7 @@ const contactCards = [
 					{contactCards.map((c) => (
 						<div class="card flex items-start gap-4 p-5 custom-shadow-soft">
 							<span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
-								<Icon name={c.icon} class="h-6 w-6" />
+								<Icon name={c.icon} class={c.icon === 'whatsapp' ? 'h-6 w-6 text-[#25D366]' : 'h-6 w-6'} />
 							</span>
 							<div>
 								<h2 class="font-bold text-navy-950">{c.title}</h2>
