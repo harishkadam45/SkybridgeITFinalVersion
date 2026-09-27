@@ -132,9 +132,9 @@ const desktopNav: NavItem[] = [
 									<li>
 									<a
 										href={child.href}
-										class={`nav-underline block px-5 py-2 text-[13px] font-semibold transition-colors hover:bg-ice-blue hover:text-brand-700 ${isActive(child.href) ? 'text-brand-700' : ''}`}
+										class={`block px-5 py-2 text-[13px] font-semibold transition-colors hover:bg-ice-blue hover:text-brand-700 ${isActive(child.href) ? 'text-brand-700' : ''}`}
 									>
-										{child.label}
+										<span class="nav-underline">{child.label}</span>
 									</a>
 									</li>
 								))}
