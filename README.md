@@ -1,14 +1,14 @@
-# SkyBridge IT Consulting — Website
+# SkyBridge IT Consulting - Website
 
 Official marketing website for [SkyBridge IT Consulting](https://skybridgeit.com), a white-label web development partner for agencies since 2005. Built as a fast, SEO-friendly static site with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com).
 
 ## Features
 
-- **30 static pages** — home, services, service detail pages, WordPress packages, about, team, our-team, ISO certification, sitemap, contact, and a custom 404 page.
-- **SEO built in** — per-page canonical URLs, Open Graph default image (`/og/og-default.png`), meta descriptions, structured data (Organization + WebSite JSON-LD), and `robots.txt`.
-- **Sitemap** — auto-generated `sitemap-index.xml` via `@astrojs/sitemap`.
-- **Responsive design** — mobile-first, with a sticky header, mobile drawer navigation, and testimonials/carousel components.
-- **Hosting-ready** — `public/.htaccess` (404 handling + redirects), `_redirects` (Netlify), and static files optimized for shared hosting (Hostinger) or any static host.
+- **30 static pages** - home, services, service detail pages, WordPress packages, about, team, our-team, ISO certification, sitemap, contact, and a custom 404 page.
+- **SEO built in** - per-page canonical URLs, Open Graph default image (`/og/og-default.png`), meta descriptions, structured data (Organization + WebSite JSON-LD), and `robots.txt`.
+- **Sitemap** - auto-generated `sitemap-index.xml` via `@astrojs/sitemap`.
+- **Responsive design** - mobile-first, with a sticky header, mobile drawer navigation, and testimonials/carousel components.
+- **Hosting-ready** - `public/.htaccess` (404 handling + redirects), `_redirects` (Netlify), and static files optimized for shared hosting (Hostinger) or any static host.
 
 ## Tech Stack
 
@@ -65,11 +65,11 @@ npx astro check      # type-check the project (recommended pre-commit)
 
 The design system is defined in `src/styles/global.css` using Tailwind v4 `@theme`:
 
-- **Brand blue** — `#0095FF` (`brand-600`), hover `#0080E5`
-- **Navy** — `#0B132A` (`navy-950`)
-- **Ice blue** — `#F4F9FF` background, `#E2E8F5` borders
-- **Type** — Plus Jakarta Sans variable font
-- **Components** — `.btn-primary`, `.btn-outline`, `.btn-white`, `.card`, `.section`, pill buttons, rounded-32/36px cards, custom shadow utilities
+- **Brand blue** - `#0095FF` (`brand-600`), hover `#0080E5`
+- **Navy** - `#0B132A` (`navy-950`)
+- **Ice blue** - `#F4F9FF` background, `#E2E8F5` borders
+- **Type** - Plus Jakarta Sans variable font
+- **Components** - `.btn-primary`, `.btn-outline`, `.btn-white`, `.card`, `.section`, pill buttons, rounded-32/36px cards, custom shadow utilities
 
 Centralize reusable UI in `src/data/content.ts` and `src/data/site.ts` (navigation, stats, testimonials, portfolio, tech rows). Edit those files to change content without touching page markup.
 
@@ -84,9 +84,9 @@ Centralize reusable UI in `src/data/content.ts` and `src/data/site.ts` (navigati
 
 The build output is fully static (`./dist/`). Deploy options:
 
-- **Hostinger / shared hosting** — upload the contents of `dist/` (including the hidden `.htaccess`) to `public_html`.
-- **Netlify** — build command `npm run build`, publish directory `dist/` (`_redirects` handles routing).
-- **Vercel** — build command `npm run build`, output directory `dist/`.
+- **Hostinger / shared hosting** - upload the contents of `dist/` (including the hidden `.htaccess`) to `public_html`.
+- **Netlify** - build command `npm run build`, publish directory `dist/` (`_redirects` handles routing).
+- **Vercel** - build command `npm run build`, output directory `dist/`.
 
 ## Contribution
 

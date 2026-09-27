@@ -1,7 +1,7 @@
 export const FAQS = [
 	{
 		q: 'What is a white-label development partner?',
-		a: 'A white-label partner builds and manages technology for you under your brand. Your clients never know we are involved — you present the work as your own while we handle engineering, delivery, and support behind the scenes.',
+		a: 'A white-label partner builds and manages technology for you under your brand. Your clients never know we are involved - you present the work as your own while we handle engineering, delivery, and support behind the scenes.',
 	},
 	{
 		q: 'Which regions and industries do you serve?',
@@ -17,7 +17,7 @@ export const FAQS = [
 	},
 	{
 		q: 'Do you sign NDAs and work under our brand?',
-		a: 'Absolutely. We routinely sign NDAs and operate exclusively under your branding — including emails, dashboards, and deliverables — so your partnership remains completely invisible to your clients.',
+		a: 'Absolutely. We routinely sign NDAs and operate exclusively under your branding - including emails, dashboards, and deliverables - so your partnership remains completely invisible to your clients.',
 	},
 ];
 

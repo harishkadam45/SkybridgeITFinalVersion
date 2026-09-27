@@ -127,7 +127,7 @@ export const WORDPRESS_WEBSITE_PACKAGES: PackageData = {
 	notes: [
 		'Prices are starting ranges; final quotes depend on scope, content volume and custom features.',
 		'All packages include mobile responsiveness, on-page SEO fundamentals and security best practices.',
-		'White-label delivery available for agencies — your branding on every deliverable.',
+		'White-label delivery available for agencies - your branding on every deliverable.',
 	],
 };
 
@@ -135,10 +135,10 @@ export const WORDPRESS_MAINTENANCE_PACKAGES: PackageData = {
 	title: 'WordPress Maintenance Packages',
 	metaTitle: 'WordPress Maintenance Packages | Monthly Plans',
 	metaDescription:
-		'Monthly WordPress maintenance plans — updates, backups, security monitoring, speed checks and priority support. Keep your WordPress site fast and secure.',
+		'Monthly WordPress maintenance plans - updates, backups, security monitoring, speed checks and priority support. Keep your WordPress site fast and secure.',
 	heroTitle: 'WordPress Maintenance Packages',
 	heroSubtitle:
-		'Monthly plans that keep your WordPress site fast, secure, updated and fully backed up — so you never have to worry about your website.',
+		'Monthly plans that keep your WordPress site fast, secure, updated and fully backed up - so you never have to worry about your website.',
 	intro:
 		'Our WordPress maintenance packages give you complete peace of mind. We handle updates, backups, security monitoring, performance checks and priority support, with transparent monthly pricing and clear reporting.',
 	tiers: [
@@ -278,10 +278,10 @@ export const WORDPRESS_SEO_PACKAGES: PackageData = {
 	title: 'WordPress SEO Packages',
 	metaTitle: 'WordPress SEO Packages | On-Page & Technical SEO',
 	metaDescription:
-		'WordPress SEO packages — technical SEO, on-page optimization, schema, sitemaps, analytics and rankings reporting for higher Google visibility.',
+		'WordPress SEO packages - technical SEO, on-page optimization, schema, sitemaps, analytics and rankings reporting for higher Google visibility.',
 	heroTitle: 'WordPress SEO Packages',
 	heroSubtitle:
-		'Technical WordPress SEO, on-page optimization, schema markup and analytics — built to improve rankings and grow organic traffic.',
+		'Technical WordPress SEO, on-page optimization, schema markup and analytics - built to improve rankings and grow organic traffic.',
 	intro:
 		'Search ranking starts with a technically sound website. Our WordPress SEO packages cover everything from sitemaps and schema to on-page optimization and analytics configuration, so search engines can find, understand, and rank your content.',
 	tiers: [
@@ -348,12 +348,12 @@ export const WOOCOMMERCE_PACKAGES: PackageData = {
 	title: 'WooCommerce Development Packages',
 	metaTitle: 'WooCommerce Development Packages | Online Stores',
 	metaDescription:
-		'WooCommerce development packages with fixed pricing — custom store design, payments, shipping, apps, CRO and speed optimization for online stores.',
+		'WooCommerce development packages with fixed pricing - custom store design, payments, shipping, apps, CRO and speed optimization for online stores.',
 	heroTitle: 'WooCommerce Development Packages',
 	heroSubtitle:
-		'Convert more visitors into customers with custom-built WooCommerce stores — payments, shipping, apps and optimization handled.',
+		'Convert more visitors into customers with custom-built WooCommerce stores - payments, shipping, apps and optimization handled.',
 	intro:
-		'Our WooCommerce development packages deliver complete online stores — designed, built, integrated and optimized to start selling from day one. Ideal for brands and agencies that want predictable pricing and reliable delivery.',
+		'Our WooCommerce development packages deliver complete online stores - designed, built, integrated and optimized to start selling from day one. Ideal for brands and agencies that want predictable pricing and reliable delivery.',
 	tiers: [
 		{
 			name: 'Store Starter',
@@ -424,12 +424,12 @@ export const WORDPRESS_AI_PACKAGES: PackageData = {
 	title: 'WordPress AI Automation Services',
 	metaTitle: 'WordPress AI Automation Services | AI on WordPress',
 	metaDescription:
-		'Add AI to your WordPress site — AI chatbots, content workflows, automated SEO tagging and membership tools that save time and improve engagement.',
+		'Add AI to your WordPress site - AI chatbots, content workflows, automated SEO tagging and membership tools that save time and improve engagement.',
 	heroTitle: 'WordPress AI Automation Services',
 	heroSubtitle:
-		'Bring AI-powered automation to your WordPress site — chatbots, content workflows, SEO automation and smart search.',
+		'Bring AI-powered automation to your WordPress site - chatbots, content workflows, SEO automation and smart search.',
 	intro:
-		'Unlock the power of AI on WordPress. We integrate chatbots, automated content workflows, AI SEO tagging, smart search and personalization directly into your WordPress site — saving hours every week and improving user engagement.',
+		'Unlock the power of AI on WordPress. We integrate chatbots, automated content workflows, AI SEO tagging, smart search and personalization directly into your WordPress site - saving hours every week and improving user engagement.',
 	tiers: [
 		{
 			name: 'AI Starter',

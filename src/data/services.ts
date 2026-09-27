@@ -168,10 +168,10 @@ export const SERVICES: Record<string, ServiceDetail> = {
 			'Modern, responsive frontend development with React, Vue, Angular, Next.js and Tailwind. Fast, accessible, SEO-friendly interfaces for web, SaaS and mobile.',
 		heroTitle: 'Frontend Development Technologies',
 		heroSubtitle:
-			'Fast, accessible and beautiful front-ends that convert — built with modern frameworks and rigorous performance standards.',
+			'Fast, accessible and beautiful front-ends that convert - built with modern frameworks and rigorous performance standards.',
 		intro: [
 			'The frontend is where your users form their first impression. At SkyBridge IT Consulting, we build responsive, accessible and performance-optimized frontends using modern frameworks like React, Vue, Angular and Next.js.',
-			'From marketing websites to complex SaaS dashboards and progressive web applications, we craft interfaces that are fast to load, easy to navigate and built to reflect your brand — while keeping code clean, modular and maintainable.',
+			'From marketing websites to complex SaaS dashboards and progressive web applications, we craft interfaces that are fast to load, easy to navigate and built to reflect your brand - while keeping code clean, modular and maintainable.',
 		],
 		stats: [
 			{ value: '100', suffix: '+', label: 'Frontend projects' },
@@ -267,7 +267,7 @@ export const SERVICES: Record<string, ServiceDetail> = {
 			'High-performance iOS, Android and cross-platform mobile apps designed and developed under your agency brand.',
 		intro: [
 			'Our team develops high-performance mobile applications designed for usability, speed, and scalability. From on-demand service apps to marketplace and enterprise mobile platforms, we ship native and cross-platform apps that your clients will love.',
-			'We handle the full lifecycle — strategy, UI/UX design, development, testing, app store submission and ongoing maintenance — so you can offer mobile capability without building an in-house team.',
+			'We handle the full lifecycle - strategy, UI/UX design, development, testing, app store submission and ongoing maintenance - so you can offer mobile capability without building an in-house team.',
 		],
 		stats: [
 			{ value: '150', suffix: '+', label: 'Apps delivered' },
@@ -291,7 +291,7 @@ export const SERVICES: Record<string, ServiceDetail> = {
 			{
 				title: 'Cross-Platform Development',
 				icon: 'code',
-				description: 'One codebase, two platforms — faster delivery and lower cost.',
+				description: 'One codebase, two platforms - faster delivery and lower cost.',
 				items: [
 					'Flutter development',
 					'React Native development',
@@ -348,7 +348,7 @@ export const SERVICES: Record<string, ServiceDetail> = {
 		cta: {
 			title: 'Launch a mobile app your clients will love',
 			subtitle:
-				'We design, build, test and publish iOS and Android apps — quietly, fast, and entirely under your brand.',
+				'We design, build, test and publish iOS and Android apps - quietly, fast, and entirely under your brand.',
 		},
 	},
 	webapps: {
@@ -362,7 +362,7 @@ export const SERVICES: Record<string, ServiceDetail> = {
 		heroSubtitle:
 			'Custom websites, portals, SaaS platforms, and web applications developed for agencies serving corporate, startup, and enterprise clients.',
 		intro: [
-			'A custom web application is more than a website — it is the system your business runs on. SkyBridge IT Consulting builds scalable web applications, client portals, dashboards, booking systems and SaaS platforms that streamline operations and engage users.',
+			'A custom web application is more than a website - it is the system your business runs on. SkyBridge IT Consulting builds scalable web applications, client portals, dashboards, booking systems and SaaS platforms that streamline operations and engage users.',
 			'We engineer with a focus on performance, security and long-term maintainability, whether we are extending your agency’s capabilities or delivering a turn-key platform under your brand.',
 		],
 		offerings: [
@@ -437,7 +437,7 @@ export const SERVICES: Record<string, ServiceDetail> = {
 		cta: {
 			title: 'Turn your idea into a scalable web application',
 			subtitle:
-				'Portals, dashboards, and SaaS platforms engineered to run your business — delivered under your brand.',
+				'Portals, dashboards, and SaaS platforms engineered to run your business - delivered under your brand.',
 		},
 	},
 	software: {
@@ -527,7 +527,7 @@ export const SERVICES: Record<string, ServiceDetail> = {
 		cta: {
 			title: 'Build software that runs your business',
 			subtitle:
-				'From CRM and ERP systems to logistics platforms — custom software engineered around your workflow.',
+				'From CRM and ERP systems to logistics platforms - custom software engineered around your workflow.',
 		},
 	},
 	whatsapp: {
@@ -541,8 +541,8 @@ export const SERVICES: Record<string, ServiceDetail> = {
 		heroSubtitle:
 			'Reach customers where they already chat. Compliant bulk WhatsApp campaigns, automation and integrations for US SMBs.',
 		intro: [
-			'WhatsApp is where your customers already are — and it is one of the highest-engagement channels in digital marketing today. SkyBridge IT Consulting helps US small and medium businesses run compliant bulk WhatsApp marketing and automation campaigns that boost sales and support.',
-			'We handle account setup, messaging templates, broadcasting tools, automated workflows and analytics, so you can communicate with customers at scale without spamming — and without risking your number.',
+			'WhatsApp is where your customers already are - and it is one of the highest-engagement channels in digital marketing today. SkyBridge IT Consulting helps US small and medium businesses run compliant bulk WhatsApp marketing and automation campaigns that boost sales and support.',
+			'We handle account setup, messaging templates, broadcasting tools, automated workflows and analytics, so you can communicate with customers at scale without spamming - and without risking your number.',
 		],
 		offerings: [
 			{
@@ -628,9 +628,9 @@ export const SERVICES: Record<string, ServiceDetail> = {
 			'Shopify store development, theme customization, app integration, CRO and speed optimization for e-commerce brands and agencies.',
 		heroTitle: 'Shopify Development Services',
 		heroSubtitle:
-			'High-converting Shopify stores — custom development, themes, apps and optimization for e-commerce brands.',
+			'High-converting Shopify stores - custom development, themes, apps and optimization for e-commerce brands.',
 		intro: [
-			'Shopify is one of the most powerful e-commerce platforms for growing brands — but out-of-the-box stores rarely convert. SkyBridge IT Consulting builds custom Shopify experiences that load fast, look premium and sell more.',
+			'Shopify is one of the most powerful e-commerce platforms for growing brands - but out-of-the-box stores rarely convert. SkyBridge IT Consulting builds custom Shopify experiences that load fast, look premium and sell more.',
 			'From theme customization and custom sections to app integration, checkout optimization and ongoing maintenance, we create stores that work as hard as your team does.',
 		],
 		offerings: [
@@ -661,7 +661,7 @@ export const SERVICES: Record<string, ServiceDetail> = {
 			{
 				title: 'Conversion & CRO',
 				icon: 'trending',
-				description: 'Tiny tweaks, big lifts — built around real user behavior.',
+				description: 'Tiny tweaks, big lifts - built around real user behavior.',
 				items: [
 					'Checkout optimization',
 					'Upsell & cross-sell flows',
@@ -717,9 +717,9 @@ export const SERVICES: Record<string, ServiceDetail> = {
 			'AI-powered UGC video production workflow for advertising and marketing agencies. Script to screen with 30+ creator personas, guaranteed turnaround.',
 		heroTitle: 'AI UGC Video Production Workflow',
 		heroSubtitle:
-			'Studio-quality UGC-style videos generated with AI — from script to publish in days, at a fraction of the cost of human content.',
+			'Studio-quality UGC-style videos generated with AI - from script to publish in days, at a fraction of the cost of human content.',
 		intro: [
-			'AI UGC (user-generated content) lets marketing and advertising agencies produce realistic, scroll-stopping creator-style videos at scale — without casting, studios, or weeks of back-and-forth.',
+			'AI UGC (user-generated content) lets marketing and advertising agencies produce realistic, scroll-stopping creator-style videos at scale - without casting, studios, or weeks of back-and-forth.',
 			'SkyBridge IT Consulting runs a streamlined AI UGC production workflow: we take your brief, write the script, select a persona, generate the video, and deliver ready-to-publish creatives that look and feel authentically organic.',
 		],
 		stats: [
@@ -756,7 +756,7 @@ export const SERVICES: Record<string, ServiceDetail> = {
 			{
 				title: 'Production & Post',
 				icon: 'screen',
-				description: 'Rendering, sound, captions and delivery — fully managed.',
+				description: 'Rendering, sound, captions and delivery - fully managed.',
 				items: [
 					'Full HD & vertical formats',
 					'Auto captions & subtitles',
@@ -800,7 +800,7 @@ export const SERVICES: Record<string, ServiceDetail> = {
 		cta: {
 			title: 'Produce AI UGC that stops the scroll',
 			subtitle:
-				'Realistic, conversion-focused UGC-style videos at scale — ready to publish in under a week.',
+				'Realistic, conversion-focused UGC-style videos at scale - ready to publish in under a week.',
 		},
 	},
 	ai_ugc_packages: {
@@ -812,10 +812,10 @@ export const SERVICES: Record<string, ServiceDetail> = {
 			'AI UGC content packages designed for advertising and marketing agencies. Monthly video packages, creator personas, scripts and publishing-ready creatives.',
 		heroTitle: 'AI UGC Content Packages for Advertising & Marketing Agencies',
 		heroSubtitle:
-			'Ready-to-use AI UGC content packages built for agencies — consistent, branded, and priced for resale.',
+			'Ready-to-use AI UGC content packages built for agencies - consistent, branded, and priced for resale.',
 		intro: [
 			'Marketing and advertising agencies need a constant stream of fresh creative. Our AI UGC content packages deliver a predictable monthly flow of realistic, publishing-ready UGC-style videos designed to fuel your clients’ ad accounts.',
-			'Every package includes scriptwriting, persona selection, production, subtitling and delivery — built to resell under your agency brand with healthy margins and zero production overhead.',
+			'Every package includes scriptwriting, persona selection, production, subtitling and delivery - built to resell under your agency brand with healthy margins and zero production overhead.',
 		],
 		offerings: [
 			{
@@ -897,7 +897,7 @@ export const SERVICES: Record<string, ServiceDetail> = {
 			'AI chatbots, voice automation, workflow automation and intelligent business tools designed to increase efficiency and reduce manual processes.',
 		intro: [
 			'Businesses waste thousands of hours on repetitive tasks. SkyBridge IT Consulting helps you leverage AI and intelligent automation to reduce manual work, improve response times and scale operations without scaling headcount.',
-			'We design, build and maintain automation across customer support, marketing, sales operations and document processing — integrated with the software you already use.',
+			'We design, build and maintain automation across customer support, marketing, sales operations and document processing - integrated with the software you already use.',
 		],
 		offerings: [
 			{
@@ -980,7 +980,7 @@ export const SERVICES: Record<string, ServiceDetail> = {
 		heroSubtitle:
 			'Complete GoHighLevel CRM setup, workflow automation, lead nurturing systems, and sales pipeline management for growing businesses.',
 		intro: [
-			'GoHighLevel (GHL) is the all-in-one platform agencies and businesses use to manage leads, funnels and client communication — but it only works if it is set up right. SkyBridge IT Consulting configures, automates and manages GHL so your pipeline runs itself.',
+			'GoHighLevel (GHL) is the all-in-one platform agencies and businesses use to manage leads, funnels and client communication - but it only works if it is set up right. SkyBridge IT Consulting configures, automates and manages GHL so your pipeline runs itself.',
 			'From sub-account setup and funnel builds to multi-step SMS/email campaigns and pipeline reporting, we turn GoHighLevel into a lead-generation machine for small and medium businesses.',
 		],
 		offerings: [
@@ -1059,12 +1059,12 @@ export const SERVICES: Record<string, ServiceDetail> = {
 		navLabel: 'Gaming App',
 		metaTitle: 'Gaming App Development Services',
 		metaDescription:
-			'Mobile, web and interactive game development — gamification, training simulations, Unity & Unreal development for entertainment and marketing.',
+			'Mobile, web and interactive game development - gamification, training simulations, Unity & Unreal development for entertainment and marketing.',
 		heroTitle: 'Gaming App Development',
 		heroSubtitle:
-			'Interactive gaming experiences for entertainment, training, gamification and marketing — built to engage.',
+			'Interactive gaming experiences for entertainment, training, gamification and marketing - built to engage.',
 		intro: [
-			'Games and gamification are powerful tools for engagement — whether you are building a commercial mobile game, a promotional game for a campaign, or interactive training simulations.',
+			'Games and gamification are powerful tools for engagement - whether you are building a commercial mobile game, a promotional game for a campaign, or interactive training simulations.',
 			'SkyBridge IT Consulting builds mobile, web and desktop games, gamification systems and interactive experiences using Unity, Unreal Engine and modern web technologies.',
 		],
 		offerings: [
@@ -1148,7 +1148,7 @@ export const SERVICES: Record<string, ServiceDetail> = {
 		heroSubtitle:
 			'Keep your website fast, secure and up to date with proactive maintenance, monitoring and 24/7 support.',
 		intro: [
-			'A website is never "done" — it needs regular updates, security patches, backups and performance monitoring. SkyBridge IT Consulting provides proactive website maintenance that protects your investment and keeps your site performing at its best.',
+			'A website is never "done" - it needs regular updates, security patches, backups and performance monitoring. SkyBridge IT Consulting provides proactive website maintenance that protects your investment and keeps your site performing at its best.',
 			'From routine updates and backups to speed optimization and priority support, our maintenance plans remove the technical burden so you can focus on your business.',
 		],
 		offerings: [
@@ -1227,19 +1227,19 @@ export const SERVICES: Record<string, ServiceDetail> = {
 		navLabel: 'WordPress AI Solutions',
 		metaTitle: 'WordPress Development & AI-Powered Solutions',
 		metaDescription:
-			'Advanced WordPress development with AI automation — custom themes, plugins, eCommerce, performance optimization and enterprise WordPress since 2005.',
+			'Advanced WordPress development with AI automation - custom themes, plugins, eCommerce, performance optimization and enterprise WordPress since 2005.',
 		heroTitle: 'WordPress Development & AI-Powered Solutions',
 		heroSubtitle:
-			'WordPress as a powerful digital platform — custom engineering, performance optimization, security, scalability, and AI-powered automation.',
+			'WordPress as a powerful digital platform - custom engineering, performance optimization, security, scalability, and AI-powered automation.',
 		intro: [
-			'At SkyBridge IT Consulting, WordPress is not just a CMS for us — it is a powerful digital platform capable of running complex business applications, scalable eCommerce stores, and high-performance enterprise websites.',
+			'At SkyBridge IT Consulting, WordPress is not just a CMS for us - it is a powerful digital platform capable of running complex business applications, scalable eCommerce stores, and high-performance enterprise websites.',
 			'Serving agencies, startups and businesses across the USA, Canada, the UK, Europe and Australia since 2005, we focus on custom engineering, performance optimization, security, scalability and AI-powered automation to build WordPress sites that are fast, reliable and built for growth.',
 		],
 		offerings: [
 			{
 				title: 'Custom WordPress Development',
 				icon: 'code',
-				description: 'Beyond themes and plugins — custom engineering for real business needs.',
+				description: 'Beyond themes and plugins - custom engineering for real business needs.',
 				items: [
 					'Custom theme development',
 					'Custom plugin development',
