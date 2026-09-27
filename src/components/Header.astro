@@ -16,9 +16,10 @@ const byLabel = (label: string) => NAV.find((n) => n.label === label) as NavItem
 
 // Navigation mirrors the reference structure but keeps real page links
 const desktopNav: NavItem[] = [
+	{ label: 'Home', href: '/' },
 	{ label: 'About us', href: '/about-us/' },
 	{ label: 'Services', href: '/services/', children: byLabel('Services').children },
-	{ label: 'Our Team', href: '/member/' },
+	{ label: 'Our Team', href: '/our-team/' },
 	{ label: 'AI Services', href: byLabel('AI Services').href, children: byLabel('AI Services').children },
 	{ label: 'Go High Level', href: byLabel('Go High Level').href },
 	{ label: 'WordPress', href: byLabel('WordPress').href, children: byLabel('WordPress').children },
@@ -38,7 +39,7 @@ const desktopNav: NavItem[] = [
 				<span>{SITE.email}</span>
 			</a>
 			<a href={SITE.phoneHref} class="flex items-center gap-2 font-medium transition-colors hover:text-brand-700">
-				<Icon name="phone" class="h-4 w-4 text-brand-700" />
+				<Icon name="whatsapp" class="h-4 w-4 text-brand-700" />
 				<span>{SITE.phone}</span>
 			</a>
 			<a
@@ -99,7 +100,7 @@ const desktopNav: NavItem[] = [
 		</a>
 
 		{/* Desktop nav links */}
-		<div class="hidden min-w-0 items-center gap-x-3 text-sm font-semibold text-slate-800 xl:flex 2xl:gap-x-6">
+		<div class="hidden min-w-0 items-center gap-x-2.5 text-sm font-semibold text-slate-800 xl:flex 2xl:gap-x-3">
 			{desktopNav.map((item) =>
 				item.children ? (
 					<div class="group relative shrink-0">
@@ -139,7 +140,7 @@ const desktopNav: NavItem[] = [
 		</div>
 
 		{/* Desktop right CTA */}
-		<a href="/contact-us/" class="btn-primary hidden min-h-11 shrink-0 whitespace-nowrap px-5 py-2.5 xl:ml-3 xl:inline-flex 2xl:px-6">
+		<a href="/contact-us/" class="btn-primary hidden min-h-11 shrink-0 whitespace-nowrap px-5 py-2.5 xl:ml-3 xl:-mr-2 xl:inline-flex 2xl:px-6">
 			<span>Start a Project</span>
 			<Icon name="arrowRight" class="hidden h-4 w-4 2xl:block" />
 		</a>

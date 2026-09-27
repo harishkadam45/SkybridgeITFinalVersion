@@ -4,7 +4,7 @@ import { STATS } from '../data/content';
 
 <section aria-label="Company at a glance">
 	<div class="container-x">
-		<dl class="grid grid-cols-2 gap-y-2 rounded-[28px] border border-slate-100 bg-white p-4 custom-shadow sm:p-8 md:grid-cols-4">
+		<dl class="grid grid-cols-2 gap-y-2 rounded-[28px] border border-slate-100 bg-gray-100 p-4 custom-shadow sm:p-8 md:grid-cols-4">
 			{STATS.map((s, i) => (
 				<div class:list={['flex flex-col-reverse items-center p-4 text-center', i % 4 !== 3 && 'md:border-r md:border-slate-100']}>
 					<dt class="text-xs font-bold uppercase tracking-wider text-slate-500">{s.label}</dt>

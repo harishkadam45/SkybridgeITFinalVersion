@@ -47,7 +47,7 @@ export const NAV = [
 			{ label: 'Shopify Development Services', href: '/shopify-development-services/' },
 		],
 	},
-	{ label: 'Our Team', href: '/member/' },
+	{ label: 'Our Team', href: '/our-team/' },
 	{
 		label: 'AI Services',
 		href: '/ai-ugc-content-packages-for-advertising-marketing-agencies/',

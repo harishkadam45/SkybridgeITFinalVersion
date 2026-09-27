@@ -1,0 +1,99 @@
+---
+import Layout from '../components/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CTASection from '../components/CTASection.astro';
+import { SITE } from '../data/site';
+
+const teamSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'AboutPage',
+	name: 'SkyBridge IT Consulting Team',
+	url: `${SITE.url}/our-team/`,
+	description:
+		'Solution architects, developers, designers, automation specialists and project managers who work as an extension of your agency or business.',
+};
+
+const team = [
+	{ name: 'Mannem Kanakaraju', role: 'Owner & Project Lead', img: '/images/team/mannem-kanakaraju.png' },
+	{ name: 'Kareem Maize', role: 'Chief Technical Officer', img: '/images/team/kareem-maize.png' },
+	{ name: 'Alex Martinborough', role: 'Business Partner & Developer', img: '/images/team/alex-martinborough.png' },
+	{ name: 'Rohit Sharma', role: 'Laravel Expert', img: '/images/team/rohit-sharma.png' },
+	{ name: 'Subhajit Gorain', role: 'WordPress Expert', img: '/images/team/subhajit-gorain.png' },
+	{ name: 'Sk Sirajul Ali', role: 'WordPress & Laravel Expert', img: '/images/team/sk-sirajul-ali.png' },
+	{ name: 'Anu Smith', role: 'Social Media Expert', img: '/images/team/anu-smith.png' },
+	{ name: 'Kaushal Verma', role: 'UI/UX & Graphic Designer', img: '/images/team/kaushal-verma.png' },
+	{ name: 'Som Munda', role: 'Project Manager', img: '/images/team/som-munda.png' },
+	{ name: 'Keshav Batura', role: 'WordPress Expert', img: '/images/team/keshav-batura.png' },
+	{ name: 'Pramod Patil', role: 'PHP & Laravel Developer', img: '/images/team/pramod-patil.png' },
+	{ name: 'Rajat Sharma', role: 'Full Stack Developer', img: '/images/team/rajat-sharma.png' },
+	{ name: 'Prashant Chaudhri', role: 'UI/UX Designer', img: '/images/team/prashant-chaudhri.png' },
+	{ name: 'Subham', role: 'Web Developer', img: '/images/team/subham.png' },
+	{ name: 'Amit', role: 'Full Stack developer. Laravel & Node.js Expert', img: '/images/team/amit.png' },
+	{ name: 'Pranav Vuddagiri', role: 'UI/UX, React, Redux', img: '/images/team/pranav-vuddagiri.png' },
+	{ name: 'Vishnu Kamisetti', role: 'React, Redux', img: '/images/team/vishnu-kamisetti.png' },
+	{ name: 'Pranav Bhandari', role: 'Node, Express, MongoDB', img: '/images/team/pranav-bhandari.png' },
+	{ name: 'Vishnu Vamsith Yejju', role: 'Node, Express, MongoDB', img: '/images/team/vishnu-vamsith-yejju.png' },
+	{ name: 'Varshith Pyla', role: 'Node, Express, MongoDB', img: '/images/team/varshith-pyla.png' },
+	{ name: 'Jenny James', role: 'UI/UX Designer', img: '/images/team/jenny-james.png' },
+	{ name: 'Mayank', role: 'Shopify, Wix Expert', img: '/images/team/mayank.png' },
+	{ name: 'Harry Smith', role: 'Node, Express, MongoDB', img: '/images/team/harry-smith.png' },
+];
+---
+
+<Layout
+	title="Our Team | SkyBridge IT Consulting"
+	description="Meet the people behind your projects — solution architects, developers, designers, automation specialists and project managers who work as an extension of your agency or business."
+	canonicalPath="/our-team/"
+	jsonLd={teamSchema}
+>
+	<PageHero
+		title="The people behind your projects"
+		subtitle="Solution architects, developers, designers, automation specialists and project managers who work as an extension of your agency or business."
+		breadcrumb={[{ label: 'Our Team' }]}
+	/>
+
+	<section class="section">
+		<div class="container-x">
+			<SectionHeading
+				eyebrow="Our Team"
+				title="Dedicated specialists under your brand"
+				subtitle="Every delivery is backed by a team that is staffed, managed and reviewed under your brand, tools and processes."
+				center
+			class="section-head"
+			/>
+			<div class="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+				{team.map((m) => (
+					<div class="card flex flex-col items-center p-6 text-center">
+						<div class="overflow-hidden rounded-full border border-slate-100">
+							<img
+								src={m.img}
+								alt={`${m.name}, ${m.role}`}
+								class="h-28 w-28 object-cover"
+								width="1024"
+								height="1024"
+								loading="lazy"
+								decoding="async"
+							/>
+						</div>
+						<h2 class="heading-3 mt-5">{m.name}</h2>
+						<p class="mt-1 text-sm font-semibold leading-relaxed text-brand-700">{m.role}</p>
+					</div>
+				))}
+			</div>
+			<div class="mt-12 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+				<a href="/contact-us/" class="btn-primary">
+					Get a Free Consultation
+				</a>
+				<a href={SITE.calendly} target="_blank" rel="noopener" class="btn-outline">
+					Schedule a Meeting
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<CTASection
+		title="Need a dedicated development team?"
+		subtitle="Hire dedicated developers, designers and engineers who work under your agency brand with full white-label support."
+	/>
+</Layout>
