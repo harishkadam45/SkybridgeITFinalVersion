@@ -60,9 +60,12 @@ const moreLinks = [
 							target="_blank"
 							rel="noopener"
 							aria-label={l.label}
-							class="flex h-10 w-10 items-center justify-center rounded-full bg-brand-50 text-brand-700 ring-1 ring-brand-100 transition-colors hover:bg-brand-700 hover:text-white"
-						>
-							<Icon name={l.icon} class="h-4 w-4" />
+class="group flex h-10 w-10 items-center justify-center rounded-full bg-brand-50 text-brand-700 ring-1 ring-brand-100 transition-colors hover:bg-brand-700 hover:text-white"
+					>
+						<Icon
+							name={l.icon}
+							class={l.icon === 'whatsapp' ? 'h-4 w-4 text-[#25D366] group-hover:text-white' : 'h-4 w-4'}
+						/>
 						</a>
 					))}
 				</div>
