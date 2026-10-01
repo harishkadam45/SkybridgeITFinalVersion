@@ -63,7 +63,7 @@ const contactCards = [
 							<div>
 								<h2 class="font-bold text-navy-950">{c.title}</h2>
 								{c.lines.map((l) => {
-									const line = typeof l === 'string' ? { text: l } : l;
+									const line = typeof l === 'string' ? { text: l, href: undefined as string | undefined } : l;
 									return line.href ? (
 										<a
 											href={line.href}
